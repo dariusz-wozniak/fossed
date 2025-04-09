@@ -5,6 +5,9 @@ import remarkGfm from 'remark-gfm'
 const nextConfig = {
   output: 'export',
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'], // Add 'md' and 'mdx'
+  images: {
+    unoptimized: true
+  },
   // Your existing config here
 };
 
