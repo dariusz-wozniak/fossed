@@ -61,7 +61,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
       - name: Build with Next.js
         run: pnpm build
       - name: Upload artifact
