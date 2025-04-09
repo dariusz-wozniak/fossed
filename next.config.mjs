@@ -7,6 +7,7 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
+  output: 'export',
   // Your existing config here
 };
 
