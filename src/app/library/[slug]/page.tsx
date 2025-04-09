@@ -44,16 +44,16 @@ export async function generateStaticParams() {
 
 // Define Props type according to Next.js App Router static generation
 type Props = {
-  params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
+  params: Promise<{ slug: string }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 // Generate metadata from frontmatter and library data
 export async function generateMetadata(
   { params }: Props
 ): Promise<Metadata> {
-  // Get slug directly from params
-  const { slug } = params;
+  // Get slug directly from params (Next.js resolves promise for static generation)
+  const { slug } = await params; // Revert to await here as type expects Promise
   
   const libraryData = await getLibraryContent(slug);
   const library = getLibraryBySlug(slug);
@@ -72,8 +72,8 @@ export async function generateMetadata(
 
 // The page component
 export default async function LibraryPage({ params }: Props) {
-  // Get slug directly from params
-  const { slug } = params;
+  // Get slug directly from params (Next.js resolves promise for static generation)
+  const { slug } = await params; // Revert to await here as type expects Promise
   
   const libraryData = await getLibraryContent(slug);
   const library = getLibraryBySlug(slug);
