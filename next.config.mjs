@@ -7,6 +7,8 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
+  output: 'export',
+  basePath: '/fossed',
   // Your existing config here
 };
 
