@@ -10,7 +10,7 @@ import remarkGfm from 'remark-gfm';
 import type { Metadata } from 'next';
 
 // Set rendering mode to dynamic
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic'; // Removed: Incompatible with output: 'export'
 
 // Define the path to the content directory
 const contentDirectory = path.join(process.cwd(), 'content', 'libraries');
@@ -42,18 +42,18 @@ export async function generateStaticParams() {
   }));
 }
 
-// Define Props type according to Next.js 15 requirements
+// Define Props type according to Next.js App Router static generation
 type Props = {
-  params: Promise<{ slug: string }>
-  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>
+  params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 // Generate metadata from frontmatter and library data
 export async function generateMetadata(
   { params }: Props
 ): Promise<Metadata> {
-  // Get slug directly from params - need to await it now
-  const { slug } = await params;
+  // Get slug directly from params
+  const { slug } = params;
   
   const libraryData = await getLibraryContent(slug);
   const library = getLibraryBySlug(slug);
@@ -72,8 +72,8 @@ export async function generateMetadata(
 
 // The page component
 export default async function LibraryPage({ params }: Props) {
-  // Get slug directly from params - need to await it now
-  const { slug } = await params;
+  // Get slug directly from params
+  const { slug } = params;
   
   const libraryData = await getLibraryContent(slug);
   const library = getLibraryBySlug(slug);
