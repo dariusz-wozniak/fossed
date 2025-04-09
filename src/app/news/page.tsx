@@ -1,16 +1,26 @@
 import Link from 'next/link';
 import { newsItems } from '@/utils/data';
 import { redirect } from 'next/navigation';
+import type { Metadata } from 'next';
 
 const ITEMS_PER_PAGE = 10;
 
-export const metadata = {
+export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
   title: 'Latest News',
   description: 'Updates and articles related to .NET library licensing changes.',
 };
 
-export default function NewsPage({ searchParams }: { searchParams?: { page?: string } }) {
-  const currentPage = Number(searchParams?.page) || 1;
+// Define Props type according to Next.js 15 requirements
+type Props = {
+  params?: Promise<Record<string, never>>
+  searchParams?: Promise<{ page?: string }>
+}
+
+export default async function NewsPage({ searchParams }: Props) {
+  const params = await searchParams || {};
+  const currentPage = Number(params.page) || 1;
 
   if (currentPage < 1) {
     redirect('/news?page=1');
