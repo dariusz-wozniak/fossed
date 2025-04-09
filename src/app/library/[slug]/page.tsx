@@ -40,9 +40,8 @@ export async function generateStaticParams() {
 
 // Generate metadata from frontmatter and library data
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  // Ensure params is awaited
-  const resolvedParams = await Promise.resolve(params);
-  const slug = resolvedParams.slug;
+  // Get slug directly from params
+  const slug = params.slug;
   
   const libraryData = await getLibraryContent(slug);
   const library = getLibraryBySlug(slug);
@@ -61,9 +60,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 // The page component
 export default async function LibraryPage({ params }: { params: { slug: string } }) {
-  // Ensure params is awaited
-  const resolvedParams = await Promise.resolve(params);
-  const slug = resolvedParams.slug;
+  // Get slug directly from params
+  const slug = params.slug;
   
   const libraryData = await getLibraryContent(slug);
   const library = getLibraryBySlug(slug);
