@@ -1,0 +1,65 @@
+[
+  {
+    "date": "2023-08-09",
+    "title": "YouTube: Remove Moq From Your .NET Projects Right NOW! (YouTube)",
+    "summary": "Hello, everybody, I'm Nick, and in this video, I will talk about the Moq and SponsorLink situation that is causing a lot of drama in the .NET community.",
+    "tag": ["moq"],
+    "link": "https://www.youtube.com/watch?v=A06nNjBKV7I"
+  },
+  {
+    "date": "2023-08-08",
+    "title": "Coding Bolt: A Deep Dive into SponsorLink: Implications for Open-Source and Privacy",
+    "summary": "In the world of open-source software, there’s a balance between creating freely available tools and finding ways to sustain the hard work that goes into developing them. One recent solution that’s gaining traction is SponsorLink, introduced with the aim of promoting the sponsorship of open-source projects, specifically with the popular .NET testing library, Moq, in its 4.20 version.",
+    "tag": ["moq"],
+    "link": "https://codingbolt.net/2023/08/08/a-deep-dive-into-sponsorlink-implications-for-open-source-and-privacy/"
+  },
+  {
+    "date": "2023-08-15",
+    "title": "Daniel Cazzulino: SponsorLink: feedback and moving forward",
+    "summary": "As I mentioned in my introduction post on SponsorLink, open source sustainability is a tricky topic. I have been doing open source for more than 20 years, so I’m not entirely n00b to the space. I don’t believe in “experts” anyway, so I’m just going off of my personal experience, things I read and saw other fellow developers do in the past and so on. So, if it wasn’t clear enough, I’m not speaking for anyone but myself. I don’t represent the “dotnet OSS community”, or speak as to how OSS should be/is done or what is right or wrong here.",
+    "tag": ["moq"],
+    "link": "https://www.cazzulino.com/sponsorlink-feedback.html"
+  },
+  {
+    "date": "2025-01-15",
+    "title": "Nick Chapsas: Stop Using FluentAssertions Now (YouTube)",
+    "summary": "Hello, everybody. I'm Nick, and in this video, I will talk about the new license change of Fluent Assertions version 8, which forces companies to pay $130 per developer per year.",
+    "tag": ["fluent-assertions"],
+    "link": "https://www.youtube.com/watch?v=A06nNjBKV7I"
+  },
+  {
+    "date": "2025-01-16",
+    "title": "Dev Class: Another open source project shifts to restrictive license: Fluent Assertions following Xceed partnership",
+    "summary": "Fluent Assertions, formerly an open source project under the Apache 2.0 license, now requires a paid license for commercial use.",
+    "tag": ["fluent-assertions"],
+    "link": "https://devclass.com/2025/01/16/another-open-source-project-shifts-to-restrictive-license-fluent-assertions-following-xceed-partnership/"
+  },
+  {
+    "date": "2025-04-02",
+    "title": "Jimmy Bogard: AutoMapper and MediatR Going Commercial",
+    "summary": "In order to ensure the long-term sustainability of my OSS projects, I will be commercializing AutoMapper and MediatR.",
+    "tag": ["automapper", "mediatr"],
+    "link": "https://www.jimmybogard.com/automapper-and-mediatr-going-commercial/"
+  },
+  {
+    "date": "2025-04-03",
+    "title": "Announcing MassTransit v9",
+    "summary": "With MassTransit v9, we are transitioning to a commercial licensing model. This change ensures long-term sustainability, continued innovation, and enterprise-grade support — while leaving MassTransit v8 open-source and available to the community.",
+    "tag": ["masstransit"],
+    "link": "https://masstransit.io/introduction/v9-announcement"
+  },
+  {
+    "date": "2022-07-16",
+    "title": "License Changes for Six Labors Products",
+    "summary": "The Six Labors libraries occupy a domain of software development that is considered very complex. As such, huge effort is required to research, develop, and maintain the libraries which is unsustainable for a very small team of developers working in their spare time.",
+    "tag": ["imagesharp"],
+    "link": "https://sixlabors.com/posts/license-changes/"
+  },
+  {
+    "date": "2025-04-05",
+    "title": "Milan Jovanović: MediatR and MassTransit Going Commercial: What This Means For You",
+    "summary": "Big changes are happening in the .NET ecosystem. Three powerhouse libraries - MediatR, AutoMapper, and MassTransit - are moving to commercial licenses. Not so long ago, Fluent Assertions also announced its plans to move to a commercial license.",
+    "tag": ["mediatr", "masstransit", "automapper"],
+    "link": "https://www.milanjovanovic.tech/blog/mediatr-and-masstransit-going-commercial-what-this-means-for-you"
+  }
+] 

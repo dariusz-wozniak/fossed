@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --code-background: #1a1a1a;
+  --badge-background: #f2f2f2;
+  --badge-color: #333;
+  --blockquote-border: #d1d5db;
+  --blockquote-background: #f9fafb;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --badge-background: #2d2d2d;
+    --badge-color: #e0e0e0;
+    --blockquote-border: #374151;
+    --blockquote-background: #111827;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+article {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+article h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+article h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.3;
+}
+
+article p {
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+}
+
+article ul, article ol {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+article ul {
+  list-style-type: disc;
+}
+
+article ol {
+  list-style-type: decimal;
+}
+
+article li {
+  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+}
+
+article li > ul, article li > ol {
+  margin: 0.75rem 0;
+}
+
+article strong {
+  font-weight: 600;
+}
+
+article pre {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: var(--code-background);
+  border-radius: 0.5rem;
+  overflow-x: auto;
+}
+
+article code {
+  font-family: var(--font-mono, 'Consolas', monospace);
+  line-height: 1.5;
+}
+
+/* Badge style for inline code */
+article p code, article li code {
+  background-color: var(--badge-background);
+  color: var(--badge-color);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.95em;
+  font-weight: 500;
+  white-space: nowrap;
+  margin: 0 0.2rem;
+}
+
+/* Style for blockquotes */
+article blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  background-color: var(--blockquote-background);
+  border-left: 4px solid var(--blockquote-border);
+  font-style: italic;
+  color: inherit;
+  opacity: 0.9;
+}
+
+article blockquote p {
+  margin-bottom: 0.5rem;
+}
+
+article blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Add subtle hover effect to links */
+article a {
+  color: #60a5fa;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+article a:hover {
+  color: #93c5fd;
+}
+
+/* Style nested lists differently */
+article li > ul {
+  list-style-type: circle;
+}
+
+/* Add some breathing room between sections */
+article h2 + p {
+  margin-top: -0.5rem;
+}
+
+/* Table styles */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.9em;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--blockquote-border);
+}
+
+article table thead tr {
+  background-color: var(--blockquote-background);
+  color: var(--foreground);
+  text-align: left;
+  font-weight: bold;
+}
+
+article table th,
+article table td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--blockquote-border);
+}
+
+article table tbody tr {
+  border-bottom: 1px solid var(--blockquote-border);
+}
+
+article table tbody tr:last-of-type {
+  border-bottom: 2px solid var(--blockquote-border);
+}
+
+article table tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+@media (prefers-color-scheme: dark) {
+  article table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+}

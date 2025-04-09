@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Moq",
+    "slug": "moq",
+    "description": "The popular mocking library for .NET"
+  },
+  {
+    "name": "FluentAssertions",
+    "slug": "fluent-assertions",
+    "description": "A set of .NET extension methods for assertions"
+  },
+  {
+    "name": "AutoMapper",
+    "slug": "automapper",
+    "description": "A convention-based object-object mapper"
+  },
+  {
+    "name": "MediatR",
+    "slug": "mediatr",
+    "description": "Simple mediator implementation in .NET"
+  },
+  {
+    "name": "MassTransit",
+    "slug": "masstransit",
+    "description": "Distributed application framework for .NET"
+  },
+  {
+    "name": "ImageSharp",
+    "slug": "imagesharp",
+    "description": "Cross-platform image processing library for .NET"
+  }
+] 

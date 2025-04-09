@@ -1,0 +1,101 @@
+---
+title: Moq
+description: The most popular mocking library for .NET, and the recent SponsorLink controversy.
+---
+
+Moq has long been a staple in the .NET unit testing landscape. However, in August 2023, the introduction of a component called SponsorLink in version 4.20.0 caused significant controversy within the developer community, raising concerns about privacy, open-source ethics, and licensing.
+
+## What happened?
+
+Starting with version **4.20.0**, Moq bundled a closed-source, obfuscated library named `SponsorLink`. During the build process, this library would:
+
+1.  Read the `user.email` value from the local Git configuration.
+2.  Hash the email address using SHA-256.
+3.  Send this hash to an Azure service.
+4.  Check if the email hash corresponded to a developer sponsoring the Moq project via GitHub Sponsors.
+
+If a developer was not recognized as a sponsor, build warnings or messages encouraging sponsorship would appear. The stated purpose was to promote the financial sustainability of open-source projects, especially for maintainers like Daniel Cazzulino (kzu), the creator of Moq.
+
+## The Community Backlash
+
+The introduction of SponsorLink triggered immediate and widespread criticism for several reasons:
+
+*   **Privacy Concerns:** Collecting developer emails (even hashed) without explicit opt-in was seen as a major privacy violation. Hashing was not considered sufficient anonymization, especially concerning GDPR compliance in Europe, as email formats can make reversing hashes feasible. Courts in countries like Germany have ruled that SHA-256 is not an acceptable method of anonymizing personally identifiable information.
+
+*   **Unexpected Behavior:** Developers did not expect a mocking library to perform network calls or collect personal data during the build process. Many perceived this as akin to spyware or a supply chain attack vector. The fact that this functionality was embedded in obfuscated code made it particularly concerning.
+
+*   **Closed-Source Component:** Including a closed-source, obfuscated dependency within a popular open-source library eroded trust. The lack of transparency about its exact workings was a major concern, and some developers discovered the full extent of the data collection only after deobfuscating the SponsorLink code.
+
+*   **Licensing Implications:** While Moq's license remained permissive (BSD-3-Clause prior to 4.20, often described as "as-is" regarding warranty), the *behavior* introduced by SponsorLink conflicted with the expectations many users and organizations have for open-source dependencies.
+
+## Community Response
+
+The developer community responded swiftly:
+
+1. **Mass Migration:** Many projects immediately removed Moq dependencies or replaced them with alternatives like NSubstitute. GitHub repositories showed numerous commit messages explicitly citing the SponsorLink issue as their motivation for moving away from Moq.
+
+2. **Version Pinning:** Some projects chose to pin their Moq dependency to versions prior to 4.20.0, preventing the SponsorLink code from being included in their builds.
+
+3. **Public Discussion:** The issue generated significant discussion across GitHub, Reddit, and tech blogs, with the original GitHub issue receiving hundreds of comments and reactions, most of them negative.
+
+## Resolution and Current Status
+
+Following the intense community feedback:
+
+*   **SponsorLink Removed:** Moq version **4.20.2** was released shortly after, removing the SponsorLink component. The official reason cited issues with macOS/Linux restore, but the community pressure was undeniable.
+
+*   **SponsorLink Open-Sourced:** In an attempt to address transparency concerns, Cazzulino announced that SponsorLink was being made open source. In his words: "After the feedback yesterday, it was clear that even though the goal of SponsorLink is to make it easier for library developers to get sponsored, the fact that a part of an OSS project referenced a non-OSS dependency was concerning to many users."
+
+*   **Planned Improvements:** Cazzulino acknowledged specific issues raised by the community:
+    - The SHA256 email hashing was recognized as insufficient for privacy
+    - Build warnings disrupted workflows for teams using warnings-as-errors
+    - Build pauses were unpopular and created friction
+
+*   **Continued Backlash:** Despite these changes, many developers remained critical. One comment that resonated with many in the community stated:
+    > "Consider a world in which every NuGet package you use, and every dependency, and dependency of dependency, utilized SponsorLink that added just a couple of seconds to each build. Do you want to live in such world?"
+    
+    > "Don't do unto others what you don't want done unto you." ― Confucius
+
+*   **Lasting Impact:** The incident damaged trust and led many developers and organizations to permanently move away from Moq, even after the problematic code was removed and SponsorLink was open-sourced.
+
+## Potential Mitigations & Alternatives
+
+If you are using Moq or considering it, be aware of this history. Options include:
+
+1.  **Pin Version:** Explicitly use Moq versions **prior to 4.20.0** (e.g., **4.18.4**) to avoid any SponsorLink code. This is the most common reaction seen in the community.
+
+2.  **Migrate to Alternatives:** Evaluate other well-regarded .NET mocking libraries:
+
+**[NSubstitute](https://nsubstitute.github.io/)**: Known for its simple and concise API. Often cited as the most popular alternative migration path.
+        * [A cheat sheet to migrate from Moq to NSubstitute](https://timdeschryver.dev/blog/a-cheat-sheet-to-migrate-from-moq-to-nsubstitute)
+        * [Moq to NSubstitute migration tool](https://github.com/nsubstitute/NSubstitute/issues/720)
+        * [How to migrate from Moq to NSubstitute](https://itnext.io/how-to-migrate-from-moq-to-nsubstitute-cdb6a80404d)
+
+**[FakeItEasy](https://fakeiteasy.github.io/)**: Another mature library with a focus on usability and a clear syntax.
+        * [Switching from Moq to FakeItEasy](https://karl-sjogren.com/posts/switching-from-moq-to-fakeiteasy/)
+
+## Lessons Learned
+
+The Moq/SponsorLink controversy highlights several important considerations for both developers and maintainers:
+
+1. **License Awareness:** Always maintain a list of third-party libraries you use, including their version and license type. Even permissive licenses can contain unexpected behaviors.
+
+2. **Transparency:** Changes to open-source libraries, especially those involving data collection, should be transparent and clearly documented.
+
+3. **Community Expectations:** The open-source community has strong expectations about privacy, transparency, and behavior of libraries. Violating these expectations can lead to significant backlash.
+
+4. **Sustainability Models:** The incident raised important questions about how open-source projects can be sustainably maintained without resorting to measures that disrupt users or violate privacy expectations.
+
+## Links and References
+
+* Daniel Cazzulino: [SponsorLink: trying something new-ish for OSS sustainability](https://www.cazzulino.com/sponsorlink.html)
+* Daniel Cazzulino: [SponsorLink: feedback and moving forward](https://www.cazzulino.com/sponsorlink-feedback.html)
+* GitHub: [SponsorLink and supporting OSS more broadly #1374](https://github.com/devlooped/moq/issues/1374)
+* GitHub: [SponsorLink is now OSS too and no longer bundled #1384](https://github.com/devlooped/moq/issues/1384)
+* GitHub Repository: [SponsorLink](https://github.com/devlooped/SponsorLink)
+* Reddit: [Does Moq in it's latest version extract and send my email to the cloud via SponsorLink?](https://www.reddit.com/r/dotnet/comments/15ljdcc/does_moq_in_its_latest_version_extract_and_send/)
+* Reddit: [Moq now ships with a closed-source obfuscated dependency that scrapes your Git email and phones it home](https://www.reddit.com/r/csharp/comments/15m2lg2/moq_now_ships_with_a_closedsource_obfuscated/)
+* Medium: [Moq Scandal or Why Caring About Licenses is a Good Idea](https://medium.com/azlamps/moq-scandal-or-why-caring-about-licenses-is-a-good-idea-9c5086024435)
+* Coding Bolt: [A Deep Dive into SponsorLink: Implications for Open-Source and Privacy](https://codingbolt.net/2023/08/08/a-deep-dive-into-sponsorlink-implications-for-open-source-and-privacy/)
+* YouTube: [Nick Chapsas - Remove Moq From Your .NET Projects RIGHT NOW!](https://www.youtube.com/watch?v=A06nNjBKV7I)
+* GitHub: [List of Automated Testing (TDD/BDD/ATDD/SBE) Tools and Frameworks for .NET](https://github.com/dariusz-wozniak/List-of-Testing-Tools-and-Frameworks-for-.NET)

@@ -1,0 +1,18 @@
+[
+{
+  "question": "Tell me about this website",
+  "answerPreview": "This website is a resource hub for developers seeking to understand and manage open-source licenses. It offers information on various licenses, their usage, and project management. The goal is to provide the reasoning behind licenses, enabling informed decisions. It does not discourage paid licenses but aims to foster understanding for better choices. This website is an independent project by a single developer and is not affiliated with any specific license."
+},
+{
+  "question": "Library X has gone commercial. What are my options?",
+  "answerPreview": "Don't panic! 😎 First, review the pricing and consider paying if you value the library and plan to continue using it. Often, you can stick with the last free version by pinning its version. If the license permits, forking the library for personal maintenance is another option. Finally, explore open-source alternatives."
+},
+{
+  "question": "Why is there negative sentiment towards some libraries that have become commercial?",
+  "answerPreview": "Negative sentiment towards commercializing libraries arises mainly from how it's done. Moq's secret email collection and network calls via SponsorLink caused backlash. FluentAssertions' abrupt, costly license change also drew criticism, including questions about past contributions. Key issues are: lack of transparency, sudden changes, questionable privacy (Moq), and perceived disrespect. Positive examples like MassTransit's clear versioning and future plans, ImageSharp's fair dual-licensing, and Jimmy Bogard's (MediatR, AutoMapper) transparent, non-punitive approach show that clear communication, grandfathering, and community respect lead to better reception. The process of commercialization must be handled carefully to avoid negative reactions."
+},
+{
+  "question": "How can I contribute to this project?",
+  "answerPreview": "If you'd like to propose changes, add information, or contribute in any way to the project, please visit the GitHub repository at https://github.com/dariusz-wozniak/fossed-public. There, you can create issues for suggestions or problems. All contributions are welcome and appreciated!"
+}
+] 

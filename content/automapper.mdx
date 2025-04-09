@@ -1,0 +1,59 @@
+---
+title: "AutoMapper"
+date: 2025-04-08 # Or use today's date
+slug: automapper
+---
+
+AutoMapper, a widely used object-object mapping library in the .NET ecosystem, is set to become a commercial product. Jimmy Bogard, its creator, announced this decision alongside a similar move for his other popular library, MediatR. The goal is to create a sustainable model for the long-term maintenance and development of these projects.
+
+## Why the Change?
+
+The reasons mirror those given for MediatR. Jimmy Bogard explained in his blog post that since becoming a solo consultant, he hasn't had the sponsored time he previously had at Headspring to dedicate to his open-source work. He found that the current model wasn't sustainable for the projects' future growth.
+
+> "Taking time to see how things have been going on all fronts, I had a bit of a shock looking at my OSS work. I realized that model is not sustainable for the long-term success of these projects... I need to be able to pay for my time to work on these projects, and get direct feedback from paying clients..."
+> 
+> \- Jimmy Bogard ([Source](https://www.jimmybogard.com/automapper-and-mediatr-going-commercial/))
+
+Commercialization aims to fund dedicated time for improving the libraries, building the community, and responding to user needs more effectively.
+
+## What Will Commercialization Look Like?
+
+The exact commercial model is still under consideration. Bogard has stated that nothing will change immediately and that he plans to be transparent about the process. He aims to avoid models that punish or annoy developers, suggesting a different approach compared to some other recent OSS monetization efforts.
+
+> "I can't rely on donations, I don't want to make developers pay anything or do anything to punish/annoy them, and I certainly don't think it's Microsoft's job to 'pay me the money.' Past that, I'm still figuring it out."
+> 
+> \- Jimmy Bogard ([Source](https://www.jimmybogard.com/automapper-and-mediatr-going-commercial/))
+
+## Community Reaction
+
+The announcement on GitHub Discussions ([Source](https://github.com/AutoMapper/AutoMapper/discussions/4536)) and Reddit ([Source](https://www.reddit.com/r/dotnet/comments/1jppsht/automapper_going_commercial/)) sparked conversation. While some expressed understanding, acknowledging the challenges of maintaining large OSS projects, others voiced concerns, particularly given AutoMapper's widespread use.
+
+Suggestions for the commercial model emerged, including a hybrid or "conditionally free" open-source (cFOSS) license, where smaller entities could use it freely, while larger organizations might pay a fee ([Source](https://github.com/AutoMapper/AutoMapper/discussions/4536#discussioncomment-10001004)).
+
+## Alternatives
+
+The news prompted discussions about alternatives ([Source](https://www.reddit.com/r/dotnet/comments/1h2cy10/migrate_out_of_automapper/)):
+
+1.  **Manual Mapping**:
+    *   Simply writing the mapping code directly in C#.
+    *   **Pros**: Maximum control, no external dependency, clear and debuggable code. Often considered simpler in the long run despite initial boilerplate.
+    *   **Cons**: Can involve writing repetitive code, requires manual updates if object structures change.
+    *   As one commenter put it:
+        > "Mapping objects is an inherently simple task made complicated or unpredictable by unnecessary libraries... Yes maybe there is more code but more (simple) code != complexity. Do it by hand."
+
+2.  **[Mapperly](https://github.com/riok/mapperly)**:
+    *   A .NET source generator that creates mapping code at compile time.
+    *   **Pros**: High performance (no runtime reflection), generated code is readable and debuggable, provides compile-time warnings for unmapped properties. Licensed under Apache 2.0.
+    *   **Cons**: Introduces a dependency (though only build-time), relies on source generator capabilities.
+
+## Conclusion
+
+AutoMapper's transition to a commercial model signifies a shift for a foundational library in the .NET world. While the specifics are pending, the move aims to ensure its sustainability. Developers using AutoMapper may need to evaluate the future licensing model or consider alternatives like manual mapping or source-generator-based tools like Mapperly.
+
+## References and Links
+
+*   [Jimmy Bogard: AutoMapper and MediatR Going Commercial](https://www.jimmybogard.com/automapper-and-mediatr-going-commercial/)
+*   [GitHub: AutoMapper is going commercial](https://github.com/AutoMapper/AutoMapper/discussions/4536)
+*   [Reddit: Automapper going commercial](https://www.reddit.com/r/dotnet/comments/1jppsht/automapper_going_commercial/)
+*   [Reddit: Migrate out of automapper?](https://www.reddit.com/r/dotnet/comments/1h2cy10/migrate_out_of_automapper/)
+*   [GitHub: riok/mapperly (Alternative)](https://github.com/riok/mapperly)

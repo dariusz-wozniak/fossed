@@ -1,0 +1,94 @@
+---
+title: "ImageSharp"
+date: 2025-04-08 # Or use today's date
+slug: imagesharp
+---
+
+ImageSharp is a modern, cross-platform, high-performance image processing library for .NET. Developed by Six Labors, it aims to provide a comprehensive API for image manipulation without relying on native system libraries like `System.Drawing.Common`. However, its licensing model has been a significant point of discussion within the .NET community.
+
+## The Licensing Change (Six Labors Split License)
+
+In July 2022, Six Labors formalized the "Six Labors Split License" (SLSL) for ImageSharp and its related libraries (like `ImageSharp.Web`). This dual-license model means:
+
+1.  **Apache 2.0:** The library remains under the permissive Apache 2.0 license for:
+    - Open Source or Source available consumers
+    - Anyone consuming the Work as a Transitive Package Dependency
+    - For-profit companies/individuals with less than 1M USD annual gross revenue
+    - Non-profit organizations or Registered Charities
+
+2.  **Commercial License:** Organizations exceeding the revenue threshold or using the library in ways not covered by the Apache 2.0 terms must purchase a commercial license.
+
+The stated goal was to ensure the project's financial sustainability and fund ongoing development, allowing the core team to work on it full-time.
+
+## Commercial Pricing
+
+Six Labors offers the following pricing options for their Commercial Use License:
+
+### Monthly Billing
+
+| Plan | Price | Features |
+|------|-------|----------|
+| **Boutique Agency** | $80 USD per month | - Up to 10 developers*<br/>- Unlimited APIs<br/>- Unlimited client applications<br/>- Unlimited redistributions |
+| **Enterprise** | $520 USD per month | - Unlimited developers<br/>- Unlimited APIs<br/>- Unlimited client applications<br/>- Unlimited redistributions |
+
+### Annual Billing (25% off)
+
+| Plan | Price | Features |
+|------|-------|----------|
+| **Boutique Agency** | $799 USD per year | - Up to 10 developers*<br/>- Unlimited APIs<br/>- Unlimited client applications<br/>- Unlimited redistributions |
+| **Enterprise** | $4999 USD per year | - Unlimited developers<br/>- Unlimited APIs<br/>- Unlimited client applications<br/>- Unlimited redistributions |
+
+\* The limit reflects the number of developers currently employed by the purchasing entity, not individual teams/departments.
+
+The Commercial Use License gives you all the freedom of the Open Source License for all Six Labors libraries at a single price, allowing you to:
+- Create and deploy unlimited closed-source projects and applications
+- Redistribute the compiled library, royalty-free, with your applications
+
+## ImageSharp and the .NET Foundation
+
+In October 2022, ImageSharp left the .NET Foundation after negotiations regarding the license changes failed. According to Six Labors:
+
+> "Unfortunately those negotiations have failed and we have no option but to leave the .NET Foundation. We're obviously disappointed that the situation resolved itself in this manner but we understand that the .NET Foundation has a very difficult job to do in an ever changing landscape."
+
+This move was necessary as the new split license model did not align with the .NET Foundation's requirements for OSI-approved licenses.
+
+## License Details
+
+The Six Labors Split License (Version 1.0, June 2022) defines important terms including:
+
+- **Direct Package Dependency**: Any Work in Source or Object form that is installed directly by You.
+- **Transitive Package Dependency**: Any Work in Object form that is installed indirectly by a third party dependency unrelated to Six Labors.
+
+The licensing is determined based on specific criteria, with the Apache 2.0 license applying in certain scenarios and the Commercial License applying in others.
+
+## Community Reaction
+
+The licensing change sparked considerable debate:
+
+*   **Sustainability vs. OSS Principles:** While many acknowledged the need for sustainable funding for critical OSS projects, others felt the move deviated from the traditional open nature expected of foundational libraries.
+*   **Definition of "Commercial Use":** The revenue threshold and the precise definition of "commercial use" caused confusion and concern, especially for companies near the threshold or using ImageSharp indirectly via other dependencies.
+*   **Impact on Adoption:** Some organizations, particularly larger ones or those hesitant about license compliance complexities, opted to pin older versions (pre-2.0) or migrate to alternatives.
+*   **Historical Context:** It's worth noting that Six Labors initially planned more restrictive licensing (AGPLv3/Commercial) but reversed that decision, as documented in [GitHub issue #1024](https://github.com/SixLabors/ImageSharp/issues/1024).
+
+## Alternatives
+
+Developers seeking alternatives to ImageSharp, especially due to licensing, often consider:
+
+1.  **[SkiaSharp](https://github.com/mono/SkiaSharp):** A cross-platform 2D graphics API for .NET based on Google's Skia Graphics Library. Often used for drawing but also has image loading/saving/manipulation capabilities. (MIT License)
+2.  **[Magick.NET](https://github.com/dlemstra/Magick.NET):** .NET wrapper for the powerful ImageMagick library. Offers extensive format support and features. (Apache 2.0 License)
+3.  **System.Drawing.Common:** The built-in .NET library. **Warning:** Microsoft has deprecated its use outside of Windows due to native dependencies and potential instability on other platforms. Not recommended for cross-platform applications.
+
+## Conclusion
+
+ImageSharp is a technically excellent image processing library for .NET. However, its dual-licensing model requires careful consideration, especially for commercial projects or larger organizations. Teams must evaluate whether their usage falls under the Apache 2.0 terms or if a commercial license is necessary, weighing this against the features offered and the availability of alternatives.
+
+## Links and References
+
+* Six Labors: [License Changes Announcement](https://sixlabors.com/posts/license-changes/)
+* Six Labors: [ImageSharp leaves .NET Foundation](https://sixlabors.com/posts/imagesharp-leaves-net-foundation/)
+* Six Labors: [Commercial Licensing](https://sixlabors.com/pricing)
+* GitHub: [ImageSharp Repository](https://github.com/SixLabors/ImageSharp)
+* GitHub: [License Discussion Issue #1024](https://github.com/SixLabors/ImageSharp/issues/1024)
+* GitHub: [License Change Feedback](https://github.com/SixLabors/ImageSharp/discussions/1916)
+* Alternative: [SkiaSharp](https://github.com/mono/SkiaSharp)
+* Alternative: [Magick.NET](https://github.com/dlemstra/Magick.NET)

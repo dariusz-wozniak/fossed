@@ -1,0 +1,90 @@
+---
+title: "MassTransit"
+date: 2025-04-08 # Use the announcement date or today's date
+slug: masstransit
+---
+
+MassTransit is a long-standing, free, open-source distributed application framework for .NET, simplifying message-based application development over transports like RabbitMQ, Azure Service Bus, and others. However, a major shift is underway starting with version 9.
+
+## MassTransit v9 Goes Commercial
+
+In April 2025, the MassTransit team announced a significant change: **MassTransit version 9 will transition to a commercial licensing model.** This decision aims to ensure the project's long-term sustainability, fund dedicated development, and provide enterprise-grade support, reflecting its growth into a mission-critical component for many organizations.
+
+> "With MassTransit v9, we are transitioning to a commercial licensing model. This change ensures long-term sustainability, continued innovation, and enterprise-grade support — while leaving MassTransit v8 open-source and available to the community."
+> 
+> \- MassTransit Team ([Source](https://masstransit.io/introduction/v9-announcement))
+
+### Why the Change?
+
+The project has evolved significantly since 2007, growing from a single assembly to over thirty NuGet packages supporting multiple brokers, databases, and complex features like sagas and scheduling. This success has led to widespread adoption in critical systems across various industries, increasing the demand for:
+*   Dedicated, full-time development and maintenance.
+*   Formal enterprise support and SLAs.
+*   A sustainable funding model for future innovation.
+
+## What This Means for Users
+
+*   **MassTransit v8:** Remains open-source under the Apache 2.0 license. It will continue to receive security patches and critical bug fixes through **at least the end of 2026**. Community support continues.
+*   **MassTransit v9:** Will be released under a commercial license. It will include new features, performance enhancements, and enterprise-focused capabilities not available in v8. Commercial support plans will be offered.
+
+## Transition Plan & Timeline
+
+| Date           | Milestone                                             |
+| -------------- | ----------------------------------------------------- |
+| **Q3 2025**    | v9 prerelease packages available to early adopters.   |
+| **Q1 2026**    | v9 official release under a commercial license.       |
+| **Ongoing**    | v8 security patches and community support continue.   |
+| **After 2026** | End of official maintenance for v8.                   |
+
+## Proposed v9 Pricing & Licensing (Targets)
+
+Pricing is still being finalized, but the team has shared targets:
+
+| Tier                     | Monthly Target | Annual Target | Notes                                      |
+| ------------------------ | -------------- | ------------- | ------------------------------------------ |
+| Small/Medium Business    | $400 USD       | $4000 USD     | Includes standard email support (72hr).    |
+| Large Organization       | $1200 USD      | $12000 USD    | For multiple teams / complex procurement. |
+| Startups / Pre-Revenue | TBD            | TBD           | Significantly reduced cost planned.        |
+
+*   **License Model:** Simple license file deployed with the application. No seat-based limits mentioned.
+*   **Evaluation:** Free for local development/evaluation (temporary license).
+*   **Expiration:** Deployed licenses are tied to the application version and *do not expire at runtime*. Updates require a current license at deployment time. (Note: Initial plans for runtime checks were dropped based on feedback).
+*   **ISVs/Consultants:** A licensing model is planned to allow ISVs/consultants to license MassTransit and deploy it within client applications. Details are still being worked out.
+*   **Non-Profits:** May be considered case-by-case in the future, but not initially. v8 remains available.
+*   **v9 Code:** Expected to remain open-source (likely in the main branch of the existing repo), allowing visibility, but usage in production will require a commercial license.
+
+## Key Features (v8 & earlier)
+
+MassTransit provides a consistent abstraction layer and helps build robust, scalable systems with features like:
+
+*   **Transport Abstraction** (RabbitMQ, Azure Service Bus, ActiveMQ, Amazon SQS, gRPC, SQL Transport)
+*   **Message Contracts**
+*   **Consumers** (Including retry, error handling)
+*   **Sagas/State Machines** (With various persistence options)
+*   **Publish/Subscribe & Request/Response**
+*   **Scheduling** (Delayed/Recurring)
+*   **Observability** (OpenTelemetry)
+
+## Alternatives
+
+With v9 becoming commercial, users needing a fully free/OSS solution beyond 2026 might consider:
+
+1.  **Continue using MassTransit v8:** Viable until at least the end of 2026, potentially longer with community support.
+2.  **[NServiceBus](https://particular.net/nservicebus):** Powerful commercial alternative (already licensed).
+3.  **[Rebus](https://github.com/rebus-org/Rebus):** Mature open-source (MIT) service bus.
+4.  **[Brighter](https://github.com/BrighterCommand/Brighter):** Open-source (MIT) CQRS/messaging framework.
+5.  **[Wolverine](https://wolverine.netlify.app/):** Newer open-source (MIT) command/messaging framework.
+
+## Conclusion
+
+MassTransit's move to commercialize v9 is a major shift driven by its success and the need for sustainability. While v8 remains a viable Apache 2.0 option for the near future (until at least end of 2026), projects requiring the latest features, long-term support, or starting after v9's release will need to adopt the commercial license. The proposed pricing aims to be reasonable, and the team seems committed to a smooth transition and continued (though potentially read-only) code visibility.
+
+## Links and References
+
+* MassTransit: [Announcing MassTransit v9](https://masstransit.io/introduction/v9-announcement)
+* MassTransit: [Official Website](https://masstransit.io/)
+* MassTransit: [Documentation](https://masstransit.io/documentation/)
+* GitHub: [MassTransit Repository](https://github.com/MassTransit/MassTransit)
+* Alternative: [NServiceBus](https://particular.net/nservicebus)
+* Alternative: [Rebus](https://github.com/rebus-org/Rebus)
+* Alternative: [Brighter](https://github.com/BrighterCommand/Brighter)
+* Alternative: [Wolverine](https://wolverine.netlify.app/)

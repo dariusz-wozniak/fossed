@@ -1,0 +1,65 @@
+---
+title: "MediatR"
+date: 2025-04-08 # Or use today's date
+slug: mediatr
+---
+
+Jimmy Bogard, the creator of the popular .NET libraries AutoMapper and MediatR, recently announced his decision to commercialize both projects. This move aims to ensure their long-term sustainability and allow Bogard to dedicate more focused time to their development.
+
+## Why the Change?
+
+In his announcement blog post, Bogard explains that the decision stems from a shift in his professional life. Since transitioning from Headspring (where his OSS work was directly sponsored) to solo consulting five years ago, his time available for maintaining and enhancing these open-source projects has significantly diminished.
+
+> "Taking time to see how things have been going on all fronts, I had a bit of a shock looking at my OSS work. I realized that model is not sustainable for the long-term success of these projects... I need to be able to pay for my time to work on these projects, and get direct feedback from paying clients..."
+> 
+> \- Jimmy Bogard ([Source](https://www.jimmybogard.com/automapper-and-mediatr-going-commercial/))
+
+He emphasizes that OSS was never just a hobby and that this move is necessary to fund real work on the projects, build communities, and respond to user needs more effectively.
+
+## What Will Commercialization Look Like?
+
+The exact details of the commercial model are still being determined. Bogard has stated that nothing will change in the short term, and he intends to be transparent throughout the process. He mentioned wanting to avoid annoying developers or relying solely on donations, suggesting a model different from some recent controversial licensing changes in the .NET ecosystem.
+
+> "I can't rely on donations, I don't want to make developers pay anything or do anything to punish/annoy them, and I certainly don't think it's Microsoft's job to 'pay me the money.' Past that, I'm still figuring it out."
+> 
+> \- Jimmy Bogard ([Source](https://www.jimmybogard.com/automapper-and-mediatr-going-commercial/))
+
+## Community Reaction
+
+The reaction on platforms like GitHub Discussions has been notably calmer compared to the controversies surrounding libraries like Moq or FluentAssertions. Many developers expressed understanding and support for Bogard's decision, acknowledging the effort required to maintain widely used OSS projects.
+
+However, some users on Reddit unearthed a comment Bogard made just two months prior, stating he would "never commercialize MediatR.":
+
+> - Do you think MediatR nuget will also become commercial just like fluentAssertions?
+>
+> - Jimmy: Nah never. You can print it on a shirt "I will never commercialize MediatR". And I will sign it. With like, splatter paint or something.
+
+ While acknowledged as potentially poor timing, the overall sentiment seems less heated than in previous cases.
+
+## Open Source Alternatives
+
+The .NET ecosystem offers several alternatives to MediatR:
+
+1.  **[Mediator](https://github.com/martinothamar/Mediator)**:
+    *   A high-performance implementation leveraging .NET source generators for better performance, AOT compatibility, and build-time error checking.
+    *   API is similar to MediatR but with deviations for performance gains (e.g., avoiding closure allocations).
+    *   Relies on `Microsoft.Extensions.DependencyInjection`.
+    *   Nick Chapsas provides a video comparison: [Using MediatR in .NET? Maybe replace it with this](https://www.youtube.com/watch?v=bNuQ9xOG9eQ)
+
+2.  **[Brighter](https://github.com/BrighterCommand/Brighter)**:
+    *   An established FOSS library predating MediatR, serving roles similar to both MediatR and Mass Transit (with workflow features planned).
+    *   Explicitly committed to remaining FOSS due to its Contributor License Agreement (CLA).
+
+## Conclusion
+
+While the future licensing and pricing model for MediatR remains uncertain, Jimmy Bogard's move to commercialize aims to secure the project's future. The .NET community, while noting the shift, appears largely understanding.
+
+## Links and References
+
+* Jimmy Bogard: [AutoMapper and MediatR Going Commercial](https://www.jimmybogard.com/automapper-and-mediatr-going-commercial/)
+* GitHub: [AutoMapper and MediatR going commercial](https://github.com/jbogard/MediatR/discussions/1105)
+* Reddit: [MediatR going commercial?](https://www.reddit.com/r/dotnet/comments/1jpvi42/mediatr_going_commercial/)
+* Reddit: [Do you think MediatR nuget will also become commercial?](https://reddit.com/r/dotnet/comments/1iamrqd/do_you_think_mediatr_nuget_will_also_become/m9e36u2/)
+* Alternative: [Mediator](https://github.com/martinothamar/Mediator)
+* Alternative: [Brighter](https://github.com/BrighterCommand/Brighter)
+* YouTube: [Nick Chapsas - Using MediatR in .NET? Maybe replace it with this](https://www.youtube.com/watch?v=bNuQ9xOG9eQ)

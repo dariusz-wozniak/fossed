@@ -1,0 +1,73 @@
+---
+title: Fluent Assertions
+description: A popular .NET assertion library's controversial shift to a commercial license model.
+slug: fluent-assertions
+---
+
+Fluent Assertions, a widely used library for enhancing the readability of .NET unit tests, underwent a significant licensing change in early 2025, sparking considerable debate within the developer community regarding open-source sustainability, licensing practices, and contributor rights.
+
+## What happened?
+
+Created by Dennis Doomen, Fluent Assertions gained immense popularity, accumulating over 250 million downloads on NuGet. It was initially licensed under the permissive Apache 2.0 license, allowing free use in both commercial and non-commercial projects.
+
+In January 2025, Xceed, a .NET component vendor, announced a "strategic partnership" with Fluent Assertions. Shortly after, the project's license on GitHub was changed to the Xceed Community License Agreement with the release of **version 8.0**.
+
+Key changes:
+
+1.  **Commercial Use Requires Paid License:** Under the new license, using Fluent Assertions 8.0 and later versions in commercial projects requires purchasing a paid license from Xceed, priced at $130 per developer per year.
+2.  **Non-Commercial Use Remains Free:** The library remains free for non-commercial, open-source projects.
+3.  **Version 7 Remains Free:** Fluent Assertions version 7.x remains under the Apache 2.0 license, is free for all use cases, and Doomen stated it "will remain free indefinitely and will still receive critical fixes."
+
+The stated motivation behind the change, as hinted in Doomen's earlier blog posts, relates to the challenges of monetizing and sustaining open-source projects.
+
+## The Community Backlash
+
+The abrupt shift to a restrictive license for commercial use triggered significant criticism:
+
+*   **Suddenness and Communication:** Many developers felt the change was sudden and not clearly communicated upfront, with details about version 7 remaining free initially buried in GitHub discussions.
+*   **Pricing Concerns:** The $130/developer/year cost was seen by many as steep for an assertion library, especially compared to the cost of full IDEs like Rider (around $150/year). The term "AffluentAssertions" was suggested humorously by one user.
+*   **Relicensing Concerns:** Questions were raised about the legality and ethics of relicensing the entire project, including past contributions made under the Apache 2.0 license, without explicit consent from all contributors. Apache 2.0 grants perpetual rights, and contributors questioned whether their work could be unilaterally moved under a commercial license. Doomen responded that the transition was planned in compliance with standard practices and that version 8 builds upon prior work while incorporating new developments under Xceed's direction.
+*   **Erosion of Trust:** Similar to the Moq/SponsorLink incident, the change led some developers to feel let down, particularly contributors who had volunteered their time under the assumption the project would remain freely available under its original license. As one developer put it, "people have worked on this project for years, for free. And now, you are selling the product for your own sake."
+
+## Community Response
+
+The reaction mirrored other open-source licensing controversies:
+
+1.  **Intense Discussion:** GitHub issues and pull requests, along with Reddit threads, became hubs for heated debates about the license change, pricing, and the future of the library.
+2.  **Version Pinning:** The most immediate and common reaction was for projects to pin their dependency to FluentAssertions version 7.x to avoid the new license requirement.
+3.  **Consideration of Alternatives:** Developers began discussing and evaluating alternatives, with [Shouldly](https://github.com/shouldly/shouldly) being a prominent suggestion.
+4.  **Forking Discussions:** Some community members expressed a desire to fork version 7 to ensure a fully free and open-source future maintained by the community.
+
+## Current Status
+
+*   **FluentAssertions 8+:** Requires a paid Xceed license for commercial use. Free for non-commercial/OSS use.
+*   **FluentAssertions 7.x:** Remains under Apache 2.0, free for all uses, and will receive critical bug fixes.
+*   **Ongoing Debate:** The discussion about the legitimacy of the relicensing and the sustainability of the commercial model continues.
+
+## Potential Mitigations & Alternatives
+
+If your project uses Fluent Assertions:
+
+1.  **Pin version:** Explicitly use the latest Fluent Assertions **7.x** version (e.g., `<PackageReference Include="FluentAssertions" Version="7.*" />`) in your project files to remain on the free Apache 2.0 license.
+2.  **Migrate to alternatives:** Evaluate other assertion libraries:
+    *   **[Shouldly](https://github.com/shouldly/shouldly)**: A popular alternative known for its expressive assertion syntax.
+        *   [Onboarding guide for FluentAssertions users](https://github.com/shouldly/shouldly/issues/1034)
+3.  **Non-fluent assertions:** Use the built-in `Assert` methods provided by MSTest, NUnit, or xUnit. While less expressive, they come at no cost and have no external dependencies.
+
+## Lessons Learned
+
+The Fluent Assertions licensing change serves as another case study in:
+
+1.  **License Clarity:** Understanding the rights granted and limitations imposed by different open-source licenses is crucial. Permissive licenses like Apache 2.0 allow relicensing for *future* versions but grant *perpetual* rights for existing versions.
+2.  **Contributor Agreements:** Projects considering future commercialization might require Contributor License Agreements (CLAs) to simplify relicensing.
+3.  **Community Communication:** Transparent and early communication about potential licensing changes is vital to maintaining community trust.
+4.  **Sustainability vs. Community:** Balancing the need for project sustainability with the expectations and contributions of the open-source community remains a complex challenge.
+
+## Links and References
+
+* DevClass: [Another open source project shifts to restrictive license: Fluent Assertions following Xceed partnership](https://devclass.com/2025/01/16/another-open-source-project-shifts-to-restrictive-license-fluent-assertions-following-xceed-partnership/)
+* GitHub: [Update ownership and license #2943](https://github.com/fluentassertions/fluentassertions/pull/2943)
+* GitHub: [Shouldly Onboarding guide for FluentAssertions #1034](https://github.com/shouldly/shouldly/issues/1034)
+* YouTube: [Nick Chapsas - Stop Using FluentAssertions Now](https://www.youtube.com/watch?v=ZFc6jcaM6Ms)
+* Alternative: [Shouldly](https://github.com/shouldly/shouldly)
+* GitHub: [List of Automated Testing (TDD/BDD/ATDD/SBE) Tools and Frameworks for .NET](https://github.com/dariusz-wozniak/List-of-Testing-Tools-and-Frameworks-for-.NET)
