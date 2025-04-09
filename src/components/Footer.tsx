@@ -13,7 +13,7 @@ const Footer = () => {
             ☕ Support me on Ko-fi
           </a>
           <a
-            href="https://github.com/dariusz-wozniak/fossed-public"
+            href="https://github.com/dariusz-wozniak/fossed"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block py-2 px-4 bg-[#333] text-white font-medium rounded-md hover:bg-[#555] transition-colors"
