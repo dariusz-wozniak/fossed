@@ -10,7 +10,7 @@ export default function Home() {
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen px-8 pt-4 pb-20 gap-16 sm:px-20 sm:pt-10 sm:pb-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-stretch">
         <Image
-          src="/fossed.png"
+          src="/fossed/fossed.png"
           alt="Fossed logo"
           width={400}
           height={100}
@@ -35,7 +35,9 @@ export default function Home() {
         <section className="mb-16">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-3xl font-semibold">Latest News</h2>
-            <a href="/news" className="text-blue-600 dark:text-blue-400 hover:underline text-sm">View All News &rarr;</a>
+            <Link href="/news" className="text-blue-600 dark:text-blue-400 hover:underline text-sm">
+              View All News &rarr;
+            </Link>
           </div>
           <ul className="space-y-4">
             {newsItems.slice(0, 3).map((item, index) => (
