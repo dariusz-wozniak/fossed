@@ -44,3 +44,15 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Running Locally
+
+To run the site locally, use the following command:
+
+```bash
+pnpm run dev
+```
+
+The site will be available at `http://localhost:[port]/fossed` (the port will be shown in the terminal when you run the command).
+
+## Contributing
