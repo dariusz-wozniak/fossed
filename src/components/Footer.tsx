@@ -3,6 +3,9 @@ const Footer = () => {
     <footer className="bg-gray-100 dark:bg-gray-800 py-4 px-6 mt-12 shadow-inner">
       <div className="container mx-auto text-center text-sm text-gray-600 dark:text-gray-400">
         <p>&copy; {new Date().getFullYear()} FOSSED. Navigating .NET library licensing changes. All rights reserved.</p>
+        <p className="mt-2">
+            Made with ❤️ by <a href="https://dariuszwozniak.net/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Dariusz Woźniak</a>
+        </p>
         <div className="mt-3 flex justify-center space-x-4">
           <a
             href="https://ko-fi.com/A0A41B6EIP"
