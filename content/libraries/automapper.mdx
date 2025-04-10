@@ -39,7 +39,12 @@ The news prompted discussions about alternatives ([Source](https://www.reddit.co
     *   **Pros**: High performance (no runtime reflection), generated code is readable and debuggable, provides compile-time warnings for unmapped properties. Licensed under Apache 2.0.
     *   **Cons**: Introduces a dependency (though only build-time), relies on source generator capabilities.
 
-2.  **Manual Mapping**:
+2. **[Mapster](https://github.com/MapsterMapper/Mapster)**:
+    *   A fast, flexible, and type-safe object mapper for .NET. Licensed under MIT.
+    *   **Pros**: High performance, flexible, and type-safe.
+    *   **Cons**: Requires manual updates if object structures change.
+
+3.  **Manual Mapping**:
     *   Simply writing the mapping code directly in C#.
     *   **Pros**: Maximum control, no external dependency, clear and debuggable code. Often considered simpler in the long run despite initial boilerplate.
     *   **Cons**: Can involve writing repetitive code, requires manual updates if object structures change.
@@ -55,3 +60,4 @@ AutoMapper's transition to a commercial model signifies a shift for a foundation
 * Reddit: [Automapper going commercial](https://www.reddit.com/r/dotnet/comments/1jppsht/automapper_going_commercial/)
 * Reddit: [Migrate out of automapper?](https://www.reddit.com/r/dotnet/comments/1h2cy10/migrate_out_of_automapper/)
 * Alternative: [Mapperly](https://github.com/riok/mapperly)
+* Alternative: [Mapster](https://github.com/MapsterMapper/Mapster)
