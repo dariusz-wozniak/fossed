@@ -17,21 +17,26 @@
   {
     "name": "MediatR",
     "slug": "mediatr",
-    "description": "Simple mediator implementation in .NET"
+    "description": "Simple mediator implementation"
   },
   {
     "name": "MassTransit",
     "slug": "masstransit",
-    "description": "Distributed application framework for .NET"
+    "description": "Distributed application framework"
   },
   {
     "name": "NBomber",
     "slug": "nbomber",
-    "description": "A distributed load-testing framework for .NET"
+    "description": "A distributed load-testing"
+  },
+  {
+    "name": "IdentityServer",
+    "slug": "identityserver",
+    "description": "OIDC/OAuth2 framework"
   },
   {
     "name": "ImageSharp",
     "slug": "imagesharp",
-    "description": "Cross-platform image processing library for .NET"
+    "description": "Cross-platform image processing"
   }
 ] 

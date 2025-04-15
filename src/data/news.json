@@ -1,5 +1,33 @@
 [
   {
+    "date": "2025-03-06",
+    "title": "IdentityServer4 is public again",
+    "summary": "Our Duende development team is committed to delivering the most secure, standards-compliant, trusted identity solutions. While Duende IdentityServer is a fully supported and secure OpenID Connect and OAuth 2.0 framework for .NET Core, IdentityServer4 has been out of support for a long time. The older IdentityServer4 contains multiple known security vulnerabilities and bugs, and has outdated documentation.",
+    "tag": ["identityserver"],
+    "link": "https://blog.duendesoftware.com/posts/20250306-identityserver4-public-again/"
+  },
+  {
+    "date": "2024-08-09",
+    "title": "What is Wrong with IdentityServer4 and What Alternatives to Choose?",
+    "summary": "On October 1, 2020 Dominick Baier, one of the IdentityServer founders, published an article that confused the IT community. IdentityServer was rebranded and changed its monetization policy starting in November 2022.",
+    "tag": ["identityserver"],
+    "link": "https://modlogix.com/blog/identityserver4-alternatives-best-options-and-the-near-future-of-identityserver/"
+  },
+  {
+    "date": "2025-02-27",
+    "title": "Understanding IdentityServer4's Removal and Its Alternatives",
+    "summary": "IdentityServer4 has been removed from GitHub, leaving many developers questioning the reasons behind this decision. The maintainers transitioned the project to a commercial model due to challenges in managing its growing popularity. They struggled to cover the costs of maintaining the core codebase. As of November 2022, the project has been rebranded as Duende IdentityServer, requiring a commercial license for most use cases.",
+    "tag": ["identityserver4"],
+    "link": "https://www.featbit.co/articles2025/identityserver4-removed-github-alternatives"
+  },
+  {
+    "date": "2020-10-01",
+    "title": "The Future of IdentityServer",
+    "summary": "Brock Allen and I have been working on the IdentityServer code-base for more than 10 years. In 2020 we will be making some important changes to it. Here’s why we are doing this.",
+    "tag": ["identityserver"],
+    "link": "https://leastprivilege.com/2020/10/01/the-future-of-identityserver/"
+  },
+  {
     "date": "2023-08-09",
     "title": "YouTube: Remove Moq From Your .NET Projects Right NOW! (YouTube)",
     "summary": "Hello, everybody, I'm Nick, and in this video, I will talk about the Moq and SponsorLink situation that is causing a lot of drama in the .NET community.",
@@ -9,14 +37,14 @@
   {
     "date": "2023-08-08",
     "title": "Coding Bolt: A Deep Dive into SponsorLink: Implications for Open-Source and Privacy",
-    "summary": "In the world of open-source software, there’s a balance between creating freely available tools and finding ways to sustain the hard work that goes into developing them. One recent solution that’s gaining traction is SponsorLink, introduced with the aim of promoting the sponsorship of open-source projects, specifically with the popular .NET testing library, Moq, in its 4.20 version.",
+    "summary": "In the world of open-source software, there's a balance between creating freely available tools and finding ways to sustain the hard work that goes into developing them. One recent solution that's gaining traction is SponsorLink, introduced with the aim of promoting the sponsorship of open-source projects, specifically with the popular .NET testing library, Moq, in its 4.20 version.",
     "tag": ["moq"],
     "link": "https://codingbolt.net/2023/08/08/a-deep-dive-into-sponsorlink-implications-for-open-source-and-privacy/"
   },
   {
     "date": "2023-08-15",
     "title": "Daniel Cazzulino: SponsorLink: feedback and moving forward",
-    "summary": "As I mentioned in my introduction post on SponsorLink, open source sustainability is a tricky topic. I have been doing open source for more than 20 years, so I’m not entirely n00b to the space. I don’t believe in “experts” anyway, so I’m just going off of my personal experience, things I read and saw other fellow developers do in the past and so on. So, if it wasn’t clear enough, I’m not speaking for anyone but myself. I don’t represent the “dotnet OSS community”, or speak as to how OSS should be/is done or what is right or wrong here.",
+    "summary": "As I mentioned in my introduction post on SponsorLink, open source sustainability is a tricky topic. I have been doing open source for more than 20 years, so I'm not entirely n00b to the space. I don't believe in experts anyway, so I'm just going off of my personal experience, things I read and saw other fellow developers do in the past and so on. So, if it wasn't clear enough, I'm not speaking for anyone but myself. I don't represent the dotnet OSS community, or speak as to how OSS should be/is done or what is right or wrong here.",
     "tag": ["moq"],
     "link": "https://www.cazzulino.com/sponsorlink-feedback.html"
   },

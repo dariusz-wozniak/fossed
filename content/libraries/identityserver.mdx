@@ -1,0 +1,52 @@
+---
+title: IdentityServer
+description: A formerly free, open-source OpenID Connect and OAuth 2.0 framework for ASP.NET Core, now archived and succeeded by Duende IdentityServer.
+---
+
+[IdentityServer4 (IS4)](https://github.com/DuendeArchive/IdentityServer4) was a popular, free, and open-source OpenID Connect and OAuth 2.0 framework for ASP.NET Core. Originally created and maintained by Dominick Baier and Brock Allen, it became the de facto standard for building Security Token Services (STS) in the .NET ecosystem and was even included in Microsoft's project templates. It allowed developers to implement centralized authentication, single sign-on (SSO), and API access control.
+
+## The Transition to Duende IdentityServer
+
+Maintaining a popular open-source project like IdentityServer4 became increasingly challenging and costly. Sponsorship models proved unsustainable. To ensure the project's long-term viability, support, and continued development, the original creators formed Duende Software.
+
+In October 2020, they announced that IdentityServer4 would be succeeded by a new product, [Duende IdentityServer](https://duendesoftware.com/products/identityserver).
+
+*   **IdentityServer4 (v4.x):** This was the last free open-source version under the Apache 2.0 license. It continued to receive security updates until the end-of-life of .NET Core 3.1 in December 2022.
+*   **Duende IdentityServer:** This is the commercially supported successor, built upon IdentityServer4. It targets newer .NET versions (.NET Core 3.1, .NET 5, and beyond) and includes new features and protocol implementations.
+
+## Licensing Changes
+
+IdentityServer4 was licensed under the permissive Apache 2.0 license.
+
+[Duende IdentityServer](https://duendesoftware.com/products/identityserver#pricing) uses a dual-license model:
+*   **Reciprocal Public License (RPL):** Free for non-commercial, open-source work.
+*   **Commercial License:** Required for use in commercial scenarios. Pricing varies based on the number of clients and required features (Starter, Business, Enterprise tiers).
+*   **Community Edition:** A free, [feature-equivalent license to the Enterprise Edition](https://duendesoftware.com/products/communityedition) is available for individuals, non-profits, and companies with less than $1M USD annual gross revenue.
+
+## Current Status of IdentityServer4
+
+*   **Archived & Unsupported:** IdentityServer4 is no longer maintained and has been unsupported since December 13th, 2022.
+*   **Security Vulnerabilities:** It contains known security vulnerabilities and bugs. Using it in production is strongly discouraged.
+*   **Archived Repository:** The original [IdentityServer4 GitHub repository](https://github.com/DuendeArchive/IdentityServer4) was initially made private but, following community feedback, was made public again under the `DuendeArchive` organization. It is read-only, serving as a historical archive. The source code resides in the `archive` branch.
+
+## Alternatives
+
+Several alternatives exist, both open-source and commercial:
+
+*   **[OpenIddict](https://github.com/openiddict/openiddict-core):** A .NET library-type solution similar in concept to IdentityServer4 but more "bare metal". It's open-source (Apache 2.0) and allows implementing custom OIDC/OAuth2 flows.
+*   **[Keycloak](https://www.keycloak.org/):** An open-source (Apache 2.0) identity and access management product (not a library). It's Java-based and offers many features out-of-the-box but might be less flexible for deep customization compared to library approaches.
+*   **[Azure Active Directory B2C](https://azure.microsoft.com/en-us/products/active-directory/external-identities/b2c):** A cloud-based identity management service from Microsoft. It's suitable if hosting customer identities in a SaaS model is acceptable and integrates well with the Azure ecosystem. Pricing is user-based (free tier available).
+*   **Other Commercial Solutions:** Platforms like Okta, Auth0 (now part of Okta), Rippling, and JumpCloud offer comprehensive Identity-as-a-Service (IDaaS) solutions.
+
+## The Bottom Line
+
+IdentityServer4 played a crucial role in the .NET identity space. However, it is now an **archived, unsupported, and insecure** project. For new projects or existing IS4 implementations, migrating to the commercially supported [Duende IdentityServer](https://duendesoftware.com/products/identityserver) or exploring alternatives like OpenIddict or Keycloak is recommended.
+
+## Links and References
+
+*   [Duende IdentityServer](https://duendesoftware.com/products/identityserver) (Successor Product)
+*   [Duende IdentityServer Pricing](https://duendesoftware.com/products/identityserver#pricing)
+*   [Duende IdentityServer Community Edition](https://duendesoftware.com/products/communityedition)
+*   [Archived IdentityServer4 GitHub Repository](https://github.com/DuendeArchive/IdentityServer4)
+*   [Blog Post: The Future of IdentityServer](https://leastprivilege.com/2020/10/01/the-future-of-identityserver/) (Original announcement)
+*   [Blog Post: IdentityServer4 is public again](https://blog.duendesoftware.com/posts/20250306-identityserver4-public-again/) (Explanation of repository archival/unarchival)
