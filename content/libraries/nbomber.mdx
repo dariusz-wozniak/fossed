@@ -1,0 +1,58 @@
+---
+title: NBomber
+description: A .NET load-testing framework's licensing model and alternatives.
+slug: nbomber
+---
+
+## Introduction
+
+[NBomber](https://github.com/PragmaticFlow/NBomber) is a distributed load-testing framework for .NET. It is designed to test any system regardless of the protocol (HTTP/WebSockets/AMQP) or a semantic model (Pull/Push). It allows developers to write distributed load test scenarios entirely using plain C# or F#.
+
+NBomber aims to provide a lightweight framework for writing load tests to simulate various production workloads and validate proof-of-concept projects.
+
+## Licensing
+
+NBomber shifted its licensing model starting with version 5.
+
+*   **NBomber v5+:** Requires a commercial license for organizational use. Personal use remains free. It is distributed via NuGet under the [NBomber License Agreement v2.0](https://nbomber.com/assets/NBOMBER-LICENSE-AGREEMENT-2.0.pdf). This version is closed-source.
+*   **NBomber v4:** Remains under the Apache 2.0 license, free for all uses. The source code available on GitHub corresponds to this version.
+
+  The distinction between the NuGet package license (v5+) and the GitHub source code license (v4/Apache 2.0) was clarified in a [GitHub issue discussion](https://github.com/PragmaticFlow/NBomber/issues/596).
+
+**Key points from the commercial license agreement (v2.0):**
+
+*   Grants a limited, non-exclusive, non-sublicensable, non-transferable, revocable license for the subscription period for the customer's internal operations.
+*   Prohibits distributing license keys, selling/sub-licensing/renting/leasing the software, distributing it standalone or as part of another product, removing proprietary notices, and reverse-engineering.
+*   The software might include third-party open-source components provided "as is".
+*   NBomber LLC is not liable for damages from incorrect software usage.
+
+## Frequently Asked Questions
+
+| Question                                                                        | Answer                                                                                                                       |
+| ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Can I use NBomber for free?                                                     | v5+ is free only for personal use. Organization usage requires a paid license. v4 remains free under Apache 2.0.             |
+| Can multiple teams use the same license within one organization?                | Yes, a single commercial license can be shared across the whole organization.                                               |
+| How many users from the same organization can use the license at the same time? | Unlimited.                                                                                                                   |
+| Can I run NBomber Cluster without purchasing a license?                         | Yes, the [Local Dev Cluster](https://nbomber.com/docs/cluster/local-dev-cluster) mode can be used for trial purposes.         |
+| How many instances can be installed with one NBomber license?                   | Unlimited.                                                                                                                   |
+
+## Alternatives
+
+*   [Apache Bench](https://httpd.apache.org/docs/2.4/programs/ab.html) - Also known as `ab`
+*   [Apache JMeter](https://jmeter.apache.org/)
+*   [Azure Load Testing](https://learn.microsoft.com/en-us/azure/load-testing/overview-what-is-azure-load-testing)
+*   [BenchmarkDotNet](https://benchmarkdotnet.org/)
+*   [DFrame](https://github.com/Cysharp/DFrame/) (MIT license)
+*   [Gatling](https://gatling.io/)
+*   [JMeter DSL .NET](https://abstracta.github.io/jmeter-dotnet-dsl/)
+*   [k6](https://k6.io/)
+*   [Netling](https://github.com/hallatore/Netling) (MIT License)
+*   [West Wind WebSurge](https://websurge.west-wind.com/)
+
+## Links and References
+
+*   NBomber Website: [NBomber](https://nbomber.com/)
+*   NBomber GitHub Repository: [NBomber](https://github.com/PragmaticFlow/NBomber)
+*   NBomber NuGet Package: [NuGet Gallery | NBomber](https://www.nuget.org/packages/NBomber/)
+*   NBomber License Agreement v2.0: [nbomber.com/assets/NBOMBER-LICENSE-AGREEMENT-2.0.pdf](https://nbomber.com/assets/NBOMBER-LICENSE-AGREEMENT-2.0.pdf)
+*   GitHub Issue: [NBomber License #596](https://github.com/PragmaticFlow/NBomber/issues/596)

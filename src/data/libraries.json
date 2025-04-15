@@ -25,6 +25,11 @@
     "description": "Distributed application framework for .NET"
   },
   {
+    "name": "NBomber",
+    "slug": "nbomber",
+    "description": "A distributed load-testing framework for .NET"
+  },
+  {
     "name": "ImageSharp",
     "slug": "imagesharp",
     "description": "Cross-platform image processing library for .NET"
