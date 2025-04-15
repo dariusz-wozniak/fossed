@@ -1,0 +1,74 @@
+[
+  {
+    "framework": "Moq",
+    "slug": "moq",
+    "oldLicense": "BSD-3-Clause",
+    "newLicense": "BSD-3-Clause with SponsorLink",
+    "pricing": "Free with SponsorLink",
+    "lastFreeVersion": "4.18.4",
+    "alternatives": "NSubstitute, FakeItEasy"
+  },
+  {
+    "framework": "FluentAssertions",
+    "slug": "fluent-assertions",
+    "oldLicense": "Apache 2.0",
+    "newLicense": "Commercial",
+    "pricing": "ca. $130 per dev per year",
+    "lastFreeVersion": "7.x",
+    "alternatives": "Shouldly, Awesome Assertions, standard Assert methods"
+  },
+  {
+    "framework": "AutoMapper",
+    "slug": "automapper",
+    "oldLicense": "MIT",
+    "newLicense": "Commercial",
+    "pricing": "TBD",
+    "lastFreeVersion": "Current",
+    "alternatives": "Mapperly, Mapster, Manual mapping"
+  },
+  {
+    "framework": "MediatR",
+    "slug": "mediatr",
+    "oldLicense": "Apache 2.0",
+    "newLicense": "Commercial",
+    "pricing": "TBD",
+    "lastFreeVersion": "Current",
+    "alternatives": "Minimal.Mediator, Vertical Slice Architecture"
+  },
+  {
+    "framework": "MassTransit",
+    "slug": "masstransit",
+    "oldLicense": "Apache 2.0",
+    "newLicense": "BSL 1.1",
+    "pricing": "Commercial for large businesses",
+    "lastFreeVersion": "8.0.16",
+    "alternatives": "NServiceBus, Rebus, Wolverine"
+  },
+  {
+    "framework": "NBomber",
+    "slug": "nbomber",
+    "oldLicense": "Apache 2.0",
+    "newLicense": "BSL 1.1",
+    "pricing": "Free for non-production, commercial for production",
+    "lastFreeVersion": "4.1.2",
+    "alternatives": "k6, JMeter, Artillery"
+  },
+  {
+    "framework": "IdentityServer",
+    "slug": "identityserver",
+    "oldLicense": "Apache 2.0",
+    "newLicense": "RPL 1.5",
+    "pricing": "Commercial, starts at $1,500/year",
+    "lastFreeVersion": "4.x",
+    "alternatives": "OpenIddict, Keycloak, Auth0"
+  },
+  {
+    "framework": "ImageSharp",
+    "slug": "imagesharp",
+    "oldLicense": "Apache 2.0",
+    "newLicense": "SixLabors Split License",
+    "pricing": "From $249/year",
+    "lastFreeVersion": "2.0.0",
+    "alternatives": "SkiaSharp, Magick.NET, System.Drawing"
+  }
+] 

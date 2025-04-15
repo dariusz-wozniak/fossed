@@ -32,7 +32,7 @@
   {
     "name": "IdentityServer",
     "slug": "identityserver",
-    "description": "OIDC/OAuth2 framework"
+    "description": "OpenID Connect/OAuth2 framework"
   },
   {
     "name": "ImageSharp",

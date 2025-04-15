@@ -1,11 +1,15 @@
 import librariesData from '@/data/libraries.json';
 import newsItemsData from '@/data/news.json';
 import faqsData from '@/data/faqs.json';
+import summaryData from '@/data/summary.json';
 
 export interface Library {
   name: string;
   slug: string;
   description: string;
+  category?: string;
+  licenseInfo?: string;
+  alternatives?: Array<string | { name: string }>;
 }
 
 export interface NewsItem {
@@ -21,6 +25,16 @@ export interface Faq {
   answerPreview: string;
 }
 
+export interface SummaryItem {
+  framework: string;
+  slug: string;
+  oldLicense: string;
+  newLicense: string;
+  pricing: string;
+  lastFreeVersion: string;
+  alternatives: string;
+}
+
 // Typed data
 export const libraries = librariesData as Library[];
 
@@ -29,6 +43,8 @@ const sortedNewsItems = (newsItemsData as NewsItem[]).sort((a, b) => new Date(b.
 export const newsItems = sortedNewsItems;
 
 export const faqs = faqsData as Faq[];
+
+export const summary = summaryData as SummaryItem[];
 
 // Helper functions
 export function getLibraryBySlug(slug: string): Library | undefined {

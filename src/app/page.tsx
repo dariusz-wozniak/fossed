@@ -3,7 +3,7 @@ import LibraryTile from "@/components/LibraryTile";
 import Link from "next/link";
 
 // Import data and types from the utils
-import { libraries, newsItems, faqs } from "@/utils/data";
+import { libraries, newsItems, faqs, summary } from "@/utils/data";
 
 export default function Home() {
   return (
@@ -28,6 +28,41 @@ export default function Home() {
             {libraries.map((lib) => (
               <LibraryTile key={lib.slug} {...lib} />
             ))}
+          </div>
+        </section>
+
+        {/* Summary Table Section */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-semibold mb-6">Summary</h2>
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+              <thead className="bg-gray-50 dark:bg-gray-800">
+                <tr>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Framework</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Old License</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">New License</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Est. Pricing</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Last Free Version</th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Alternatives</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-800">
+                {summary.map((item) => (
+                  <tr key={item.slug} className="hover:bg-gray-50 dark:hover:bg-gray-800">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                      <Link href={`/library/${item.slug}`} className="text-blue-600 dark:text-blue-400 hover:underline">
+                        {item.framework}
+                      </Link>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">{item.oldLicense}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">{item.newLicense}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">{item.pricing}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">{item.lastFreeVersion}</td>
+                    <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">{item.alternatives}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </section>
 
