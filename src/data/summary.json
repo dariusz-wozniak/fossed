@@ -6,7 +6,9 @@
     "newLicense": "BSD-3-Clause with SponsorLink",
     "pricing": "Free with SponsorLink",
     "lastFreeVersion": "4.18.4",
-    "alternatives": "NSubstitute, FakeItEasy"
+    "alternatives": ["NSubstitute", "FakeItEasy"],
+    "websiteUrl": "https://github.com/devlooped/moq",
+    "websiteText": "GitHub"
   },
   {
     "framework": "FluentAssertions",
@@ -15,7 +17,9 @@
     "newLicense": "Commercial",
     "pricing": "ca. $130 per dev per year",
     "lastFreeVersion": "7.x",
-    "alternatives": "Shouldly, Awesome Assertions, standard Assert methods"
+    "alternatives": ["Shouldly", "Awesome Assertions", "standard Assert methods"],
+    "websiteUrl": "https://fluentassertions.com/",
+    "websiteText": "fluentassertions.com"
   },
   {
     "framework": "AutoMapper",
@@ -24,7 +28,9 @@
     "newLicense": "Commercial",
     "pricing": "TBD",
     "lastFreeVersion": "Current",
-    "alternatives": "Mapperly, Mapster, Manual mapping"
+    "alternatives": ["Mapperly", "Mapster", "manual mapping"],
+    "websiteUrl": "https://automapper.org/",
+    "websiteText": "automapper.org"
   },
   {
     "framework": "MediatR",
@@ -33,7 +39,9 @@
     "newLicense": "Commercial",
     "pricing": "TBD",
     "lastFreeVersion": "Current",
-    "alternatives": "Minimal.Mediator, Vertical Slice Architecture"
+    "alternatives": ["Mediator","Brighter"],
+    "websiteUrl": "https://github.com/jbogard/MediatR",
+    "websiteText": "GitHub"
   },
   {
     "framework": "MassTransit",
@@ -41,8 +49,10 @@
     "oldLicense": "Apache 2.0",
     "newLicense": "BSL 1.1",
     "pricing": "Commercial for large businesses",
-    "lastFreeVersion": "8.0.16",
-    "alternatives": "NServiceBus, Rebus, Wolverine"
+    "lastFreeVersion": "8.x",
+    "alternatives": ["NServiceBus", "Rebus", "Brighter", "Wolverine"],
+    "websiteUrl": "https://masstransit.io/",
+    "websiteText": "masstransit.io"
   },
   {
     "framework": "NBomber",
@@ -50,8 +60,10 @@
     "oldLicense": "Apache 2.0",
     "newLicense": "BSL 1.1",
     "pricing": "Free for non-production, commercial for production",
-    "lastFreeVersion": "4.1.2",
-    "alternatives": "k6, JMeter, Artillery"
+    "lastFreeVersion": "4.x",
+    "alternatives": ["Netling", "Artillery", "JMeter", "k6", "Azure Load Testing", "etc."],
+    "websiteUrl": "https://nbomber.com/",
+    "websiteText": "nbomber.com"
   },
   {
     "framework": "IdentityServer",
@@ -60,7 +72,9 @@
     "newLicense": "RPL 1.5",
     "pricing": "Commercial, starts at $1,500/year",
     "lastFreeVersion": "4.x",
-    "alternatives": "OpenIddict, Keycloak, Auth0"
+    "alternatives": ["OpenIddict", "Keycloak", "Azure Active Directory B2C", "etc."],
+    "websiteUrl": "https://duendesoftware.com/products/identityserver",
+    "websiteText": "duendesoftware.com"
   },
   {
     "framework": "ImageSharp",
@@ -68,7 +82,9 @@
     "oldLicense": "Apache 2.0",
     "newLicense": "SixLabors Split License",
     "pricing": "From $249/year",
-    "lastFreeVersion": "2.0.0",
-    "alternatives": "SkiaSharp, Magick.NET, System.Drawing"
+    "lastFreeVersion": "2.x",
+    "alternatives": ["SkiaSharp", "Magick.NET", "System.Drawing.Common"],
+    "websiteUrl": "https://sixlabors.com/products/imagesharp/",
+    "websiteText": "sixlabors.com"
   }
 ] 

@@ -32,7 +32,9 @@ export interface SummaryItem {
   newLicense: string;
   pricing: string;
   lastFreeVersion: string;
-  alternatives: string;
+  alternatives: string[];
+  websiteUrl: string;
+  websiteText: string;
 }
 
 // Typed data
