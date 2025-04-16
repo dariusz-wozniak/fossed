@@ -1,5 +1,12 @@
 [
   {
+    "date": "2025-04-16",
+    "title": "AutoMapper and MediatR Licensing Update",
+    "summary": "In my last post, I shared the news that I've decided to take a commercialization route for AutoMapper and MediatR to ensure their long-term success. While that post was heavy on the motivation, it was intentionally light on the details. I did share that I wanted to be transparent on that process, and this post is part of that transparency.",
+    "tag": ["automapper", "mediatr"],
+    "link": "https://www.jimmybogard.com/automapper-and-mediatr-licensing-update/"
+  },
+  {
     "date": "2025-03-06",
     "title": "IdentityServer4 is public again",
     "summary": "Our Duende development team is committed to delivering the most secure, standards-compliant, trusted identity solutions. While Duende IdentityServer is a fully supported and secure OpenID Connect and OAuth 2.0 framework for .NET Core, IdentityServer4 has been out of support for a long time. The older IdentityServer4 contains multiple known security vulnerabilities and bugs, and has outdated documentation.",
