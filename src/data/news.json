@@ -1,5 +1,19 @@
 [
   {
+    "date": "2025-07-08",
+    "title": "AutoMapper and MediatR Roadmaps",
+    "summary": "One of my main goals of commercialization of AutoMapper and MediatR was being able to finally invest time in these projects where basically all new work stopped when I lost corporate sponsorship. I wanted to take some time to share where I'd like to take these projects now that I have that sponsorship back.",
+    "tag": ["automapper", "mediatr"],
+    "link": "https://www.jimmybogard.com/automapper-and-mediatr-roadmaps/"
+  },
+  {
+    "date": "2025-07-02",
+    "title": "AutoMapper and MediatR Commercial Editions Launch Today",
+    "summary": "Today I'm excited to announce the official launch and release of the commercial editions of AutoMapper and MediatR. Both of these libraries have moved under their new corporate owner (me), Lucky Penny Software. I formed this company to house these projects separate from my consulting company, but it's just me there, I'm the sole corporate overlord.",
+    "tag": ["automapper", "mediatr"],
+    "link": "https://www.jimmybogard.com/automapper-and-mediatr-commercial-editions-launch-today/"
+  },
+  {
     "date": "2025-04-16",
     "title": "AutoMapper and MediatR Licensing Update",
     "summary": "In my last post, I shared the news that I've decided to take a commercialization route for AutoMapper and MediatR to ensure their long-term success. While that post was heavy on the motivation, it was intentionally light on the details. I did share that I wanted to be transparent on that process, and this post is part of that transparency.",
