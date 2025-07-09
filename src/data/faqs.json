@@ -5,7 +5,7 @@
 },
 {
   "question": "Library X has gone commercial. What are my options?",
-  "answerPreview": "Don't panic! 😎 First, review the pricing and consider paying if you value the library and plan to continue using it. Often, you can stick with the last free version by pinning its version. If the license permits, forking the library for personal maintenance is another option. Finally, explore open-source alternatives."
+  "answerPreview": "Don't panic! 😎 First, review the pricing and consider paying if you value the library and plan to continue using it. Often, you can stick with the last free version by pinning its version (e.g. `[1.0.0]` or `[1.0.0,2.0.0)`). If the license permits, forking the library for personal maintenance is another option. Finally, explore open-source alternatives."
 },
 {
   "question": "Why is there negative sentiment towards some libraries that have become commercial?",
