@@ -1,10 +1,10 @@
 ---
 title: "MediatR"
-date: 2025-04-08 # Or use today's date
+date: 2025-07-02
 slug: mediatr
 ---
 
-Jimmy Bogard, the creator of the popular .NET libraries AutoMapper and MediatR, recently announced his decision to commercialize both projects. This move aims to ensure their long-term sustainability and allow Bogard to dedicate more focused time to their development.
+MediatR, the popular in-process messaging library for .NET, has officially launched its commercial edition on July 2, 2025. Creator Jimmy Bogard announced the move for both MediatR and AutoMapper, transitioning the projects to his new company, Lucky Penny Software, to ensure their long-term sustainability. The MediatR GitHub repository is now located at [LuckyPennySoftware/MediatR](https://github.com/LuckyPennySoftware/MediatR).
 
 ## Why the Change?
 
@@ -16,15 +16,15 @@ In his announcement blog post, Bogard explains that the decision stems from a sh
 
 He emphasizes that OSS was never just a hobby and that this move is necessary to fund real work on the projects, build communities, and respond to user needs more effectively.
 
-## What Will Commercialization Look Like?
+## Licensing and Pricing
 
-The exact details of the commercial model are still being determined. Bogard has stated that nothing will change in the short term, and he intends to be transparent throughout the process. He mentioned wanting to avoid annoying developers or relying solely on donations, suggesting a model different from some recent controversial licensing changes in the .NET ecosystem.
+MediatR now follows a dual-license model: the **Reciprocal Public License 1.5 (RPL-1.5)** and a **commercial license**. New versions, starting with **MediatR v13.0**, are released on NuGet under this new agreement.
 
-> "I can't rely on donations, I don't want to make developers pay anything or do anything to punish/annoy them, and I certainly don't think it's Microsoft's job to 'pay me the money.' Past that, I'm still figuring it out."
-> 
-> \- Jimmy Bogard ([Source](https://www.jimmybogard.com/automapper-and-mediatr-going-commercial/))
+The commercial pricing is based on team size, with tiers for Standard (1-10 developers), Professional (11-50), and Enterprise (unlimited). A **free Community edition** is available for smaller companies (under $5M revenue), non-profits, educational use, and non-production environments, similar to AutoMapper's offering. A license key is required for commercial use. For full details, visit the [official MediatR website](https://mediatr.io/).
 
-## Community Reaction
+Previous versions of MediatR remain under their original MIT license and have been archived for public access.
+
+## Community Reaction to Initial Announcement
 
 The reaction on platforms like GitHub Discussions has been notably calmer compared to the controversies surrounding libraries like Moq or FluentAssertions. Many developers expressed understanding and support for Bogard's decision, acknowledging the effort required to maintain widely used OSS projects.
 
@@ -52,14 +52,18 @@ The .NET ecosystem offers several alternatives to MediatR:
 
 ## Conclusion
 
-While the future licensing and pricing model for MediatR remains uncertain, Jimmy Bogard's move to commercialize aims to secure the project's future. The .NET community, while noting the shift, appears largely understanding.
+MediatR's move to a commercial model under Lucky Penny Software is now official, securing a path for its continued development. The dual-license model, with its free community tier, means many developers can continue using MediatR without cost. Larger teams will need to factor in licensing costs or explore alternatives like the source-generator-based Mediator or the more feature-rich Brighter library.
 
 ## Links and References
 
-* Jimmy Bogard: [AutoMapper and MediatR Going Commercial](https://www.jimmybogard.com/automapper-and-mediatr-going-commercial/)
-* GitHub: [AutoMapper and MediatR going commercial](https://github.com/jbogard/MediatR/discussions/1105)
-* Reddit: [MediatR going commercial?](https://www.reddit.com/r/dotnet/comments/1jpvi42/mediatr_going_commercial/)
-* Reddit: [Do you think MediatR nuget will also become commercial?](https://reddit.com/r/dotnet/comments/1iamrqd/do_you_think_mediatr_nuget_will_also_become/m9e36u2/)
-* Alternative: [Mediator](https://github.com/martinothamar/Mediator)
-* Alternative: [Brighter](https://github.com/BrighterCommand/Brighter)
-* YouTube: [Nick Chapsas - Using MediatR in .NET? Maybe replace it with this](https://www.youtube.com/watch?v=bNuQ9xOG9eQ)
+*   Jimmy Bogard: [AutoMapper and MediatR Commercial Editions Launch Today](https://www.jimmybogard.com/automapper-and-mediatr-commercial-editions-launch-today/)
+*   MediatR Official Site: [https://mediatr.io/](https://mediatr.io)
+*   Jimmy Bogard: [AutoMapper and MediatR Going Commercial](https://www.jimmybogard.com/automapper-and-mediatr-going-commercial/)
+*   GitHub: [LuckyPennySoftware/MediatR](https://github.com/LuckyPennySoftware/MediatR)
+*   GitHub (old repository): [jbogard/MediatR](https://github.com/jbogard/MediatR)
+*   GitHub: [AutoMapper and MediatR going commercial (Discussion)](https://github.com/jbogard/MediatR/discussions/1105)
+*   Reddit: [MediatR going commercial?](https://www.reddit.com/r/dotnet/comments/1jpvi42/mediatr_going_commercial/)
+*   Reddit: [Do you think MediatR nuget will also become commercial?](https://reddit.com/r/dotnet/comments/1iamrqd/do_you_think_mediatr_nuget_will_also_become/m9e36u2/)
+*   Alternative: [Mediator](https://github.com/martinothamar/Mediator)
+*   Alternative: [Brighter](https://github.com/BrighterCommand/Brighter)
+*   YouTube: [Nick Chapsas - Using MediatR in .NET? Maybe replace it with this](https://www.youtube.com/watch?v=bNuQ9xOG9eQ)
