@@ -28,7 +28,7 @@
     "newLicense": "Commercial",
     "pricing": "TBD",
     "lastFreeVersion": "Current",
-    "alternatives": ["Mapperly", "Mapster", "manual mapping"],
+    "alternatives": ["Mapperly", "Mapster", "ForgeMap", "manual mapping"],
     "websiteUrl": "https://automapper.org/",
     "websiteText": "automapper.org"
   },

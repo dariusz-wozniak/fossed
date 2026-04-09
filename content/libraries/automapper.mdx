@@ -54,7 +54,12 @@ The news prompted discussions about alternatives ([Source](https://www.reddit.co
     *   **Pros**: High performance, flexible, and type-safe.
     *   **Cons**: Requires manual updates if object structures change.
 
-3.  **Manual Mapping**:
+3. **[ForgeMap](https://github.com/superyyrrzz/ForgeMap)**:
+    *   A lightweight .NET source generator for object mapping. Compile-time code generation with zero reflection.
+    *   **Pros**: Fastest in benchmarks against AutoMapper and Mapperly, zero runtime reflection, compile-time type safety with 27 diagnostics, debuggable generated code. Licensed under MIT. Available on [NuGet](https://www.nuget.org/packages/ForgeMap).
+    *   **Cons**: Newer project, smaller community compared to Mapperly or Mapster.
+
+4.  **Manual Mapping**:
     *   Simply writing the mapping code directly in C#.
     *   **Pros**: Maximum control, no external dependency, clear and debuggable code. Often considered simpler in the long run despite initial boilerplate.
     *   **Cons**: Can involve writing repetitive code, requires manual updates if object structures change.
@@ -75,3 +80,4 @@ AutoMapper's transition to a commercial model is now complete, providing a clear
 *   Reddit: [Migrate out of automapper?](https://www.reddit.com/r/dotnet/comments/1h2cy10/migrate_out_of_automapper/)
 *   Alternative: [Mapperly](https://github.com/riok/mapperly)
 *   Alternative: [Mapster](https://github.com/MapsterMapper/Mapster)
+*   Alternative: [ForgeMap](https://github.com/superyyrrzz/ForgeMap)
