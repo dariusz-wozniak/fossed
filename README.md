@@ -2,7 +2,7 @@
 
 Navigating .NET library licensing changes.
 
-Recent .NET ecosystem licensing changes impact several libraries, requiring projects to either pay for a license or find an alternative. Welcome to the FOSSED, where we will help you navigate the changes and find free open-source alternatives.
+Recent .NET ecosystem licensing changes impact several libraries, requiring projects to either pay for a license or find an alternative. Welcome to the FOSSED, where I will help you navigate the changes and find free open-source alternatives.
 
 Available at URL: https://dariusz-wozniak.github.io/fossed/
 

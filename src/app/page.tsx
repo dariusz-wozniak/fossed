@@ -21,7 +21,7 @@ export default function Home() {
         </div>
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-8">Navigating .NET library licensing changes.</h1>
         <p className="text-base sm:text-lg mb-6 sm:mb-12 text-gray-600 dark:text-gray-400">
-          Recent .NET ecosystem licensing changes impact several libraries, requiring projects to either pay for a license or find an alternative. Welcome to the FOSSED, where we will help you navigate the changes and find free open-source alternatives.
+          Recent .NET ecosystem licensing changes impact several libraries, requiring projects to either pay for a license or find an alternative. Welcome to the FOSSED, where I will help you navigate the changes and find free open-source alternatives.
         </p>
 
         {/* Library Tiles Section */}
