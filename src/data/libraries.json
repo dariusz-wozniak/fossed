@@ -43,5 +43,10 @@
     "name": "NPOI",
     "slug": "npoi",
     "description": ".NET port of Apache POI for Office files"
+  },
+  {
+    "name": "WiX Toolset",
+    "slug": "wix-toolset",
+    "description": "Windows Installer (MSI) build toolset"
   }
 ] 

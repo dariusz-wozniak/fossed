@@ -97,5 +97,16 @@
     "alternatives": ["ClosedXML", "Open XML SDK", "ExcelDataReader", "EPPlus (commercial)"],
     "websiteUrl": "https://github.com/nissl-lab/npoi",
     "websiteText": "GitHub"
+  },
+  {
+    "framework": "WiX Toolset",
+    "slug": "wix-toolset",
+    "oldLicense": "MS-RL",
+    "newLicense": "MS-RL + Maintenance Fee (OSMF)",
+    "pricing": "$10–$60/month per revenue-generating org (>$10k/yr)",
+    "lastFreeVersion": "5.x",
+    "alternatives": ["WiX v5 (pin)", "Inno Setup", "NSIS", "Velopack", "Visual Studio Installer Projects"],
+    "websiteUrl": "https://wixtoolset.org/",
+    "websiteText": "wixtoolset.org"
   }
 ] 

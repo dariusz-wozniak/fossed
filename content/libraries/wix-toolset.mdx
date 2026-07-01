@@ -1,0 +1,91 @@
+---
+title: "WiX Toolset"
+date: 2025-04-07
+slug: wix-toolset
+---
+
+The **WiX Toolset** (Windows Installer XML) is the long-standing toolset for building Windows Installer packages (`.msi`, `.msm`, bundles) from XML source. With the release of **WiX v6.0 in April 2025**, the project — stewarded by Rob Mensching and [FireGiant](https://www.firegiant.com/) — introduced the **[Open Source Maintenance Fee (OSMF)](https://docs.firegiant.com/wix/osmf/)**. The source code stays open source under the **Microsoft Reciprocal License (MS-RL)**, but revenue-generating organizations that consume the official binaries are now expected to pay a monthly maintenance fee. This is the same funding mechanism later adopted by [NPOI](/library/npoi).
+
+## What Changed
+
+The WiX **source license did not change** — it remains **MS-RL**, and you can still read, fork, and build the code freely. What changed is a **contractual obligation layered onto the released binaries** (the NuGet packages and installers you actually consume). Starting with v6.0, an **End-User License Agreement (EULA)** is attached to those binaries requiring revenue-generating consumers to pay the maintenance fee.
+
+Rob Mensching framed OSMF as a middle path between pure OSS and going fully commercial — the code stays open, but companies profiting from it are asked to fund its upkeep. From the [proposal (wixtoolset/issues#8974)](https://github.com/wixtoolset/issues/issues/8974):
+
+> "We plan to enforce the maintenance fee starting with the release of WiX v6.0 on April 5th, 2025."
+
+## Who Pays and How Much
+
+The fee is paid by **sponsoring the wixtoolset GitHub organization** via [GitHub Sponsors](https://github.com/sponsors/wixtoolset), at a tier matching organization size:
+
+*   **Small** (< 20 people): **$10/month**
+*   **Medium** (20–100 people): **$40/month**
+*   **Large** (> 100 people): **$60/month**
+
+A **minimum annual revenue threshold of US $10,000** was added in **OSMF EULA v1.1** (February 2026), exempting hobbyists and very small organizations. If your organization does not generate revenue, or falls below the threshold, **no fee is due** and you can keep using the toolset for free.
+
+**Customers of FireGiant's WiX Developer Direct** commercial support do **not** pay the OSMF separately — it is included in their support agreement.
+
+## What About WixSharp?
+
+[WixSharp](https://github.com/oleg-shilo/wixsharp) — the popular C# managed wrapper for authoring installers — is a **separate project** and is **not** changing its license. Per Oleg Shilo's [wiki note](https://github.com/oleg-shilo/wixsharp/wiki/New-WiX-v6-Licencing-Model):
+
+> "WixSharp is available under a pure Open Source Licence MIT."
+
+However, WixSharp **uses the WiX Toolset as its build backend** to compile the actual MSI. So if you drive WiX **v6** through WixSharp in a revenue-generating context, the OSMF obligation on the WiX binaries still applies. You can avoid it by targeting the **WiX v5** toolchain (or earlier), which WixSharp continues to support.
+
+## What This Means For You
+
+*   Using **WiX ≤ 5.x**: no maintenance fee — v5 stays under the previous model. But no v6 features, and the line will eventually stop receiving updates.
+*   Using **WiX ≥ 6.0** as a **hobbyist / non-revenue / under $10k**: still free.
+*   Using **WiX ≥ 6.0** in a **revenue-generating organization above the threshold**: you are expected to pay the OSMF tier for your org size, or hold a FireGiant Developer Direct support agreement.
+
+## Alternatives
+
+WiX authors true Windows Installer (`.msi`) packages, which is a niche most alternatives don't fully cover. The right choice depends on whether you actually need MSI or just "an installer."
+
+1.  **Pin to [WiX v5](https://github.com/wixtoolset/wix)**:
+    *   The last major line before OSMF. Still **MS-RL**, no fee.
+    *   **Pros**: Zero migration, full MSI authoring, free. Simplest escape hatch.
+    *   **Cons**: No v6 improvements or official support; the line will age out over time.
+
+2.  **[Inno Setup](https://jrsoftware.org/isinfo.php)**:
+    *   Mature, free script-driven installer builder. Licensed under a permissive (modified BSD-style) license.
+    *   **Pros**: Free for commercial use, battle-tested, great docs, Pascal scripting for custom logic.
+    *   **Cons**: Produces `.exe` installers, **not `.msi`** — a problem if your deployment (e.g. enterprise GPO/Intune) requires MSI.
+
+3.  **[NSIS (Nullsoft Scriptable Install System)](https://nsis.sourceforge.io/)**:
+    *   Lightweight, scriptable installer system. zlib/libpng-style license.
+    *   **Pros**: Tiny output, highly scriptable, free. Long track record.
+    *   **Cons**: Dated scripting language; `.exe` output, not MSI.
+
+4.  **[Velopack](https://github.com/velopack/velopack)**:
+    *   Modern MIT-licensed install/update framework (successor to Squirrel, by the same author).
+    *   **Pros**: Very fast, built-in auto-updates, cross-platform, great for .NET desktop apps.
+    *   **Cons**: App-deployment focused — not a general-purpose MSI authoring tool.
+
+5.  **[Visual Studio Installer Projects](https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2022InstallerProjects)**:
+    *   Microsoft's free VS extension for building basic MSI packages via a GUI.
+    *   **Pros**: First-party, free, no scripting, produces real MSI.
+    *   **Cons**: Limited feature set; tied to Visual Studio; awkward for complex/CI scenarios.
+
+For modern app packaging, the free **[MSIX Packaging Tool](https://learn.microsoft.com/en-us/windows/msix/packaging-tool/tool-overview)** from Microsoft is also worth evaluating as a replacement for MSI entirely.
+
+## Conclusion
+
+WiX Toolset's source stays open under MS-RL, but v6.0 attaches the Open Source Maintenance Fee to its binaries — revenue-generating organizations above ~$10k/year are expected to pay $10–$60/month via GitHub Sponsors. Hobbyists, small orgs, and FireGiant support customers are unaffected. Teams that don't want the obligation can pin to WiX v5 (and target it from WixSharp), or move to free alternatives like Inno Setup, NSIS, or Velopack depending on whether they truly need MSI output.
+
+## Links and References
+
+*   FireGiant: [Open Source Maintenance Fee](https://docs.firegiant.com/wix/osmf/)
+*   FireGiant: [WiX v6.0.0 available](https://www.firegiant.com/blog/2025/4/7/wix-v600-available/)
+*   GitHub: [Introduce the Open Source Maintenance Fee (wixtoolset/issues#8974)](https://github.com/wixtoolset/issues/issues/8974)
+*   Rob Mensching: [Open Source Maintenance Fee Two Months In](https://robmensching.com/blog/posts/2025/05/12/open-source-maintenance-fee-two-months-in/)
+*   Rob Mensching: [Open Source Maintenance Fee v1.1](https://robmensching.com/blog/posts/2026/02/04/osmf-v11/)
+*   GitHub: [wixtoolset/wix](https://github.com/wixtoolset/wix)
+*   GitHub Sponsors: [wixtoolset](https://github.com/sponsors/wixtoolset)
+*   WixSharp: [New WiX v6 Licencing Model (wiki)](https://github.com/oleg-shilo/wixsharp/wiki/New-WiX-v6-Licencing-Model)
+*   Open Source Maintenance Fee: [For Consumers](https://opensourcemaintenancefee.org/consumers/)
+*   Alternative: [Inno Setup](https://jrsoftware.org/isinfo.php)
+*   Alternative: [NSIS](https://nsis.sourceforge.io/)
+*   Alternative: [Velopack](https://github.com/velopack/velopack)

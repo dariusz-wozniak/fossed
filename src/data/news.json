@@ -124,5 +124,26 @@
     "summary": "From 2.7.4 to 2.7.5, NPOI added a dependency on NSax, which is licensed under LGPL-3.0 — generally incompatible with NPOI's own Apache-2.0 license. This left an Apache-2.0 package transitively pulling in copyleft code, a problem for teams that restrict (L)GPL dependencies. NSax was later removed in 2.8.0.",
     "tag": ["npoi"],
     "link": "https://github.com/nissl-lab/npoi/issues/1652"
+  },
+  {
+    "date": "2025-04-07",
+    "title": "WiX v6.0.0 available",
+    "summary": "FireGiant announces the release of WiX Toolset v6.0.0. The source code remains open source under the Microsoft Reciprocal License, but v6 is the first release to enforce the Open Source Maintenance Fee (OSMF): revenue-generating organizations are expected to sponsor the wixtoolset GitHub organization to fund ongoing maintenance.",
+    "tag": ["wix-toolset"],
+    "link": "https://www.firegiant.com/blog/2025/4/7/wix-v600-available/"
+  },
+  {
+    "date": "2025-05-12",
+    "title": "Open Source Maintenance Fee Two Months In",
+    "summary": "Rob Mensching reflects on the first two months of the Open Source Maintenance Fee model on the WiX Toolset. The OSMF keeps the source open while asking revenue-generating consumers to pay a modest monthly fee via GitHub Sponsors — a middle path between traditional OSS and going fully commercial.",
+    "tag": ["wix-toolset"],
+    "link": "https://robmensching.com/blog/posts/2025/05/12/open-source-maintenance-fee-two-months-in/"
+  },
+  {
+    "date": "2026-02-04",
+    "title": "Open Source Maintenance Fee v1.1",
+    "summary": "The OSMF EULA is updated to v1.1, adding a minimum annual revenue threshold of US $10,000 before the maintenance fee applies — explicitly exempting hobbyists and very small organizations from the WiX Toolset fee.",
+    "tag": ["wix-toolset"],
+    "link": "https://robmensching.com/blog/posts/2026/02/04/osmf-v11/"
   }
 ] 
