@@ -110,5 +110,19 @@
     "summary": "Big changes are happening in the .NET ecosystem. Three powerhouse libraries - MediatR, AutoMapper, and MassTransit - are moving to commercial licenses. Not so long ago, Fluent Assertions also announced its plans to move to a commercial license.",
     "tag": ["mediatr", "masstransit", "automapper"],
     "link": "https://www.milanjovanovic.tech/blog/mediatr-and-masstransit-going-commercial-what-this-means-for-you"
+  },
+  {
+    "date": "2026-04-10",
+    "title": "What's New in NPOI 2.8.0: A New Chapter for Sustainable Open Source",
+    "summary": "Maintaining an open-source project relied upon by countless independent developers and enterprise giants requires an immense amount of time and resources. To ensure NPOI continues to grow and remains secure for the long term, version 2.8.0 introduces the Open Source Maintenance Fee (OSMF) model. NSax was also removed to resolve the earlier LGPL-3.0 licensing conflict.",
+    "tag": ["npoi"],
+    "link": "https://tonyqus.medium.com/whats-new-in-npoi-2-8-0-a-new-chapter-for-sustainable-open-source-e0a9ae383a07"
+  },
+  {
+    "date": "2025-09-30",
+    "title": "NSax dependency introduces LGPL-3.0 into Apache-2.0 NPOI (2.7.5)",
+    "summary": "From 2.7.4 to 2.7.5, NPOI added a dependency on NSax, which is licensed under LGPL-3.0 — generally incompatible with NPOI's own Apache-2.0 license. This left an Apache-2.0 package transitively pulling in copyleft code, a problem for teams that restrict (L)GPL dependencies. NSax was later removed in 2.8.0.",
+    "tag": ["npoi"],
+    "link": "https://github.com/nissl-lab/npoi/issues/1652"
   }
 ] 

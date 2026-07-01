@@ -38,5 +38,10 @@
     "name": "ImageSharp",
     "slug": "imagesharp",
     "description": "Cross-platform image processing"
+  },
+  {
+    "name": "NPOI",
+    "slug": "npoi",
+    "description": ".NET port of Apache POI for Office files"
   }
 ] 

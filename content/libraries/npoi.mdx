@@ -1,0 +1,86 @@
+---
+title: "NPOI"
+date: 2026-04-10
+slug: npoi
+---
+
+NPOI is the .NET port of the [Apache POI](https://poi.apache.org/) Java project, allowing developers to read and write Microsoft Office files (`.xls`, `.xlsx`, `.doc`, `.docx`) without Microsoft Office or interop. Long distributed under the permissive **Apache-2.0** license, NPOI went through two separate, back-to-back licensing controversies in 2025–2026: an accidental **LGPL-3.0 contamination** via a transitive dependency, followed by a deliberate move to the **Open Source Maintenance Fee (OSMF)** model in version 2.8.0.
+
+## Issue 1: LGPL-3.0 Contamination in 2.7.5 / 2.7.6
+
+Between versions **2.7.4 → 2.7.5**, NPOI added a new dependency on **NSax**, an XML/SAX parsing package. The problem: NSax is licensed under **LGPL-3.0**, which is generally considered incompatible with NPOI's own **Apache-2.0** license.
+
+The result was an Apache-2.0 package that transitively pulled in LGPL-3.0 code — a licensing conflict for teams whose policies forbid (L)GPL dependencies. This was reported in [nissl-lab/npoi#1652](https://github.com/nissl-lab/npoi/issues/1652):
+
+> "this package is under LGPL-3.0 licence which, if i understand correctly, is incompatible with your package being under Apache-2.0 licence."
+
+Versions **2.7.5** and **2.7.6** are affected. **2.7.4** is the last release before the NSax dependency was introduced. The maintainer eventually **removed NSax** (PR #1702) — but the removal shipped in **2.8.0**, which introduced a second, larger problem.
+
+## Issue 2: Open Source Maintenance Fee in 2.8.x
+
+**NPOI 2.8.0**, released in **April 2026**, adopted the **[Open Source Maintenance Fee (OSMF)](https://opensourcemaintenancefee.org/consumers/)** model — the same funding mechanism used by [Mediator](https://github.com/martinothamar/Mediator). The source code remains Apache-2.0, but an **End-User License Agreement (EULA) is attached to the binary releases** published to GitHub and NuGet.org, and that EULA **requires payment of a monthly maintenance fee** by revenue-generating consumers.
+
+Maintainer **Tony Qu** framed it as a sustainability measure:
+
+> "To ensure NPOI continues to grow and remains secure for the long term, version 2.8.0 introduces the Open Source Maintenance Fee (OSMF) model."
+
+### Who pays and how much
+
+Per [nissl-lab/npoi#1785](https://github.com/nissl-lab/npoi/issues/1785), the fee applies to **all consumers of NPOI who generate revenue**, on a tiered monthly basis by organization size:
+
+*   **Small** (< 20 staff): **$15/month**
+*   **Medium** (20–49 staff): **$30/month**
+*   **Large** (50–99 staff): **$60/month**
+*   **Super Large** (≥ 100 staff): **$99/month**
+
+The fee is paid via [GitHub Sponsors](https://github.com/sponsors/tonyqus). Under the broader OSMF framework, the obligation typically applies to organizations above a minimum annual revenue threshold (around **US$10,000**) that depend on projects requiring the fee.
+
+### How OSMF differs from a normal license
+
+OSMF is not a source-license change — the code stays open source (Apache-2.0). Instead, it layers a **contractual payment obligation onto the compiled binaries** you consume from NuGet/GitHub. This differs from conventional open source, which places no financial obligation on users, and from the "go fully commercial" route taken by AutoMapper, MediatR, or MassTransit. You can still read the source, but using the official packaged builds in a revenue-generating context means agreeing to pay.
+
+## What This Means For You
+
+*   Using **NPOI ≤ 2.7.4**: no fee, no LGPL contamination — but no further updates or security fixes on that line.
+*   Using **NPOI 2.7.5 / 2.7.6**: watch for the transitive **LGPL-3.0** dependency (NSax) if your organization restricts copyleft licenses.
+*   Using **NPOI ≥ 2.8.0**: NSax is gone, but revenue-generating users are expected to pay the **OSMF maintenance fee**.
+
+## Alternatives
+
+NPOI is broad — it covers legacy `.xls`, modern `.xlsx`, and Word documents. No single library replaces all of it, so the right alternative depends on the format you need.
+
+1.  **[ClosedXML](https://github.com/ClosedXML/ClosedXML)**:
+    *   A user-friendly library for reading/writing modern `.xlsx` files, built on top of the Open XML SDK. Licensed under **MIT**.
+    *   **Pros**: High-level, intuitive API; great for small-to-medium reporting. Free.
+    *   **Cons**: `.xlsx` only — no legacy `.xls`, no Word.
+
+2.  **[Open XML SDK (DocumentFormat.OpenXml)](https://github.com/dotnet/Open-XML-SDK)**:
+    *   Microsoft's official low-level library for Office Open XML (`.xlsx`, `.docx`, `.pptx`). Licensed under **MIT**.
+    *   **Pros**: Powerful, first-party, covers Word and Excel. Free.
+    *   **Cons**: Verbose, steep learning curve; you build XML structures manually.
+
+3.  **[ExcelDataReader](https://github.com/ExcelDataReader/ExcelDataReader)**:
+    *   Lightweight reader for both `.xls` and `.xlsx`. Licensed under **MIT**.
+    *   **Pros**: Handles legacy `.xls`; simple and fast. Free.
+    *   **Cons**: Read-only — no writing.
+
+4.  **[EPPlus](https://github.com/EPPlusSoftware/EPPlus)**:
+    *   Feature-rich Excel library with charting and object mapping.
+    *   **Cons**: **Not free** — EPPlus 5+ is licensed under Polyform Noncommercial; commercial use requires a paid license. Not a fully open-source escape hatch.
+
+## Conclusion
+
+NPOI's Apache-2.0 source has not changed, but two moves complicated its "free" status: an accidental LGPL-3.0 dependency in 2.7.5/2.7.6, and the Open Source Maintenance Fee attached to 2.8.0 binaries. Teams with license-compliance constraints or commercial revenue should decide whether to pin to 2.7.4, pay the OSMF fee, or migrate to MIT-licensed alternatives like ClosedXML or the Open XML SDK.
+
+## Links and References
+
+*   GitHub: [nissl-lab/NPOI](https://github.com/nissl-lab/npoi)
+*   GitHub Issue: [NSax LGPL-3.0 vs Apache-2.0 incompatibility (#1652)](https://github.com/nissl-lab/npoi/issues/1652)
+*   GitHub Issue: [Introduction of Open Source Maintenance Fee license (#1785)](https://github.com/nissl-lab/npoi/issues/1785)
+*   GitHub Discussion: [NPOI 2.8.0 Release Notes (#1751)](https://github.com/nissl-lab/npoi/discussions/1751)
+*   Medium: [What's New in NPOI 2.8.0: A New Chapter for Sustainable Open Source](https://tonyqus.medium.com/whats-new-in-npoi-2-8-0-a-new-chapter-for-sustainable-open-source-e0a9ae383a07)
+*   Open Source Maintenance Fee: [For Consumers](https://opensourcemaintenancefee.org/consumers/)
+*   Similar model: [Mediator (martinothamar)](https://github.com/martinothamar/Mediator)
+*   Alternative: [ClosedXML](https://github.com/ClosedXML/ClosedXML)
+*   Alternative: [Open XML SDK](https://github.com/dotnet/Open-XML-SDK)
+*   Alternative: [ExcelDataReader](https://github.com/ExcelDataReader/ExcelDataReader)

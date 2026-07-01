@@ -86,5 +86,16 @@
     "alternatives": ["SkiaSharp", "Magick.NET", "System.Drawing.Common"],
     "websiteUrl": "https://sixlabors.com/products/imagesharp/",
     "websiteText": "sixlabors.com"
+  },
+  {
+    "framework": "NPOI",
+    "slug": "npoi",
+    "oldLicense": "Apache 2.0",
+    "newLicense": "Apache 2.0 + Maintenance Fee (OSMF)",
+    "pricing": "$15–$99/month per revenue-generating org",
+    "lastFreeVersion": "2.7.4",
+    "alternatives": ["ClosedXML", "Open XML SDK", "ExcelDataReader", "EPPlus (commercial)"],
+    "websiteUrl": "https://github.com/nissl-lab/npoi",
+    "websiteText": "GitHub"
   }
 ] 
