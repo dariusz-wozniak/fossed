@@ -6,7 +6,7 @@
     "newLicense": "BSD-3-Clause with SponsorLink",
     "pricing": "Free with SponsorLink",
     "lastFreeVersion": "4.18.4",
-    "alternatives": ["NSubstitute", "FakeItEasy"],
+    "alternatives": ["NSubstitute", "FakeItEasy", "TUnit.Mocks"],
     "websiteUrl": "https://github.com/devlooped/moq",
     "websiteText": "GitHub"
   },
