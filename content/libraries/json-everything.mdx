@@ -1,0 +1,85 @@
+---
+title: "json-everything"
+date: 2026-01-15
+slug: json-everything
+---
+
+**json-everything** (by Greg Dennis) is a suite of ~40 `System.Text.Json`-based NuGet packages covering "all of your JSON needs" — including **JsonSchema.Net** (JSON Schema validation, drafts 6 through 2020-12), **JsonPath.Net** (RFC 9535), **JsonPatch.Net** (RFC 6902), **JsonPointer.Net** (RFC 6901), **JsonLogic**, **Json.More.Net**, **JsonSchema.Net.Generation**, **Yaml2JsonNode**, and OpenAPI / data-annotations / ASP.NET validation helpers. The project is **MIT**-licensed and a **.NET Foundation** member.
+
+On **15 January 2026** ([json-everything#981](https://github.com/json-everything/json-everything/issues/981), blog: [*Why Is Everything So Expensive?!*](https://blog.json-everything.net/posts/expensive/)) Greg Dennis announced that json-everything is adopting the **[Open Source Maintenance Fee (OSMF)](https://opensourcemaintenancefee.org/)** model, effective **1 February 2026**.
+
+## What Changed
+
+The **source stays MIT**. Greg Dennis explained the motivation bluntly — despite **140+ million downloads**, voluntary sponsorship had produced only two or three sponsors:
+
+> "I've spent the past 15 years building open source software in my spare time … all of it completely free."
+
+What changed: an **EULA is attached to the binary releases** (the packages on NuGet.org and GitHub) requiring revenue-generating organizations to pay a monthly maintenance fee. This applies across **all** package families in the repository. As with [NPOI](/fossed/library/npoi), you can still read, fork, and build the source under MIT — the obligation rides on the official compiled packages.
+
+No build-time enforcement tooling has been announced (contrast [Verify](/fossed/library/verify), which added a SponsorCheck build step).
+
+## Who Pays and How Much
+
+Paid via [GitHub Sponsors](https://github.com/sponsors/gregsdennis). The base **Maintenance Fee** is **$10/month** for anyone with annual gross revenue of at least **US $10,000** who uses the project in revenue-generating activity. Optional size-based tiers:
+
+*   **Maintenance Fee (Small Org)** — fewer than 20 employees: **$10/month**
+*   **Maintenance Fee (Medium Org)** — 20–100 employees: **$25/month**
+*   **Maintenance Fee (Large Org)** — more than 100 employees: **$50/month**
+*   **Grateful User** — $5/month, voluntary, any sponsor
+
+**Exempt:** individuals, hobbyists, students, and any organization that does not generate revenue using the libraries — though voluntary sponsorship is encouraged.
+
+> Note: GitHub Sponsors does not offer annual billing for this account; annual payers use a one-time payment and are responsible for renewal.
+
+## What This Means For You
+
+*   **Individual / non-revenue / under $10k:** no fee. Voluntary "Grateful User" sponsorship welcomed.
+*   **Revenue-generating organization over $10k:** sponsor `gregsdennis` at the base **$10/month** (or a size tier), for any number of json-everything packages.
+*   **Want to avoid the obligation:** pin every json-everything package to a version released **before 1 February 2026** (those have no EULA), or evaluate alternatives per feature area.
+
+## Alternatives
+
+json-everything is really *many* libraries; there is no single replacement. Match the alternative to the feature you use.
+
+### JSON Schema (JsonSchema.Net)
+
+1.  **[NJsonSchema](https://github.com/RicoSuter/NJsonSchema)** — **MIT**. Schema validation plus C#/TypeScript code generation.
+    *   **Pros**: free, mature, strong codegen story (feeds NSwag).
+    *   **Cons**: built on Newtonsoft.Json; draft coverage lags the latest specs.
+2.  **[Newtonsoft.Json.Schema](https://www.newtonsoft.com/jsonschema)** — **commercial** (free under 1,000 validations/hour). Not an open-source escape hatch.
+3.  **Pin JsonSchema.Net** to a pre-February 2026 release.
+
+### JSON Path (JsonPath.Net)
+
+*   **[JsonCons.JsonPath](https://github.com/danielaparker/JsonCons.Net)** — **MIT**, `System.Text.Json`-based, RFC-aware JSONPath.
+*   **[Hyperbee.Json](https://github.com/Stillpoint-Software/Hyperbee.Json)** — **Apache-2.0**, JSONPath and JSONPointer on `System.Text.Json`.
+
+### JSON Patch (JsonPatch.Net)
+
+*   **[Microsoft.AspNetCore.JsonPatch](https://learn.microsoft.com/en-us/aspnet/core/web-api/jsonpatch)** — first-party (**MIT**). Historically Newtonsoft-based; a `System.Text.Json` implementation ships with .NET 10.
+*   **[Hyperbee.Json](https://github.com/Stillpoint-Software/Hyperbee.Json)** — also implements JSON Patch.
+
+### JSON Pointer (JsonPointer.Net)
+
+*   **[Hyperbee.Json](https://github.com/Stillpoint-Software/Hyperbee.Json)** or **[JsonCons](https://github.com/danielaparker/JsonCons.Net)** — both **MIT/Apache-2.0** with JSON Pointer support. Pointer is a small spec and is also ~100 lines to implement directly.
+
+### YAML → JSON (Yaml2JsonNode)
+
+*   **[YamlDotNet](https://github.com/aaubry/YamlDotNet)** (**MIT**) can deserialize YAML directly; a short adapter converts its node model to `JsonNode`.
+
+## Conclusion
+
+json-everything's source stays MIT, but every package released from 1 February 2026 carries an OSMF EULA requiring revenue-generating organizations above $10k to pay from **$10/month** via GitHub Sponsors — one fee for the whole suite. Individuals and non-revenue users are exempt. Teams that would rather not engage can pin pre-February-2026 versions or swap in MIT/Apache alternatives such as NJsonSchema, JsonCons.Net, Hyperbee.Json, or the first-party ASP.NET JSON Patch package, feature by feature.
+
+## Links and References
+
+*   GitHub Issue: [Introduction of a maintenance fee (json-everything#981)](https://github.com/json-everything/json-everything/issues/981)
+*   Blog: [Why Is Everything So Expensive?!](https://blog.json-everything.net/posts/expensive/)
+*   GitHub: [json-everything/json-everything](https://github.com/json-everything/json-everything)
+*   Website: [json-everything.net](https://json-everything.net/)
+*   GitHub Sponsors: [gregsdennis](https://github.com/sponsors/gregsdennis)
+*   Open Source Maintenance Fee: [Home](https://opensourcemaintenancefee.org/) · [For Consumers](https://opensourcemaintenancefee.org/consumers/)
+*   Alternative: [NJsonSchema](https://github.com/RicoSuter/NJsonSchema)
+*   Alternative: [JsonCons.Net](https://github.com/danielaparker/JsonCons.Net)
+*   Alternative: [Hyperbee.Json](https://github.com/Stillpoint-Software/Hyperbee.Json)
+*   Similar model: [Verify](/fossed/library/verify) · [Polly](/fossed/library/polly) · [NPOI](/fossed/library/npoi)

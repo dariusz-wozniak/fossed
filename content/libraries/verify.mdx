@@ -1,0 +1,82 @@
+---
+title: "Verify"
+date: 2026-08-06
+slug: verify
+---
+
+**Verify** (by Simon Cropp) is the most widely used **snapshot testing** library for .NET. It serializes the result of a test to a `.received.` file, compares it against a committed `.verified.` snapshot, and fails the test when they diverge — ideal for asserting complex object graphs, HTTP responses, generated code, and documents. It ships integrations for **xUnit v3**, **NUnit**, **MSTest**, **TUnit**, **Fixie**, and **Expecto**, and the source is **MIT**-licensed.
+
+In **August 2026** ([VerifyTests/discussions#1731](https://github.com/orgs/VerifyTests/discussions/1731)) Simon Cropp announced that Verify is adopting the **[Open Source Maintenance Fee (OSMF)](https://opensourcemaintenancefee.org/)** model, with a **build-time sponsorship check** from v33 onward.
+
+## What Changed
+
+The **source stays MIT** and freely available. As Simon Cropp put it:
+
+> "The ongoing work of maintaining Verify … takes real, sustained effort. The Maintenance Fee model is one way to make that work more sustainable."
+
+Two things are new:
+
+1.  **Package license (`OsmfEula.txt`).** Every version released **after 1 September 2026** carries an OSMF EULA on the compiled binaries. Versions released **on or before** that date are unaffected. The EULA does **not** restrict self-compiled binaries or forks.
+2.  **Build-time enforcement via [SponsorCheck](https://github.com/SimonCropp/SponsorCheck).** From **v33**, Verify validates sponsorship **locally at build time** (no network calls). An organization declares its GitHub Sponsors account once in a project property, covering every Verify package in the repo. An escape hatch — `<SponsorshipLicenseIgnored>true</SponsorshipLicenseIgnored>` — prevents a false negative from blocking work.
+
+This is a stricter posture than the purely contractual approach taken by [Polly](/fossed/library/polly) or [NPOI](/fossed/library/npoi).
+
+## Who Pays and How Much
+
+Paid via [GitHub Sponsors](https://github.com/sponsors/VerifyTests) (monthly or annual, invoicing available), tiered by organization size — deliberately set **below** the standard OSMF recommendation:
+
+*   **Small** (< 40 employees): **$5/month**
+*   **Medium** (40–200 employees): **$20/month**
+*   **Large** (200–1,000 employees): **$30/month**
+*   **Enterprise** (> 1,000 employees): **$100/month**
+
+**Who must pay:** organizations with **annual gross revenue of at least US $10,000** that use Verify in revenue-generating activity, plus **all government agencies**.
+
+**Exempt:** individuals, non-revenue organizations, forks, contributions, and local development.
+
+## What This Means For You
+
+*   **Individual / OSS / non-revenue:** nothing to do. Set `SponsorshipLicenseIgnored` if the build check trips.
+*   **Company under $10k revenue:** exempt, but the v33+ build check may need the escape-hatch property.
+*   **Company over $10k revenue:** sponsor `VerifyTests` at your tier and set the GitHub Sponsors account property, or stay on a version released on/before 1 September 2026.
+*   **Government agency:** the fee applies regardless of revenue.
+
+## Alternatives
+
+1.  **Pin Verify to a pre-OSMF version**:
+    *   Anything released **on or before 1 September 2026** (pre-v33) has no EULA and no SponsorCheck.
+    *   **Pros**: zero migration, still MIT.
+    *   **Cons**: no future fixes, framework updates, or new serializer features.
+
+2.  **[Snapshooter](https://github.com/SwissLife-OSS/snapshooter)** (SwissLife-OSS):
+    *   Jest-inspired snapshot testing for .NET, **MIT**-licensed, actively maintained. Supports **xUnit**, **NUnit**, and **MSTest**. API: `Snapshot.Match(result);` with field-ignore, hashing, and inline field assertions.
+    *   **Pros**: free, closest feature match, simple API.
+    *   **Cons**: smaller ecosystem than Verify; fewer built-in serialization modules (EF, HTTP, etc.); no xUnit v3 / TUnit parity.
+
+3.  **[ApprovalTests.Net](https://github.com/approvals/ApprovalTests.Net)**:
+    *   The original .NET approval-testing library (Verify itself grew out of this lineage). **MIT**-ish (Apache-2.0).
+    *   **Pros**: free, mature, reporter/diff-tool ecosystem, many framework adapters.
+    *   **Cons**: more manual configuration; serialization is less batteries-included than Verify.
+
+4.  **Build your own with `System.Text.Json` + file compare**:
+    *   For simple DTO snapshots: serialize, write `*.received.json`, diff against a committed `*.verified.json`, fail on mismatch (~30 lines of helper).
+    *   **Cons**: you reimplement scrubbing, diff-tool launching, directory conventions, and pretty-printing that Verify gives you for free.
+
+5.  **Move assertions to explicit `Assert` / [Shouldly](https://github.com/shouldly/shouldly) / [Awesome Assertions](https://github.com/AwesomeAssertions/AwesomeAssertions)**:
+    *   Where a snapshot was really just asserting a handful of fields, an explicit assertion is clearer and dependency-free.
+    *   **Cons**: not viable for large payloads or generated-output tests, which is exactly where Verify shines.
+
+## Conclusion
+
+Verify's source remains MIT, but versions after 1 September 2026 (v33+) attach an OSMF EULA **and** a local build-time SponsorCheck. Revenue-generating organizations above $10k — and every government agency — are expected to sponsor `VerifyTests` at $5–$100/month by tier. Individuals and non-revenue users stay free (with an escape-hatch property). Teams that prefer not to engage can pin to a pre-v33 release or move to MIT-licensed Snapshooter or ApprovalTests.Net.
+
+## Links and References
+
+*   GitHub Discussion: [Open Source Maintenance Fee (VerifyTests/discussions#1731)](https://github.com/orgs/VerifyTests/discussions/1731)
+*   GitHub: [VerifyTests/Verify](https://github.com/VerifyTests/Verify)
+*   GitHub: [SimonCropp/SponsorCheck](https://github.com/SimonCropp/SponsorCheck) · [Consumer usage guide](https://github.com/SimonCropp/SponsorCheck/blob/main/docs/ConsumerUsage.md)
+*   GitHub Sponsors: [VerifyTests](https://github.com/sponsors/VerifyTests)
+*   Open Source Maintenance Fee: [Home](https://opensourcemaintenancefee.org/) · [FAQ](https://opensourcemaintenancefee.org/consumers/faq/)
+*   Alternative: [Snapshooter](https://github.com/SwissLife-OSS/snapshooter)
+*   Alternative: [ApprovalTests.Net](https://github.com/approvals/ApprovalTests.Net)
+*   Similar model: [Polly](/fossed/library/polly) · [json-everything](/fossed/library/json-everything) · [NPOI](/fossed/library/npoi)
