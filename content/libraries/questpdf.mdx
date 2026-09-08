@@ -1,0 +1,90 @@
+---
+title: "QuestPDF"
+date: 2023-05-04
+slug: questpdf
+---
+
+**QuestPDF** (by Marcin Ziabek) is a modern, code-first **PDF generation** library for .NET. Instead of templates or HTML conversion, documents are described with a fluent C# API — a composable layout engine with pages, rows, columns, tables and text flow, rendered through SkiaSharp. It also ships a Companion App for live preview and layout debugging.
+
+QuestPDF started as a straightforward **MIT** project. On **12 February 2023** Marcin Ziabek opened [discussion #491](https://github.com/QuestPDF/QuestPDF/discussions/491) proposing a **hybrid licensing model**, a pricing page went live in April 2023, and the split license shipped with the **2023.4** release (on NuGet **4 May 2023**).
+
+## What Changed
+
+QuestPDF moved from plain MIT to a **three-tier split license**: **Community MIT**, **Professional**, and **Enterprise**. Every tier gets the **same library** — all features, commercial usage, unlimited closed-source projects, royalty-free redistribution. What differs is who is eligible for the free tier and what support comes with the paid ones.
+
+> "The library is still open-source, fully featured, and free for commercial usage (via the MIT license)."
+>
+> \- Marcin Ziabek ([Source](https://github.com/QuestPDF/QuestPDF/discussions/491))
+
+Two properties make this milder than most changes tracked on this site:
+
+*   **No license key, no network calls.** You declare your tier in code at startup — `QuestPDF.Settings.License = LicenseType.Community;` — and nothing is transmitted or validated remotely.
+*   **Releases are governed permanently by the license shipped with them.** Terms for a version you already use cannot change retroactively; any future change applies only to future releases. Releases up to **2023.3** are therefore MIT-only forever.
+
+The licensing terms have been revised since; the current [License Selection Guide](https://www.questpdf.com/license/guide.html) is **v3.0, effective 6 July 2026**.
+
+## Who Pays and How Much
+
+**Community (MIT) — free**, for:
+
+*   Individuals, and learning or evaluation use.
+*   Organizations with **annual gross revenue under USD $1,000,000**.
+*   Charitable organizations with a public-benefit mission.
+*   Academic institutions (non-profit or publicly funded).
+*   Open-source projects under an OSI-approved license.
+*   Users of libraries that depend on QuestPDF internally.
+
+**Not eligible for Community, regardless of revenue:** **publicly traded companies**, and **public-sector entities / government agencies** other than academic institutions. This is the clause most likely to catch a team by surprise — a small government department under $1M is still expected to buy a license.
+
+| Tier | Price | Covers |
+| --- | --- | --- |
+| **Professional** | **from $1,999/year** | One legal entity. Unlimited developers, projects, servers and deployments. Direct email support. |
+| **Enterprise** | **from $4,999/year** | The licensee plus affiliates (50%+ common ownership). Next-business-day priority support, extended continuity terms, formal procurement (POs, multi-year). |
+
+Both paid tiers are effectively **perpetual with renewable support**: you keep the permanent right to every version released during your paid term, nothing disables if you stop renewing, and continuous renewals lock your price. There is a 30-day money-back guarantee.
+
+## What This Means For You
+
+*   **Individual, hobby, OSS, or company under $1M revenue:** free under Community MIT. Set `LicenseType.Community` and move on.
+*   **Company over $1M revenue:** budget from **$1,999/year** for Professional.
+*   **Publicly traded company or government agency:** you need a paid license even below the revenue threshold — check this before shipping.
+*   **Already using QuestPDF on an old version:** releases up to **2023.3** stay MIT-only permanently; nothing is retroactive.
+
+## Alternatives
+
+1.  **Pin a pre-2023.4 release of [QuestPDF](https://github.com/QuestPDF/QuestPDF)**:
+    *   Everything up to **2023.3** is MIT-only, permanently.
+    *   **Pros**: zero code change, no eligibility questions.
+    *   **Cons**: three years of layout-engine, font and performance work missed; no security fixes; SkiaSharp and .NET target updates stop.
+
+2.  **[PDFsharp / MigraDoc](https://www.pdfsharp.net/)** (empira Software):
+    *   **MIT**, no revenue threshold, no tiers, no asterisks. PDFsharp handles low-level PDF creation, editing and merging; MigraDoc adds automatic text flow and document-level layout.
+    *   **Pros**: genuinely permissive, mature, .NET 8/9/10 and .NET Framework support.
+    *   **Cons**: the API is considerably lower-level and more verbose than QuestPDF's fluent layout engine; MigraDoc's layout model is dated by comparison.
+
+3.  **HTML → PDF via a headless browser** — [PuppeteerSharp](https://github.com/hardkoded/puppeteer-sharp) (**MIT**) or [Playwright for .NET](https://github.com/microsoft/playwright-dotnet) (**MIT**):
+    *   Render an HTML/CSS template with Chromium and print to PDF.
+    *   **Pros**: free, reuses web skills and existing templating, excellent typography and CSS support.
+    *   **Cons**: ships a browser (hundreds of MB) into your deployment, slower per document, awkward in constrained containers, and page-break control in CSS is fiddly.
+
+4.  **[iText 7 for .NET](https://github.com/itext/itext-dotnet)**:
+    *   Dual-licensed **AGPL-3.0 or commercial**.
+    *   **Pros**: extremely capable, strong PDF/A and digital-signature support.
+    *   **Cons**: AGPL is a non-starter for most closed-source products, so in practice this is a commercial purchase — usually a more expensive one than QuestPDF.
+
+5.  **Commercial suites** — [IronPDF](https://ironpdf.com/), [Aspose.PDF](https://products.aspose.com/pdf/net/), [Syncfusion PDF](https://www.syncfusion.com/document-processing/pdf-framework/net):
+    *   If you are buying anyway, these compete on features rather than licensing. Syncfusion also has a community license for small teams and individuals.
+
+## Conclusion
+
+QuestPDF is not a "went commercial" story so much as a **means-tested one**: the library is unchanged, the terms are clear, there is no key and no phone-home, and old releases stay MIT forever. Free for individuals, OSS, non-profits, academia, and any company under **$1M** annual revenue — **from $1,999/year** above that, and for publicly traded companies and government agencies regardless of size. If you need an unconditionally permissive PDF library, **PDFsharp/MigraDoc** is the MIT answer, at the cost of a much lower-level API.
+
+## Links and References
+
+*   Discussion: [QuestPDF development and licensing opportunities (#491)](https://github.com/QuestPDF/QuestPDF/discussions/491)
+*   QuestPDF: [License Selection Guide](https://www.questpdf.com/license/guide.html) · [Community License](https://www.questpdf.com/license/community.html) · [Pricing](https://www.questpdf.com/pricing.html) · [License configuration](https://www.questpdf.com/license/configuration.html)
+*   GitHub: [QuestPDF/QuestPDF](https://github.com/QuestPDF/QuestPDF)
+*   Blog: [Quest for a permissively licensed PDF library in C#](https://duerrenberger.dev/blog/2025/11/04/quest-for-permissively-licensed-pdf-library-in-csharp/)
+*   Alternative: [PDFsharp & MigraDoc](https://www.pdfsharp.net/)
+*   Alternative: [PuppeteerSharp](https://github.com/hardkoded/puppeteer-sharp) · [Playwright for .NET](https://github.com/microsoft/playwright-dotnet)
+*   Similar model (revenue-threshold free tier): [MassTransit](/fossed/library/masstransit)

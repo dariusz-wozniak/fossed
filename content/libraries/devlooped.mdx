@@ -1,0 +1,89 @@
+---
+title: "Devlooped (GitInfo, ThisAssembly, …)"
+date: 2025-10-17
+slug: devlooped
+---
+
+**Devlooped** is Daniel Cazzulino's (kzu) package family — around thirty small, widely-used .NET libraries and tools. The best known are **[GitInfo](https://github.com/devlooped/GitInfo)** (git metadata as compile-time constants) and **[ThisAssembly](https://github.com/devlooped/ThisAssembly)** (assembly info, resources, project properties and constants exposed via source generators), alongside **nugetizer**, **Merq**, **dotnet-trx**, **dotnet-retest**, **dotnet-vs**, **SmallSharp**, **TableStorage**, **CredentialManager** and more. Devlooped is also the home of **[Moq](/fossed/library/moq)**.
+
+In **October 2025** these packages adopted the **[Open Source Maintenance Fee (OSMF)](https://opensourcemaintenancefee.org/)**: the **MIT source is unchanged**, but the binary releases carry an OSMF EULA and a single fee covers the entire family.
+
+## What Changed
+
+This is the third act in a long story about sustainability at Devlooped.
+
+1.  **SponsorLink v1 (August 2023).** A closed-source, obfuscated build-time component bundled into **Moq 4.20.0**. It was removed two versions later after a significant backlash — the full story is on the [Moq page](/fossed/library/moq).
+2.  **SponsorLink v2 (November 2024).** Rebuilt in the open: an offline check against a locally synced, signed manifest, producing **editor-only warnings** that never fail a CLI or CI build. [GitInfo adopted it in v3.5.0](https://github.com/devlooped/GitInfo/issues/369) (2 November 2024).
+3.  **OSMF EULA (October 2025).** SponsorLink was dropped in favour of a plain contractual model. ThisAssembly's commit says it outright — *"Drop SponsorLink, adopt OSMF EULA"* (16 October 2025, shipped in **v2.1.1**) — and GitInfo followed a day later (*"Adopt OSMF EULA"*, 17 October 2025, shipped in **v3.6.0**).
+
+As of 8 September 2026, **29 Devlooped repositories** ship an `osmfeula.txt` alongside their MIT `license.txt`, including GitInfo, ThisAssembly, nugetizer, Merq, dotnet-trx, dotnet-retest, dotnet-vs, SmallSharp, StructId, TableStorage, CredentialManager, Extensions.AI, CloudActors, JQSharp, Jsontron and json5.
+
+**Moq is not among them.** The `devlooped/moq` repository carries only `License.txt` — no OSMF EULA at the time of writing. Moq's own situation is unchanged from the 2023 SponsorLink episode.
+
+## The Terms
+
+The EULA is the standard OSMF text, applied to the **Binary Release** only:
+
+> "Project offers a Binary Release of the Software to Users in exchange for a maintenance fee … The Fee applies only to Users that generate revenue by the Software. Non-revenue-generating use of the Software is exempt from this Fee."
+
+Two clauses are worth knowing:
+
+*   **No lock-in on binaries.** Non-payment "does not restrict the User from obtaining or redistributing binaries from other sources or self-compiling them." The MIT source remains fully usable.
+*   **No double-charging.** Users who already pay separate support or maintenance fees to the maintainers are exempt.
+
+There is **no build-time enforcement** — no SponsorLink, no SponsorCheck, no network calls. The obligation is contractual.
+
+## Who Pays and How Much
+
+Paid via [GitHub Sponsors](https://github.com/sponsors/devlooped). **One fee covers all current and future Devlooped packages** — there is no per-project or per-package licensing.
+
+*   **Fewer than 20 employees:** **$10/month**
+*   **20–100 employees:** **$40/month**
+*   **More than 100 employees:** **$60/month**
+
+The tiers apply to organizations engaged in revenue-generating activity, sized by employee count rather than revenue — note that this differs from the revenue thresholds used by [Polly](/fossed/library/polly), [Verify](/fossed/library/verify) and [json-everything](/fossed/library/json-everything). Individuals, non-profits and non-revenue use are exempt; personal sponsorship tiers ($1–$5/month) exist separately for anyone who wants to contribute anyway.
+
+## What This Means For You
+
+*   **Individual / OSS / non-revenue:** nothing to do, nothing to configure.
+*   **Revenue-generating organization:** one sponsorship at your tier covers every Devlooped package you use, now and later. At $10–$60/month this is among the cheapest obligations tracked on this site — the cost is procurement paperwork, not money.
+*   **Policy forbids EULAs on packages:** pin to releases from before mid-October 2025 (**GitInfo 3.5.x**, **ThisAssembly 2.1.0**), build from the MIT source yourself, or replace the package.
+*   **Using Moq:** unaffected by this change.
+
+## Alternatives
+
+1.  **Self-compile from source**:
+    *   The MIT license is untouched and the EULA explicitly permits self-compiled binaries. For packages this small, building them into your own internal feed is genuinely practical.
+    *   **Cons**: you own the build pipeline and the update cadence.
+
+2.  **Pin pre-EULA versions**:
+    *   Anything released before mid-October 2025 has no EULA.
+    *   **Cons**: no fixes, and GitInfo in particular has shipped meaningful work since (v3.6.1, June 2026).
+
+3.  **Replace GitInfo** — git metadata at build time:
+    *   **[MinVer](https://github.com/adamralph/minver)** (**Apache-2.0**) — versions from git tags, minimal configuration.
+    *   **[Nerdbank.GitVersioning](https://github.com/dotnet/Nerdbank.GitVersioning)** (**MIT**) — versioning plus generated `ThisAssembly` constants, which covers part of both libraries at once.
+    *   **[GitVersion](https://github.com/GitTools/GitVersion)** (**MIT**) — branch-strategy-driven versioning, heavier but standard in CI.
+
+4.  **Replace ThisAssembly**:
+    *   Nerdbank.GitVersioning generates a comparable `ThisAssembly` class; otherwise a small `Microsoft.CodeAnalysis` incremental generator, or plain MSBuild-generated constants, covers the common cases.
+    *   **Cons**: you reimplement the resource/string/project-property conveniences ThisAssembly gives you for free.
+
+5.  **Replace the tooling packages**:
+    *   `nugetizer` → stock `dotnet pack` with hand-written `.nuspec`/MSBuild properties.
+    *   `dotnet-trx` / `dotnet-retest` → `dotnet test --logger trx` plus a CI script or your test platform's own retry support.
+
+## Conclusion
+
+Devlooped's ~30 packages keep their **MIT source**, but binary releases published from **mid-October 2025** carry an OSMF EULA: **$10–$60/month** by employee count for revenue-generating organizations, one fee for the whole family, with no build-time enforcement and no restriction on self-compiling. **Moq is not covered.** For most teams this is the cheapest item on this site; for teams whose policy bars EULA-bearing packages, GitInfo and ThisAssembly have close MIT/Apache substitutes in MinVer, Nerdbank.GitVersioning and GitVersion.
+
+## Links and References
+
+*   GitHub Sponsors: [devlooped](https://github.com/sponsors/devlooped) (OSMF tiers)
+*   GitHub: [devlooped/GitInfo](https://github.com/devlooped/GitInfo) · [OSMF EULA](https://github.com/devlooped/GitInfo/blob/main/osmfeula.txt) · [Adopting SponsorLink in v3.5 (#369)](https://github.com/devlooped/GitInfo/issues/369)
+*   GitHub: [devlooped/ThisAssembly](https://github.com/devlooped/ThisAssembly) · [devlooped organization](https://github.com/devlooped)
+*   GitHub: [devlooped/SponsorLink](https://github.com/devlooped/SponsorLink) · [SponsorLink docs](https://www.devlooped.com/SponsorLink/github/)
+*   Open Source Maintenance Fee: [Home](https://opensourcemaintenancefee.org/) · [For Consumers](https://opensourcemaintenancefee.org/consumers/)
+*   Related: [Moq](/fossed/library/moq) — the 2023 SponsorLink controversy
+*   Similar model: [Polly](/fossed/library/polly) · [Verify](/fossed/library/verify) · [json-everything](/fossed/library/json-everything) · [NPOI](/fossed/library/npoi)
+*   Alternative: [MinVer](https://github.com/adamralph/minver) · [Nerdbank.GitVersioning](https://github.com/dotnet/Nerdbank.GitVersioning) · [GitVersion](https://github.com/GitTools/GitVersion)

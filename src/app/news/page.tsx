@@ -1,9 +1,12 @@
-import { redirect } from 'next/navigation';
+import NewsList from '@/components/NewsList';
+import type { Metadata } from 'next';
 
-// This page only exists to redirect /news to the first page of pagination
+// Static export cannot serve a runtime redirect, so /news renders page 1 directly.
+export const metadata: Metadata = {
+  title: 'Latest News - Page 1',
+  description: 'Page 1 of updates and articles related to .NET library licensing changes.',
+};
+
 export default function NewsRootPage() {
-  redirect('/news/page/1');
-  // Note: redirect() must be called outside of JSX
-  // Return null or an empty fragment as the redirect happens before render
-  // return null; 
-} 
+  return <NewsList currentPage={1} />;
+}

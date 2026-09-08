@@ -33,7 +33,7 @@ The fee is **not** a support contract or an SLA.
 *   Using Polly **only transitively** (via `Microsoft.Extensions.*.Resilience`): nothing to do.
 *   Using Polly **directly**, as an **individual / non-revenue / under $20k**: still free.
 *   Using Polly **directly** in a **revenue-generating organization above the threshold**: budget **$20/month** from November 2026, or pin to a version released before then.
-*   Want to avoid the obligation entirely: pin to a pre-OSMF release, consume Polly only through the Microsoft resilience packages, or fork (BSD-3-Clause permits it).
+*   Want to avoid the obligation entirely: pin to a pre-OSMF release, consume Polly only through the Microsoft resilience packages, or move to the BSD-3-Clause community fork [Fences](https://github.com/BrighterCommand/Fences).
 
 ## Alternatives
 
@@ -49,10 +49,11 @@ Polly is deep and well-integrated; there is no drop-in replacement with the same
     *   **Pros**: MIT-licensed, first-party, covers the common HTTP retry / circuit-breaker / timeout scenarios with standard handlers.
     *   **Cons**: opinionated pipeline shape; less direct control than using the Polly API yourself; you are still relying on Polly underneath.
 
-3.  **Fork [Polly](https://github.com/App-vNext/Polly)**:
-    *   BSD-3-Clause explicitly permits redistribution and modification. A self-built binary from source carries only the BSD terms.
-    *   **Pros**: keep the full API, no fee.
-    *   **Cons**: you own maintenance, security patching, and CI for the fork.
+3.  **[Fences](https://github.com/BrighterCommand/Fences)** — the community fork:
+    *   After opening a ["Forking Polly" discussion](https://github.com/App-vNext/Polly/discussions/3202) on 18 August 2026, Ian Cooper and the Brighter Command team forked **Polly 8.7.0** as **Fences**, published on NuGet under the `Paramore.Fences.*` prefix (9.0.0 stable on 29 August 2026). BSD-3-Clause, no maintenance-fee EULA; the v8-era API mirrors Polly's exactly.
+    *   **Pros**: drop-in for the Polly 8 API, free binaries, no procurement conversation.
+    *   **Cons**: young project, small maintainer pool, **not affiliated with or endorsed by App vNext**, and future major versions may diverge from Polly.
+    *   Rolling your own fork is equally legitimate — BSD-3-Clause permits redistribution and modification, and a self-built binary carries only the BSD terms — but then you own maintenance, security patching, and CI.
 
 4.  **Hand-rolled resilience**:
     *   For simple cases, `HttpClient` with a custom `DelegatingHandler`, `PeriodicTimer`-based retry loops, or `System.Threading.RateLimiter` (built into .NET 7+) can cover retry, timeout, and rate limiting without a dependency.
@@ -60,7 +61,7 @@ Polly is deep and well-integrated; there is no drop-in replacement with the same
 
 ## Conclusion
 
-Polly's source stays open under BSD-3-Clause, but packages released from 16 November 2026 add an Open Source Maintenance Fee: **$20/month** for organizations earning **$20k+** that depend on Polly **directly**. Transitive use via Microsoft's resilience packages is unaffected, individuals and non-revenue users pay nothing, and teams that want to opt out can pin to a pre-OSMF release or fork.
+Polly's source stays open under BSD-3-Clause, but packages released from 16 November 2026 add an Open Source Maintenance Fee: **$20/month** for organizations earning **$20k+** that depend on Polly **directly**. Transitive use via Microsoft's resilience packages is unaffected, individuals and non-revenue users pay nothing, and teams that want to opt out can pin to a pre-OSMF release or move to the BSD-3-Clause community fork **Fences**.
 
 ## Links and References
 
@@ -69,5 +70,7 @@ Polly's source stays open under BSD-3-Clause, but packages released from 16 Nove
 *   GitHub: [App-vNext/Polly](https://github.com/App-vNext/Polly)
 *   GitHub Sponsors: [App-vNext](https://github.com/sponsors/App-vNext)
 *   Open Source Maintenance Fee: [Home](https://opensourcemaintenancefee.org/) · [For Consumers](https://opensourcemaintenancefee.org/consumers/) · [FAQ](https://opensourcemaintenancefee.org/consumers/faq/)
+*   Fork: [BrighterCommand/Fences](https://github.com/BrighterCommand/Fences) · [Forking Polly (App-vNext/Polly#3202)](https://github.com/App-vNext/Polly/discussions/3202)
+*   Context: [.NET Foundation statement on Open Source Maintenance Fees](https://dotnetfoundation.org/news-events/detail/.net-foundation-statement-on-open-source-maintenance-fees)
 *   Microsoft Docs: [Build resilient HTTP apps](https://learn.microsoft.com/en-us/dotnet/core/resilience/http-resilience)
 *   Similar model: [Verify](/fossed/library/verify) · [NPOI](/fossed/library/npoi) · [WiX Toolset](/fossed/library/wix-toolset)

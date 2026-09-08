@@ -6,7 +6,11 @@
     "newLicense": "BSD-3-Clause with SponsorLink",
     "pricing": "Free with SponsorLink",
     "lastFreeVersion": "4.18.4",
-    "alternatives": ["NSubstitute", "FakeItEasy", "TUnit.Mocks"],
+    "alternatives": [
+      "NSubstitute",
+      "FakeItEasy",
+      "TUnit.Mocks"
+    ],
     "websiteUrl": "https://github.com/devlooped/moq",
     "websiteText": "GitHub"
   },
@@ -17,7 +21,11 @@
     "newLicense": "Commercial",
     "pricing": "ca. $130 per dev per year",
     "lastFreeVersion": "7.x",
-    "alternatives": ["Shouldly", "Awesome Assertions", "standard Assert methods"],
+    "alternatives": [
+      "Shouldly",
+      "Awesome Assertions",
+      "standard Assert methods"
+    ],
     "websiteUrl": "https://fluentassertions.com/",
     "websiteText": "fluentassertions.com"
   },
@@ -25,10 +33,15 @@
     "framework": "AutoMapper",
     "slug": "automapper",
     "oldLicense": "MIT",
-    "newLicense": "Commercial",
-    "pricing": "TBD",
-    "lastFreeVersion": "Current",
-    "alternatives": ["Mapperly", "Mapster", "ForgeMap", "manual mapping"],
+    "newLicense": "RPL-1.5 + Commercial (dual)",
+    "pricing": "Tiered by team size (Standard/Professional/Enterprise); free Community edition under $5M revenue",
+    "lastFreeVersion": "14.x (v15 is the first commercial release)",
+    "alternatives": [
+      "Mapperly",
+      "Mapster",
+      "ForgeMap",
+      "manual mapping"
+    ],
     "websiteUrl": "https://automapper.org/",
     "websiteText": "automapper.org"
   },
@@ -36,10 +49,13 @@
     "framework": "MediatR",
     "slug": "mediatr",
     "oldLicense": "Apache 2.0",
-    "newLicense": "Commercial",
-    "pricing": "TBD",
-    "lastFreeVersion": "Current",
-    "alternatives": ["Mediator","Brighter"],
+    "newLicense": "RPL-1.5 + Commercial (dual)",
+    "pricing": "Tiered by team size (Standard/Professional/Enterprise); free Community edition under $5M revenue",
+    "lastFreeVersion": "12.x (v13 is the first commercial release)",
+    "alternatives": [
+      "Mediator",
+      "Brighter"
+    ],
     "websiteUrl": "https://github.com/jbogard/MediatR",
     "websiteText": "GitHub"
   },
@@ -47,10 +63,16 @@
     "framework": "MassTransit",
     "slug": "masstransit",
     "oldLicense": "Apache 2.0",
-    "newLicense": "BSL 1.1",
-    "pricing": "Commercial for large businesses",
-    "lastFreeVersion": "8.x",
-    "alternatives": ["NServiceBus", "Rebus", "Brighter", "Wolverine"],
+    "newLicense": "Commercial (Massient)",
+    "pricing": "Targets: $400/mo (SMB), $1,200/mo (large org); free tier under ~$1M revenue",
+    "lastFreeVersion": "8.x (Apache 2.0, patched through 2026)",
+    "alternatives": [
+      "NServiceBus",
+      "Rebus",
+      "Brighter",
+      "Wolverine",
+      "OpenTransit (v8 community fork)"
+    ],
     "websiteUrl": "https://masstransit.io/",
     "websiteText": "masstransit.io"
   },
@@ -58,10 +80,17 @@
     "framework": "NBomber",
     "slug": "nbomber",
     "oldLicense": "Apache 2.0",
-    "newLicense": "BSL 1.1",
-    "pricing": "Free for non-production, commercial for production",
-    "lastFreeVersion": "4.x",
-    "alternatives": ["Netling", "Artillery", "JMeter", "k6", "Azure Load Testing", "etc."],
+    "newLicense": "NBomber License Agreement (closed source)",
+    "pricing": "Free for personal use only; commercial subscription for any organizational use",
+    "lastFreeVersion": "4.x (Apache 2.0)",
+    "alternatives": [
+      "Netling",
+      "Artillery",
+      "JMeter",
+      "k6",
+      "Azure Load Testing",
+      "etc."
+    ],
     "websiteUrl": "https://nbomber.com/",
     "websiteText": "nbomber.com"
   },
@@ -72,7 +101,12 @@
     "newLicense": "RPL 1.5",
     "pricing": "Commercial, starts at $1,500/year",
     "lastFreeVersion": "4.x",
-    "alternatives": ["OpenIddict", "Keycloak", "Azure Active Directory B2C", "etc."],
+    "alternatives": [
+      "OpenIddict",
+      "Keycloak",
+      "Azure Active Directory B2C",
+      "etc."
+    ],
     "websiteUrl": "https://duendesoftware.com/products/identityserver",
     "websiteText": "duendesoftware.com"
   },
@@ -83,7 +117,11 @@
     "newLicense": "SixLabors Split License",
     "pricing": "From $249/year",
     "lastFreeVersion": "2.x",
-    "alternatives": ["SkiaSharp", "Magick.NET", "System.Drawing.Common"],
+    "alternatives": [
+      "SkiaSharp",
+      "Magick.NET",
+      "System.Drawing.Common"
+    ],
     "websiteUrl": "https://sixlabors.com/products/imagesharp/",
     "websiteText": "sixlabors.com"
   },
@@ -94,7 +132,12 @@
     "newLicense": "Apache 2.0 + Maintenance Fee (OSMF)",
     "pricing": "$15–$99/month per revenue-generating org",
     "lastFreeVersion": "2.7.4",
-    "alternatives": ["ClosedXML", "Open XML SDK", "ExcelDataReader", "EPPlus (commercial)"],
+    "alternatives": [
+      "ClosedXML",
+      "Open XML SDK",
+      "ExcelDataReader",
+      "EPPlus (commercial)"
+    ],
     "websiteUrl": "https://github.com/nissl-lab/npoi",
     "websiteText": "GitHub"
   },
@@ -105,7 +148,13 @@
     "newLicense": "MS-RL + Maintenance Fee (OSMF)",
     "pricing": "$10–$60/month per revenue-generating org (>$10k/yr)",
     "lastFreeVersion": "5.x",
-    "alternatives": ["WiX v5 (pin)", "Inno Setup", "NSIS", "Velopack", "Visual Studio Installer Projects"],
+    "alternatives": [
+      "WiX v5 (pin)",
+      "Inno Setup",
+      "NSIS",
+      "Velopack",
+      "Visual Studio Installer Projects"
+    ],
     "websiteUrl": "https://wixtoolset.org/",
     "websiteText": "wixtoolset.org"
   },
@@ -116,7 +165,12 @@
     "newLicense": "BSD-3-Clause + Maintenance Fee (OSMF)",
     "pricing": "$20/month per revenue-generating org (>$20k/yr), direct dependency only",
     "lastFreeVersion": "Releases on or before 2026-11-16",
-    "alternatives": ["Pin pre-OSMF version", "Microsoft.Extensions.Http.Resilience (transitive)", "Fork (BSD-3-Clause)", "Hand-rolled resilience"],
+    "alternatives": [
+      "Fences (BSD-3-Clause community fork)",
+      "Pin pre-OSMF version",
+      "Microsoft.Extensions.Http.Resilience (transitive)",
+      "Hand-rolled resilience"
+    ],
     "websiteUrl": "https://www.thepollyproject.org/",
     "websiteText": "thepollyproject.org"
   },
@@ -127,7 +181,12 @@
     "newLicense": "MIT + Maintenance Fee (OSMF)",
     "pricing": "$5–$100/month per revenue-generating org (>$10k/yr); all government agencies",
     "lastFreeVersion": "v32 (releases on or before 2026-09-01)",
-    "alternatives": ["Snapshooter", "ApprovalTests.Net", "Pin pre-v33 version", "Explicit Assert / Shouldly"],
+    "alternatives": [
+      "Snapshooter",
+      "ApprovalTests.Net",
+      "Pin pre-v33 version",
+      "Explicit Assert / Shouldly"
+    ],
     "websiteUrl": "https://github.com/VerifyTests/Verify",
     "websiteText": "GitHub"
   },
@@ -138,8 +197,64 @@
     "newLicense": "MIT + Maintenance Fee (OSMF)",
     "pricing": "$10–$50/month per revenue-generating org (>$10k/yr)",
     "lastFreeVersion": "Releases before 2026-02-01",
-    "alternatives": ["NJsonSchema", "JsonCons.Net", "Hyperbee.Json", "AspNetCore JsonPatch", "Pin pre-OSMF version"],
+    "alternatives": [
+      "NJsonSchema",
+      "JsonCons.Net",
+      "Hyperbee.Json",
+      "AspNetCore JsonPatch",
+      "Pin pre-OSMF version"
+    ],
     "websiteUrl": "https://json-everything.net/",
     "websiteText": "json-everything.net"
+  },
+  {
+    "framework": "QuestPDF",
+    "slug": "questpdf",
+    "oldLicense": "MIT",
+    "newLicense": "Community MIT / Professional / Enterprise",
+    "pricing": "Free under $1M revenue; Professional from $1,999/yr, Enterprise from $4,999/yr",
+    "lastFreeVersion": "2023.3 (last MIT-only release)",
+    "alternatives": [
+      "PDFsharp / MigraDoc",
+      "PuppeteerSharp / Playwright (HTML to PDF)",
+      "iText 7 (AGPL or commercial)",
+      "Pin a pre-2023.4 release"
+    ],
+    "websiteUrl": "https://www.questpdf.com/",
+    "websiteText": "questpdf.com"
+  },
+  {
+    "framework": "EPPlus",
+    "slug": "epplus",
+    "oldLicense": "LGPL",
+    "newLicense": "Polyform Noncommercial + Commercial",
+    "pricing": "$329-$569 per developer per year (subscription); perpetual from $899",
+    "lastFreeVersion": "4.5.3.3 (LGPL)",
+    "alternatives": [
+      "ClosedXML",
+      "MiniExcel",
+      "Open XML SDK (DocumentFormat.OpenXml)",
+      "NPOI (now OSMF)",
+      "Pin EPPlus 4.5.3.3"
+    ],
+    "websiteUrl": "https://www.epplussoftware.com/",
+    "websiteText": "epplussoftware.com"
+  },
+  {
+    "framework": "Devlooped Packages",
+    "slug": "devlooped",
+    "oldLicense": "MIT",
+    "newLicense": "MIT + Maintenance Fee (OSMF)",
+    "pricing": "$10-$60/month per revenue-generating org by headcount; covers all Devlooped packages",
+    "lastFreeVersion": "Releases before mid-October 2025 (GitInfo 3.5.x, ThisAssembly 2.1.0)",
+    "alternatives": [
+      "MinVer",
+      "Nerdbank.GitVersioning",
+      "GitVersion",
+      "Self-compile from MIT source",
+      "Pin pre-EULA versions"
+    ],
+    "websiteUrl": "https://www.devlooped.com/",
+    "websiteText": "devlooped.com"
   }
-] 
+]

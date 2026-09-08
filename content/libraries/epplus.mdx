@@ -1,0 +1,97 @@
+---
+title: "EPPlus"
+date: 2020-03-08
+slug: epplus
+---
+
+**EPPlus** is one of the most widely used libraries for reading and writing **Excel `.xlsx` files** in .NET — worksheets, formulas and a calculation engine, pivot tables, charts, conditional formatting, and import/export from data tables and collections. It works directly on the Open XML format, with no dependency on Excel or interop.
+
+EPPlus was **LGPL** for its first decade. With **version 5** — first stable release **8 March 2020** — it moved to a **dual license**: [**Polyform Noncommercial 1.0.0**](https://polyformproject.org/licenses/noncommercial/1.0.0/) as the community license, plus a **paid commercial license** for any business use. This is the oldest change tracked on this site, and the one most likely to already be sitting undetected in a legacy codebase.
+
+## What Changed
+
+*   **EPPlus 4.5.3.3** (published **30 January 2020**) is the **last LGPL release**. It remains freely usable, including commercially, under LGPL terms.
+*   **EPPlus 5 and later** are licensed **Polyform Noncommercial** for free use, or commercially for everything else. The source is still published on GitHub — but Polyform Noncommercial is **not an open-source license**: it permits use only for noncommercial purposes.
+
+Free use under Polyform Noncommercial covers **personal use for research, experiment, personal study and hobby projects**, and **noncommercial organizations** such as charities, education, and public research, safety or health bodies. Anything done by or for a business — including internal line-of-business tools that are never sold — requires a commercial license.
+
+### The license must be declared in code
+
+EPPlus is one of the few libraries here with a runtime gate: if you do not declare a license, it throws a `LicenseException`.
+
+*   **EPPlus 5 – 7:** set the license context once at startup.
+
+    ```csharp
+    ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // or .Commercial
+    ```
+
+*   **EPPlus 8** (first stable **8.0.1**, **28 March 2025**) replaced `LicenseContext` with an explicit license API and introduced **license keys** for commercial use:
+
+    ```csharp
+    ExcelPackage.License.SetNonCommercialPersonal("Your Name");
+    ExcelPackage.License.SetNonCommercialOrganization("Your Organization");
+    ExcelPackage.License.SetCommercial("<your-license-key>");
+    ```
+
+    Upgrading from 7 to 8 is therefore a **breaking change** for every project, regardless of tier.
+
+## Who Pays and How Much
+
+Commercial licensing is **per developer**, with unlimited deployment. Published USD prices:
+
+| Model | 1–4 devs | 5–9 | 10–24 | 25–49 | 50+ |
+| --- | --- | --- | --- | --- | --- |
+| **Subscription, 1 year** | $569 | $515 | $465 | $419 | $329 |
+| **Subscription, 2 years** | $1,079 | $979 | $885 | $795 | $624 |
+
+**Perpetual licenses** start at **$899** per developer with one year of support and upgrades ($1,339 for two years), keeping permanent rights to every version released during the support period. Bulk **license packages** run from **$6,395** (up to 10 developers, 1 year) to **$15,145** (up to 25 developers, 2 years). Prices are per developer per year and exclude local tax — check the [official page](https://www.epplussoftware.com/en/LicenseOverview) before budgeting.
+
+## What This Means For You
+
+*   **Hobby project, study, charity, school, or public research:** free — declare the noncommercial license in code and you are done.
+*   **Any commercial company, including internal-only tools:** you need a paid license from **$329–$569 per developer per year**. "We don't sell the spreadsheet" is not an exemption.
+*   **Still on EPPlus 4.x:** you are on LGPL and owe nothing — but you are also five years behind on fixes and new Excel features.
+*   **Upgrading 7 → 8:** budget for the `LicenseContext` → `License.Set*` code change and, for commercial users, license-key distribution to build agents and developers.
+
+> **Caution:** unofficial repackages of the last LGPL release circulate on NuGet under names like `EPPlusFree` and `EPPlus-LGPL`. They are not published by EPPlus Software; treat them with the scrutiny you would give any third-party republish of someone else's library.
+
+## Alternatives
+
+1.  **Pin [EPPlus 4.5.3.3](https://www.nuget.org/packages/EPPlus/4.5.3.3)**:
+    *   The last LGPL release, free for commercial use under LGPL terms.
+    *   **Pros**: no code change, no fee, well understood.
+    *   **Cons**: unmaintained since January 2020 — no security fixes, no new Excel features, no new .NET target support. LGPL also brings its own obligations if you modify it.
+
+2.  **[ClosedXML](https://github.com/ClosedXML/ClosedXML)**:
+    *   **MIT**, the most common escape route from EPPlus. A friendly wrapper over the Open XML SDK with a similar mental model (workbooks, worksheets, cells, styles) and a formula engine.
+    *   **Pros**: free for any use, active, large community, closest API ergonomics to EPPlus.
+    *   **Cons**: higher memory use on large workbooks; pivot table and chart support is narrower than EPPlus.
+
+3.  **[MiniExcel](https://github.com/mini-software/MiniExcel)**:
+    *   **Apache-2.0**, streaming-first. Reads and writes without loading the whole document into memory.
+    *   **Pros**: free, dramatically lower memory and faster on large files, simple query/insert API.
+    *   **Cons**: deliberately minimal — little styling, no charts, no calculation engine. A data-pipeline tool, not a spreadsheet-authoring one.
+
+4.  **[Open XML SDK](https://github.com/dotnet/Open-XML-SDK)** (`DocumentFormat.OpenXml`):
+    *   **MIT**, maintained by Microsoft — the first-party foundation the others build on.
+    *   **Pros**: free, authoritative, complete format coverage, no third-party risk.
+    *   **Cons**: very low-level; simple tasks take a lot of code. Best when you need guarantees rather than convenience.
+
+5.  **[NPOI](/fossed/library/npoi)**:
+    *   Apache-2.0 source, and historically the standard free alternative — but as of **2.8.0** its binary releases carry an **Open Source Maintenance Fee**. Swapping EPPlus for NPOI to avoid a fee no longer works cleanly; read the NPOI page first.
+
+For write-only reporting workloads, [SpreadCheetah](https://github.com/sveinungf/spreadcheetah) (**MIT**) and [LargeXlsx](https://github.com/salvois/LargeXlsx) (**BSD**) are fast, low-allocation options.
+
+## Conclusion
+
+EPPlus 5+ is **not open source**: it is Polyform Noncommercial plus a per-developer commercial license, from **$329–$569 per developer per year**, and EPPlus 8 enforces it with a license key and a `LicenseException` if you say nothing. The last free-for-business release is **4.5.3.3** from January 2020. Teams needing a permissive, maintained Excel library generally land on **ClosedXML** (closest ergonomics), **MiniExcel** (large files), or the **Open XML SDK** (first-party, low-level) — and should note that NPOI, the traditional fallback, now carries a maintenance fee of its own.
+
+## Links and References
+
+*   EPPlus Software: [LGPL to Polyform](https://www.epplussoftware.com/en/Home/LgplToPolyform) · [License and pricing](https://www.epplussoftware.com/en/LicenseOverview) · [License FAQ](https://www.epplussoftware.com/LicenseOverview/LicenseFAQ)
+*   EPPlus Software: [EPPlus 8](https://epplussoftware.com/en/developers/epplus8) · [Breaking changes in EPPlus 8](https://github.com/EPPlusSoftware/EPPlus/wiki/Breaking-Changes-in-EPPlus-8) · [LicenseException](https://epplussoftware.com/developers/licensenotsetexception)
+*   GitHub: [EPPlusSoftware/EPPlus](https://github.com/EPPlusSoftware/EPPlus)
+*   NuGet: [EPPlus 4.5.3.3](https://www.nuget.org/packages/EPPlus/4.5.3.3) (last LGPL release)
+*   License: [Polyform Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0/)
+*   Alternative: [ClosedXML](https://github.com/ClosedXML/ClosedXML) · [MiniExcel](https://github.com/mini-software/MiniExcel) · [Open XML SDK](https://github.com/dotnet/Open-XML-SDK)
+*   Related: [NPOI](/fossed/library/npoi)

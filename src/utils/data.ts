@@ -37,16 +37,24 @@ export interface SummaryItem {
   websiteText: string;
 }
 
-// Typed data
-export const libraries = librariesData as Library[];
+// Collator for case-insensitive alphabetical ordering (so "json-everything" sorts under J)
+const byName = new Intl.Collator('en', { sensitivity: 'base' });
+
+// Sort libraries alphabetically by name so the main page tiles are always A-Z
+export const libraries = (librariesData as Library[])
+  .slice()
+  .sort((a, b) => byName.compare(a.name, b.name));
 
 // Sort news items by date descending (latest first)
-const sortedNewsItems = (newsItemsData as NewsItem[]).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+const sortedNewsItems = (newsItemsData as NewsItem[]).slice().sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 export const newsItems = sortedNewsItems;
 
 export const faqs = faqsData as Faq[];
 
-export const summary = summaryData as SummaryItem[];
+// Sort the summary table alphabetically by framework, matching the tiles above it
+export const summary = (summaryData as SummaryItem[])
+  .slice()
+  .sort((a, b) => byName.compare(a.framework, b.framework));
 
 // Helper functions
 export function getLibraryBySlug(slug: string): Library | undefined {

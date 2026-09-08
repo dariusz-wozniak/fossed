@@ -63,5 +63,20 @@
     "name": "json-everything",
     "slug": "json-everything",
     "description": "System.Text.Json-based JSON Schema, Path, Patch and more"
+  },
+  {
+    "name": "QuestPDF",
+    "slug": "questpdf",
+    "description": "Code-first PDF generation library"
+  },
+  {
+    "name": "EPPlus",
+    "slug": "epplus",
+    "description": "Excel spreadsheet library for .NET"
+  },
+  {
+    "name": "Devlooped Packages",
+    "slug": "devlooped",
+    "description": "GitInfo, ThisAssembly and ~30 more packages"
   }
-] 
+]
