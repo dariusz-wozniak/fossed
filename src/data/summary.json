@@ -108,5 +108,38 @@
     "alternatives": ["WiX v5 (pin)", "Inno Setup", "NSIS", "Velopack", "Visual Studio Installer Projects"],
     "websiteUrl": "https://wixtoolset.org/",
     "websiteText": "wixtoolset.org"
+  },
+  {
+    "framework": "Polly",
+    "slug": "polly",
+    "oldLicense": "BSD-3-Clause",
+    "newLicense": "BSD-3-Clause + Maintenance Fee (OSMF)",
+    "pricing": "$20/month per revenue-generating org (>$20k/yr), direct dependency only",
+    "lastFreeVersion": "Releases on or before 2026-11-16",
+    "alternatives": ["Pin pre-OSMF version", "Microsoft.Extensions.Http.Resilience (transitive)", "Fork (BSD-3-Clause)", "Hand-rolled resilience"],
+    "websiteUrl": "https://www.thepollyproject.org/",
+    "websiteText": "thepollyproject.org"
+  },
+  {
+    "framework": "Verify",
+    "slug": "verify",
+    "oldLicense": "MIT",
+    "newLicense": "MIT + Maintenance Fee (OSMF)",
+    "pricing": "$5–$100/month per revenue-generating org (>$10k/yr); all government agencies",
+    "lastFreeVersion": "v32 (releases on or before 2026-09-01)",
+    "alternatives": ["Snapshooter", "ApprovalTests.Net", "Pin pre-v33 version", "Explicit Assert / Shouldly"],
+    "websiteUrl": "https://github.com/VerifyTests/Verify",
+    "websiteText": "GitHub"
+  },
+  {
+    "framework": "json-everything",
+    "slug": "json-everything",
+    "oldLicense": "MIT",
+    "newLicense": "MIT + Maintenance Fee (OSMF)",
+    "pricing": "$10–$50/month per revenue-generating org (>$10k/yr)",
+    "lastFreeVersion": "Releases before 2026-02-01",
+    "alternatives": ["NJsonSchema", "JsonCons.Net", "Hyperbee.Json", "AspNetCore JsonPatch", "Pin pre-OSMF version"],
+    "websiteUrl": "https://json-everything.net/",
+    "websiteText": "json-everything.net"
   }
 ] 

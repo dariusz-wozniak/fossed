@@ -48,5 +48,20 @@
     "name": "WiX Toolset",
     "slug": "wix-toolset",
     "description": "Windows Installer (MSI) build toolset"
+  },
+  {
+    "name": "Polly",
+    "slug": "polly",
+    "description": ".NET resilience and transient-fault-handling"
+  },
+  {
+    "name": "Verify",
+    "slug": "verify",
+    "description": "Snapshot testing for .NET"
+  },
+  {
+    "name": "json-everything",
+    "slug": "json-everything",
+    "description": "System.Text.Json-based JSON Schema, Path, Patch and more"
   }
 ] 

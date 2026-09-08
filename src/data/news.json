@@ -1,5 +1,26 @@
 [
   {
+    "date": "2026-07-14",
+    "title": "Introducing the Open Source Maintenance Fee for Polly",
+    "summary": "The Polly team announced that Polly is adopting the Open Source Maintenance Fee model, effective 16 November 2026. The BSD-3-Clause source license is unchanged, but NuGet packages released from that date add an OSMF clause: organizations earning at least $20,000 from products that depend on Polly directly are expected to pay $20/month via GitHub Sponsors. Transitive use via Microsoft.Extensions.*.Resilience is exempt.",
+    "tag": ["polly"],
+    "link": "https://thepollyproject.org/2026/07/14/polly-osmf-announcement.html"
+  },
+  {
+    "date": "2026-08-06",
+    "title": "Verify adopts the Open Source Maintenance Fee",
+    "summary": "Simon Cropp announced that Verify is moving to the Open Source Maintenance Fee model. The source stays MIT, but versions released after 1 September 2026 (v33+) carry an OSMF EULA and a local build-time SponsorCheck. Revenue-generating organizations above $10k — and all government agencies — are expected to sponsor VerifyTests at $5–$100/month by size tier.",
+    "tag": ["verify"],
+    "link": "https://github.com/orgs/VerifyTests/discussions/1731"
+  },
+  {
+    "date": "2026-01-15",
+    "title": "json-everything introduces a mandatory maintenance fee",
+    "summary": "Greg Dennis announced that the json-everything suite (~40 packages including JsonSchema.Net, JsonPath.Net and JsonPatch.Net) is adopting the Open Source Maintenance Fee, effective 1 February 2026. The MIT source is unchanged; an EULA on the binary releases requires revenue-generating organizations above $10k to pay from $10/month via GitHub Sponsors, covering the whole suite.",
+    "tag": ["json-everything"],
+    "link": "https://blog.json-everything.net/posts/expensive/"
+  },
+  {
     "date": "2025-07-08",
     "title": "AutoMapper and MediatR Roadmaps",
     "summary": "One of my main goals of commercialization of AutoMapper and MediatR was being able to finally invest time in these projects where basically all new work stopped when I lost corporate sponsorship. I wanted to take some time to share where I'd like to take these projects now that I have that sponsorship back.",

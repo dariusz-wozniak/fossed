@@ -1,0 +1,73 @@
+---
+title: "Polly"
+date: 2026-07-14
+slug: polly
+---
+
+**Polly** is the de-facto **resilience and transient-fault-handling** library for .NET. It lets you express strategies such as **Retry**, **Circuit Breaker**, **Timeout**, **Rate Limiter**, **Fallback**, and **Hedging** in a fluent, thread-safe way, and it is the engine behind Microsoft's `Microsoft.Extensions.Resilience` and `Microsoft.Extensions.Http.Resilience` packages. Polly is a **.NET Foundation** member project and its source is licensed under the **New BSD License (BSD-3-Clause)**.
+
+On **14 July 2026** the Polly team [announced](https://thepollyproject.org/2026/07/14/polly-osmf-announcement.html) that Polly is adopting the **[Open Source Maintenance Fee (OSMF)](https://opensourcemaintenancefee.org/)** model, effective **16 November 2026** — a four-month notice period before enforcement.
+
+## What Changed
+
+The **source license does not change**. In the words of Joel Hulen, Lead Polly Project Owner:
+
+> "The source code remains free and open. Polly stays under its existing open source license. Nothing about your right to read, fork, build from, and contribute to the source changes."
+
+What changes is the **NuGet package license** on releases published from **16 November 2026** onward: those binaries carry an OSMF clause requiring revenue-generating organizations to pay a monthly maintenance fee. Because a package's license is immutable once shipped, the change is **not retroactive** — every version released on or before that date keeps its current terms.
+
+Unlike [Verify](/fossed/library/verify), the Polly team has **not** announced any build-time sponsorship check or EULA-style enforcement tooling. The obligation is contractual, tied to the package license.
+
+## Who Pays and How Much
+
+*   **Fee:** **$20/month**, paid via [GitHub Sponsors](https://github.com/sponsors/App-vNext). The exact sponsorship tier and instructions are to be published before November 2026.
+*   **Threshold:** organizations that earn **at least US $20,000** from products or projects that use Polly.
+*   **Per organization, not per project** — one fee covers all of a company's usage.
+*   **Exempt:** individuals, hobbyists, students, and nonprofits that do not generate Polly-derived revenue; anyone using Polly for free (non-revenue) purposes.
+*   **Direct dependencies only.** If Polly reaches your app **transitively** — for example through `Microsoft.Extensions.Http.Resilience` — the fee does **not** apply. It applies when you reference `Polly` (or `Polly.Core`) directly.
+
+The fee is **not** a support contract or an SLA.
+
+## What This Means For You
+
+*   Using Polly **only transitively** (via `Microsoft.Extensions.*.Resilience`): nothing to do.
+*   Using Polly **directly**, as an **individual / non-revenue / under $20k**: still free.
+*   Using Polly **directly** in a **revenue-generating organization above the threshold**: budget **$20/month** from November 2026, or pin to a version released before then.
+*   Want to avoid the obligation entirely: pin to a pre-OSMF release, consume Polly only through the Microsoft resilience packages, or fork (BSD-3-Clause permits it).
+
+## Alternatives
+
+Polly is deep and well-integrated; there is no drop-in replacement with the same breadth. The realistic options are:
+
+1.  **Pin to a pre-OSMF version of [Polly](https://github.com/App-vNext/Polly)**:
+    *   Any release published **on or before 16 November 2026** keeps its current BSD-only NuGet license.
+    *   **Pros**: zero code change, full feature set, free.
+    *   **Cons**: no future updates, security fixes, or new .NET target support on that pinned line.
+
+2.  **Consume Polly through [`Microsoft.Extensions.Http.Resilience`](https://learn.microsoft.com/en-us/dotnet/core/resilience/http-resilience) / [`Microsoft.Extensions.Resilience`](https://learn.microsoft.com/en-us/dotnet/core/resilience/)**:
+    *   Microsoft's first-party resilience packages are **built on Polly** but reference it transitively, so the maintenance fee does not apply.
+    *   **Pros**: MIT-licensed, first-party, covers the common HTTP retry / circuit-breaker / timeout scenarios with standard handlers.
+    *   **Cons**: opinionated pipeline shape; less direct control than using the Polly API yourself; you are still relying on Polly underneath.
+
+3.  **Fork [Polly](https://github.com/App-vNext/Polly)**:
+    *   BSD-3-Clause explicitly permits redistribution and modification. A self-built binary from source carries only the BSD terms.
+    *   **Pros**: keep the full API, no fee.
+    *   **Cons**: you own maintenance, security patching, and CI for the fork.
+
+4.  **Hand-rolled resilience**:
+    *   For simple cases, `HttpClient` with a custom `DelegatingHandler`, `PeriodicTimer`-based retry loops, or `System.Threading.RateLimiter` (built into .NET 7+) can cover retry, timeout, and rate limiting without a dependency.
+    *   **Cons**: circuit breaker, hedging, and bulkhead isolation are non-trivial to implement correctly; easy to get backoff/jitter wrong.
+
+## Conclusion
+
+Polly's source stays open under BSD-3-Clause, but packages released from 16 November 2026 add an Open Source Maintenance Fee: **$20/month** for organizations earning **$20k+** that depend on Polly **directly**. Transitive use via Microsoft's resilience packages is unaffected, individuals and non-revenue users pay nothing, and teams that want to opt out can pin to a pre-OSMF release or fork.
+
+## Links and References
+
+*   The Polly Project: [Introducing the Open Source Maintenance Fee for Polly](https://thepollyproject.org/2026/07/14/polly-osmf-announcement.html)
+*   GitHub Discussion: [OSMF adoption (App-vNext/Polly#3183)](https://github.com/App-vNext/Polly/discussions/3183)
+*   GitHub: [App-vNext/Polly](https://github.com/App-vNext/Polly)
+*   GitHub Sponsors: [App-vNext](https://github.com/sponsors/App-vNext)
+*   Open Source Maintenance Fee: [Home](https://opensourcemaintenancefee.org/) · [For Consumers](https://opensourcemaintenancefee.org/consumers/) · [FAQ](https://opensourcemaintenancefee.org/consumers/faq/)
+*   Microsoft Docs: [Build resilient HTTP apps](https://learn.microsoft.com/en-us/dotnet/core/resilience/http-resilience)
+*   Similar model: [Verify](/fossed/library/verify) · [NPOI](/fossed/library/npoi) · [WiX Toolset](/fossed/library/wix-toolset)
