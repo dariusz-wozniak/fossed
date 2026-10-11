@@ -4,7 +4,7 @@ date: 2026-04-10
 slug: npoi
 ---
 
-NPOI is the .NET port of the [Apache POI](https://poi.apache.org/) Java project, allowing developers to read and write Microsoft Office files (`.xls`, `.xlsx`, `.doc`, `.docx`) without Microsoft Office or interop. Long distributed under the permissive **Apache-2.0** license, NPOI went through two separate, back-to-back licensing controversies in 2025–2026: an accidental **LGPL-3.0 contamination** via a transitive dependency, followed by a deliberate move to the **Open Source Maintenance Fee (OSMF)** model in version 2.8.0.
+NPOI is the .NET port of the [Apache POI](https://poi.apache.org/) Java project, allowing developers to read and write Microsoft Office files (`.xls`, `.xlsx`, `.docx`) without Microsoft Office or interop. Long distributed under the permissive **Apache-2.0** license, NPOI went through two separate, back-to-back licensing controversies in 2025–2026: an accidental **LGPL-3.0 contamination** via a transitive dependency, followed by a deliberate move to the **Open Source Maintenance Fee (OSMF)** model in version 2.8.0.
 
 ## Issue 1: LGPL-3.0 Contamination in 2.7.5 / 2.7.6
 
@@ -39,11 +39,42 @@ The fee is paid via [GitHub Sponsors](https://github.com/sponsors/tonyqus). Unde
 
 OSMF is not a source-license change — the code stays open source (Apache-2.0). Instead, it layers a **contractual payment obligation onto the compiled binaries** you consume from NuGet/GitHub. This differs from conventional open source, which places no financial obligation on users, and from the "go fully commercial" route taken by AutoMapper, MediatR, or MassTransit. You can still read the source, but using the official packaged builds in a revenue-generating context means agreeing to pay.
 
+## Pitfall: NPOI ≤ 2.7.x pulls in a vulnerable ImageSharp 2.x
+
+Pinning NPOI 2.7.4 is not a free lunch. Up to 2.7.x, NPOI depends on **[SixLabors.ImageSharp](/fossed/library/imagesharp) 2.x** (`>= 2.1.10` in 2.7.4, `>= 2.1.11` in 2.7.5 and 2.7.6) and SixLabors.Fonts `>= 1.0.1` for image and font handling. All ImageSharp **2.x** releases, up to and including the last one, [2.1.13](https://www.nuget.org/packages/SixLabors.ImageSharp/2.1.13), are flagged on NuGet as vulnerable. The advisories published in September 2026 affect every version from 2.0.0 up to 4.1.1:
+
+*   [GHSA-j3p4-wp97-rph4](https://github.com/advisories/GHSA-j3p4-wp97-rph4) (CVE-2026-106113, **high**): unchecked histogram index in `HistogramEqualization`
+*   [GHSA-j9gm-c75j-xc9q](https://github.com/advisories/GHSA-j9gm-c75j-xc9q) (CVE-2026-106110, **high**): TIFF CCITT T4 encoder writes past its output buffer
+*   [GHSA-jjfr-hcj7-qf5w](https://github.com/advisories/GHSA-jjfr-hcj7-qf5w) (CVE-2026-106115, **high**): TIFF CCITT T6 encoder writes beyond an undersized buffer
+*   [GHSA-gwg2-r3hj-4w44](https://github.com/advisories/GHSA-gwg2-r3hj-4w44) (CVE-2026-106114, moderate): ICC CLUT parsing allocates from unvalidated dimensions
+*   [GHSA-wmxv-xphr-5c9g](https://github.com/advisories/GHSA-wmxv-xphr-5c9g) (CVE-2026-106116, moderate): BigTIFF IFD count can hang a decoder thread
+
+The only patched release is **ImageSharp 4.1.2**, which is under the [Six Labors Split License](/fossed/library/imagesharp) (paid for organizations above US$1M annual revenue), not Apache-2.0. No patched 2.x release exists, and NuGet will not move you to a new major on its own: it resolves the lowest matching version (2.1.10) for NPOI's dependency.
+
+**Do not force ImageSharp 4.x under NPOI 2.7.x** (e.g. with a direct `PackageReference` or central package pinning). NPOI 2.7.x was compiled against the ImageSharp 2.x API, and a major version bump means breaking changes. Even if the build succeeds, you risk `MissingMethodException` / `TypeLoadException` at runtime in the code paths that touch images or fonts. Overriding a transitive dependency across major versions is only reasonable for .NET platform packages (`System.*`, `Microsoft.Extensions.*`), which keep binary compatibility; it is not for third-party libraries like ImageSharp.
+
+In practice, staying on any NPOI 2.7.x release means accepting a known-vulnerable transitive dependency (with `dotnet list package --vulnerable` and NuGet audit flagging it). The real fixes are upgrading to NPOI 2.8.x (and paying the OSMF fee) or migrating to one of the alternatives below.
+
+> For the full story of ImageSharp's move to the Six Labors Split License and its alternatives, see the **[ImageSharp page on FOSSED](/fossed/library/imagesharp)**.
+
+NPOI **2.8.0** replaced ImageSharp with **SkiaSharp** (MIT), so this particular problem goes away there — but 2.8.0 is also the release that introduced the OSMF fee.
+
 ## What This Means For You
 
-*   Using **NPOI ≤ 2.7.4**: no fee, no LGPL contamination — but no further updates or security fixes on that line.
-*   Using **NPOI 2.7.5 / 2.7.6**: watch for the transitive **LGPL-3.0** dependency (NSax) if your organization restricts copyleft licenses.
+*   Using **NPOI ≤ 2.7.4**: no fee, no LGPL contamination — but no further updates or security fixes on that line, and it depends on **ImageSharp 2.x**, which has known high-severity vulnerabilities (see above).
+*   Using **NPOI 2.7.5 / 2.7.6**: watch for the transitive **LGPL-3.0** dependency (NSax) if your organization restricts copyleft licenses — and, like 2.7.4, they depend on the vulnerable **ImageSharp 2.x**.
 *   Using **NPOI ≥ 2.8.0**: NSax is gone, but revenue-generating users are expected to pay the **OSMF maintenance fee**.
+
+## Background: `.xls`, `.xlsx` and ODF
+
+Picking an alternative is mostly about *which file format* you need, because spreadsheet formats are completely different under the hood:
+
+*   **`.xls` (Excel 97–2003)**: a **binary** format called **BIFF8** (Binary Interchange File Format), stored as a stream inside an **OLE2 / Compound File Binary (CFB)** container — a small FAT-like file system inside a file. Records are packed binary structures, so reading or writing it requires a dedicated parser. Limited to **65,536 rows × 256 columns** per sheet. In NPOI this is the **HSSF** API (`HSSFWorkbook`). Legacy Word `.doc` files use the same OLE2 container; NPOI has an **HWPF** port for them, but it lives in the source tree's `scratchpad` folder and is **not shipped in the NuGet package**.
+*   **`.xlsx` (Excel 2007+)**: **Office Open XML** (ECMA-376 / ISO/IEC 29500), i.e. a **ZIP archive of XML files** following the Open Packaging Conventions — e.g. `xl/workbook.xml`, `xl/worksheets/sheet1.xml`, `xl/sharedStrings.xml`, `xl/styles.xml`. You can rename it to `.zip` and look inside. Supports **1,048,576 rows × 16,384 columns**. In NPOI this is the **XSSF** API (`XSSFWorkbook`), plus **SXSSF** for low-memory streaming writes. `.xlsm` is the same format with macros, and Word `.docx` follows the same ZIP + XML approach (NPOI **XWPF**). (There is also `.xlsb`, which stores the same workbook layout as binary **BIFF12** records — the successor of BIFF8 — instead of XML; it is rarely needed and left out of the comparison below.)
+
+*   **ODF (`.ods`, `.odt`)**: the **OpenDocument Format** (OASIS, ISO/IEC 26300) used by LibreOffice and OpenOffice. Like OOXML it is a **ZIP archive of XML files**, but with a different, unrelated schema: a `mimetype` entry stored first and uncompressed, then `content.xml`, `styles.xml`, `meta.xml` and `META-INF/manifest.xml`. **NPOI does not support ODF at all**, and neither does any of the popular Excel libraries below.
+
+NPOI's `WorkbookFactory.Create()` detects the format and hides the difference behind the common `IWorkbook` interface; most alternatives only implement the OOXML-based formats.
 
 ## Alternatives
 
@@ -59,18 +90,39 @@ NPOI is broad — it covers legacy `.xls`, modern `.xlsx`, and Word documents. N
     *   **Pros**: Powerful, first-party, covers Word and Excel. Free.
     *   **Cons**: Verbose, steep learning curve; you build XML structures manually.
 
-3.  **[ExcelDataReader](https://github.com/ExcelDataReader/ExcelDataReader)**:
+3.  **[MiniExcel](https://github.com/mini-software/MiniExcel)**:
+    *   A lightweight, fast library for reading and writing `.xlsx` (and `.csv`) files. Licensed under **Apache-2.0**.
+    *   **Pros**: Streams row by row for very low memory use; maps rows to typed or dynamic objects; supports template filling; no Office/COM dependency. Free.
+    *   **Cons**: Focused on data import/export — no legacy `.xls`, no Word, and limited cell styling compared with ClosedXML.
+
+4.  **[ExcelDataReader](https://github.com/ExcelDataReader/ExcelDataReader)**:
     *   Lightweight reader for both `.xls` and `.xlsx`. Licensed under **MIT**.
     *   **Pros**: Handles legacy `.xls`; simple and fast. Free.
     *   **Cons**: Read-only — no writing.
 
-4.  **[EPPlus](https://github.com/EPPlusSoftware/EPPlus)**:
+5.  **[EPPlus](https://github.com/EPPlusSoftware/EPPlus)**:
     *   Feature-rich Excel library with charting and object mapping.
-    *   **Cons**: **Not free** — EPPlus 5+ is licensed under Polyform Noncommercial; commercial use requires a paid license. Not a fully open-source escape hatch.
+    *   **Cons**: **Not free** — EPPlus 5+ is licensed under Polyform Noncommercial; commercial use requires a paid license. Not a fully open-source escape hatch. See the [EPPlus page on FOSSED](/fossed/library/epplus).
+
+### Format support at a glance
+
+| Library | License | `.xls` (BIFF8) | `.xlsx` (OOXML) | `.csv` | `.ods` (ODF) | Word |
+| --- | --- | --- | --- | --- | --- | --- |
+| **NPOI** | Apache-2.0 + OSMF | Read/Write | Read/Write | — | — | `.docx` (`.doc` not shipped) |
+| **ClosedXML** | MIT | — | Read/Write (`.xlsx`, `.xlsm`) | — | — | — |
+| **MiniExcel** | Apache-2.0 | — | Read/Write (streaming; `.xlsm` read only) | Read/Write | — | — |
+| **Open XML SDK** | MIT | — | Read/Write (low-level) | — | — | `.docx` |
+| **ExcelDataReader** | MIT | Read (BIFF2–BIFF8) | Read | Read | — | — |
+| **[EPPlus](/fossed/library/epplus)** | Polyform NC / commercial | — | Read/Write | Import/Export (`LoadFromText` / `SaveToText`) | — | — |
+| **OpenStandardLibrary** | MIT | — | Read/Write | Read/Write | Read/Write | — |
+
+If you still need to **write** legacy `.xls`, there is no free, permissively licensed replacement for NPOI's HSSF — either pin NPOI 2.7.4 (with the ImageSharp caveat above) or convert to `.xlsx`. For **reading** legacy files, ExcelDataReader covers `.xls` and can be combined with ClosedXML or MiniExcel for writing `.xlsx`.
+
+**ODF** is a gap in the .NET open-source ecosystem. [OpenStandardLibrary](https://github.com/kupokev/open-standard-library) (MIT, .NET 8+) reads and writes `.ods`, `.xlsx` and delimited files, but it is a very young, single-maintainer project. The other options are copyleft or abandoned: [ODSReaderWriter](https://github.com/Zaretto/ODSReaderWriter) is GPL-2.0, and [AODL](https://www.nuget.org/packages/AODL) (`.ods`/`.odt`) is GPL-2.0, .NET Framework only and unmaintained since 2013. A pragmatic workaround is converting with LibreOffice in headless mode (`soffice --headless --convert-to xlsx file.ods`) and then using any of the OOXML libraries above.
 
 ## Conclusion
 
-NPOI's Apache-2.0 source has not changed, but two moves complicated its "free" status: an accidental LGPL-3.0 dependency in 2.7.5/2.7.6, and the Open Source Maintenance Fee attached to 2.8.0 binaries. Teams with license-compliance constraints or commercial revenue should decide whether to pin to 2.7.4, pay the OSMF fee, or migrate to MIT-licensed alternatives like ClosedXML or the Open XML SDK.
+NPOI's Apache-2.0 source has not changed, but two moves complicated its "free" status: an accidental LGPL-3.0 dependency in 2.7.5/2.7.6, and the Open Source Maintenance Fee attached to 2.8.0 binaries. Teams with license-compliance constraints or commercial revenue should decide whether to pin to 2.7.4 (and live with a vulnerable ImageSharp 2.x dependency), pay the OSMF fee, or migrate to permissively licensed alternatives like ClosedXML, MiniExcel or the Open XML SDK.
 
 ## Links and References
 
@@ -79,8 +131,12 @@ NPOI's Apache-2.0 source has not changed, but two moves complicated its "free" s
 *   GitHub Issue: [Introduction of Open Source Maintenance Fee license (#1785)](https://github.com/nissl-lab/npoi/issues/1785)
 *   GitHub Discussion: [NPOI 2.8.0 Release Notes (#1751)](https://github.com/nissl-lab/npoi/discussions/1751)
 *   Medium: [What's New in NPOI 2.8.0: A New Chapter for Sustainable Open Source](https://tonyqus.medium.com/whats-new-in-npoi-2-8-0-a-new-chapter-for-sustainable-open-source-e0a9ae383a07)
+*   FOSSED: [SixLabors.ImageSharp licensing change](/fossed/library/imagesharp)
+*   NuGet: [SixLabors.ImageSharp 2.1.13 (last 2.x, vulnerable)](https://www.nuget.org/packages/SixLabors.ImageSharp/2.1.13)
 *   Open Source Maintenance Fee: [For Consumers](https://opensourcemaintenancefee.org/consumers/)
 *   Similar model: [Mediator (martinothamar)](https://github.com/martinothamar/Mediator)
 *   Alternative: [ClosedXML](https://github.com/ClosedXML/ClosedXML)
 *   Alternative: [Open XML SDK](https://github.com/dotnet/Open-XML-SDK)
+*   Alternative: [MiniExcel](https://github.com/mini-software/MiniExcel)
 *   Alternative: [ExcelDataReader](https://github.com/ExcelDataReader/ExcelDataReader)
+*   Alternative (ODF): [OpenStandardLibrary](https://github.com/kupokev/open-standard-library)

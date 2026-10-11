@@ -24,6 +24,10 @@ The fee is paid by **sponsoring the wixtoolset GitHub organization** via [GitHub
 
 A **minimum annual revenue threshold of US $10,000** was added in **OSMF EULA v1.1** (February 2026), exempting hobbyists and very small organizations. If your organization does not generate revenue, or falls below the threshold, **no fee is due** and you can keep using the toolset for free.
 
+### WiX v7: explicit EULA acceptance
+
+**WiX v7.0.0 (April 2026)** ships with the **OSMF EULA v1.1** and makes acceptance **explicit**: the tooling refuses to build until the EULA is accepted, either interactively or through the `AcceptEula` MSBuild property in your `.wixproj` (intended for CI/CD). Expect CI pipelines to break on upgrade until that property is set.
+
 **Customers of FireGiant's WiX Developer Direct** commercial support do **not** pay the OSMF separately — it is included in their support agreement.
 
 ## What About WixSharp?
@@ -65,15 +69,28 @@ WiX authors true Windows Installer (`.msi`) packages, which is a niche most alte
     *   **Cons**: App-deployment focused — not a general-purpose MSI authoring tool.
 
 5.  **[Visual Studio Installer Projects](https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2022InstallerProjects)**:
-    *   Microsoft's free VS extension for building basic MSI packages via a GUI.
+    *   Microsoft's free VS extension for building basic MSI packages via a GUI. The current *Installer Projects 2022* extension supports **Visual Studio 2022 and 2026**.
     *   **Pros**: First-party, free, no scripting, produces real MSI.
-    *   **Cons**: Limited feature set; tied to Visual Studio; awkward for complex/CI scenarios.
+    *   **Cons**: Limited feature set; tied to Visual Studio. The `.vdproj` format never got an **SDK-style** version — it is not even an MSBuild project: `dotnet build` can't handle it and `msbuild` skips it with warning **MSB4078** ("project file is not supported by MSBuild"). The only way to build it is `devenv.exe /Build`, so CI agents need a full Visual Studio install plus the extension.
+    *   **Not suitable for CI/CD**: driving the IDE from a pipeline is fragile by design — no headless SDK, licensed Visual Studio on every build agent, and known hacks such as running `DisableOutOfProcBuild.exe` to avoid `HRESULT = '8000000A'` validation errors ([example with Azure Pipelines](https://spin.atomicobject.com/2022/05/17/visual-studio-installer-azure/)). Fine for an occasional hand-built MSI, not for automated releases.
+    *   **Troubled history**: Microsoft has dropped and revived this project type more than once, so it is a risky long-term bet:
+        *   **March 2011**: Microsoft [announced](https://devblogs.microsoft.com/buckh/visual-studio-setup-projects-vdproj-will-not-ship-with-future-versions-of-vs/) that Setup projects (`.vdproj`) would not ship with future versions — VS 2010 was the last — and advised migrating to WiX or other tools.
+        *   **Visual Studio 2012** shipped without them, pointing users to InstallShield Limited Edition instead.
+        *   **April 2014**: after strong pushback, they came back as the out-of-band *Microsoft Visual Studio Installer Projects* extension for VS 2013 — essentially the VS 2010 project type with minor fixes.
+        *   **Visual Studio 2019**: users again found that [installer projects were no longer built in](https://developercommunity.visualstudio.com/t/installer-projects-are-no-longer-built-in/439213); support came back only through a separate extension build for VS 2017/2019 ([example of the resulting breakage](https://learn.microsoft.com/en-us/answers/questions/224282/visual-studio-installer-projects-extension-not-wor)).
+        *   **Visual Studio 2022** again shipped (November 2021) without support; a separate *Installer Projects 2022* extension only arrived later, starting as a 0.1.0 preview in December 2021.
+        *   It remains a separately versioned extension per VS release, never part of the product itself — every new Visual Studio version is a fresh dependency on Microsoft choosing to keep it alive.
 
-For modern app packaging, the free **[MSIX Packaging Tool](https://learn.microsoft.com/en-us/windows/msix/packaging-tool/tool-overview)** from Microsoft is also worth evaluating as a replacement for MSI entirely.
+6.  **[Parcel (Avalonia UI)](https://avaloniaui.net/parcel)**:
+    *   Cross-platform packaging tool from the Avalonia team (GUI and .NET CLI tool) that builds, signs and packages .NET apps: **NSIS** and **MSIX** on Windows, **DMG/PKG/ZIP** on macOS, **DEB/RPM** on Linux.
+    *   **Pros**: One tool for all three desktop platforms, built-in code signing, works with any .NET app (not only Avalonia), free community license for the GUI.
+    *   **Cons**: **Not open source** (proprietary, AvaloniaUI OÜ) and needs an AvaloniaUI Portal license key. The **CLI** — what you need for CI/CD — **requires a paid Avalonia Plus license**. Does **not** produce `.msi`.
+
+For modern app packaging, the free **[MSIX Packaging Tool](https://learn.microsoft.com/en-us/windows/msix/packaging-tool/tool-overview)** from Microsoft is also worth evaluating as a replacement for MSI entirely. To produce MSIX packages from your own build, Visual Studio's **[Windows Application Packaging Project](https://learn.microsoft.com/en-us/windows/msix/desktop/desktop-to-uwp-packaging-dot-net)** (`.wapproj`) packages WPF/WinForms/.NET desktop apps as MSIX and, unlike `.vdproj`, builds with `msbuild`.
 
 ## Conclusion
 
-WiX Toolset's source stays open under MS-RL, but v6.0 attaches the Open Source Maintenance Fee to its binaries — revenue-generating organizations above ~$10k/year are expected to pay $10–$60/month via GitHub Sponsors. Hobbyists, small orgs, and FireGiant support customers are unaffected. Teams that don't want the obligation can pin to WiX v5 (and target it from WixSharp), or move to free alternatives like Inno Setup, NSIS, or Velopack depending on whether they truly need MSI output.
+WiX Toolset's source stays open under MS-RL, but v6.0 attaches the Open Source Maintenance Fee to its binaries — revenue-generating organizations above ~$10k/year are expected to pay $10–$60/month via GitHub Sponsors. Hobbyists, small orgs, and FireGiant support customers are unaffected. Teams that don't want the obligation can pin to WiX v5 (and target it from WixSharp), or move to free alternatives like Inno Setup, NSIS, or Velopack depending on whether they truly need MSI output. Parcel is an option for cross-platform packaging if a proprietary tool is acceptable.
 
 ## Links and References
 
@@ -89,3 +106,11 @@ WiX Toolset's source stays open under MS-RL, but v6.0 attaches the Open Source M
 *   Alternative: [Inno Setup](https://jrsoftware.org/isinfo.php)
 *   Alternative: [NSIS](https://nsis.sourceforge.io/)
 *   Alternative: [Velopack](https://github.com/velopack/velopack)
+*   Visual Studio Marketplace: [Microsoft Visual Studio Installer Projects 2022 (VS 2022/2026)](https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2022InstallerProjects)
+*   Microsoft Learn: [Package a desktop app with the Windows Application Packaging Project (MSIX)](https://learn.microsoft.com/en-us/windows/msix/desktop/desktop-to-uwp-packaging-dot-net)
+*   Buck Hodges (Microsoft): [Visual Studio setup projects (vdproj) will not ship with future versions of VS (2011)](https://devblogs.microsoft.com/buckh/visual-studio-setup-projects-vdproj-will-not-ship-with-future-versions-of-vs/)
+*   Developer Community: [Installer projects are no longer built in](https://developercommunity.visualstudio.com/t/installer-projects-are-no-longer-built-in/439213)
+*   Black Marble: [The return of Visual Studio Setup projects (2014)](https://blogs.blackmarble.co.uk/rfennell/2014/04/23/the-return-of-visual-studio-setup-projects-just-because-you-can-use-them-should-you/)
+*   Microsoft Q&A: [Visual Studio Installer Projects & VS2022](https://learn.microsoft.com/en-us/answers/a/658943)
+*   Alternative: [Parcel (Avalonia UI)](https://avaloniaui.net/parcel)
+*   GitHub: [WiX releases (v7.0.0)](https://github.com/wixtoolset/wix/releases)

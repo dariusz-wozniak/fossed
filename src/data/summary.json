@@ -134,6 +134,7 @@
     "lastFreeVersion": "2.7.4",
     "alternatives": [
       "ClosedXML",
+      "MiniExcel",
       "Open XML SDK",
       "ExcelDataReader",
       "EPPlus (commercial)"
@@ -153,7 +154,8 @@
       "Inno Setup",
       "NSIS",
       "Velopack",
-      "Visual Studio Installer Projects"
+      "Visual Studio Installer Projects",
+      "Parcel (commercial)"
     ],
     "websiteUrl": "https://wixtoolset.org/",
     "websiteText": "wixtoolset.org"

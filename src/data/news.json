@@ -222,6 +222,15 @@
     "link": "https://robmensching.com/blog/posts/2026/02/04/osmf-v11/"
   },
   {
+    "date": "2026-04-06",
+    "title": "WiX Toolset v7.0.0 requires explicit OSMF EULA acceptance",
+    "summary": "WiX v7.0.0 adopts the Open Source Maintenance Fee EULA v1.1, which avoids requiring a fee until you make at least US$10,000 a year from projects that use WiX, and requires explicit acceptance of the EULA — interactively or via the AcceptEula MSBuild property for CI/CD builds.",
+    "tag": [
+      "wix-toolset"
+    ],
+    "link": "https://github.com/wixtoolset/wix/releases"
+  },
+  {
     "date": "2026-08-19",
     "title": ".NET Foundation Statement on Open Source Maintenance Fees",
     "summary": "The .NET Foundation published a statement and FAQ on maintenance-fee models, declining to take a position for or against them. Foundation projects may adopt OSMF-style funding provided the source stays freely available under a permissive license, anyone can build equivalent artifacts themselves, and mandatory dependencies remain permissively licensed. Consumers are urged to read the terms attached to packages, not just the source license.",

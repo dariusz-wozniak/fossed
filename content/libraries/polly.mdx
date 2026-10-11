@@ -53,6 +53,13 @@ Polly is deep and well-integrated; there is no drop-in replacement with the same
     *   After opening a ["Forking Polly" discussion](https://github.com/App-vNext/Polly/discussions/3202) on 18 August 2026, Ian Cooper and the Brighter Command team forked **Polly 8.7.0** as **Fences**, published on NuGet under the `Paramore.Fences.*` prefix (9.0.0 stable on 29 August 2026). BSD-3-Clause, no maintenance-fee EULA; the v8-era API mirrors Polly's exactly.
     *   **Pros**: drop-in for the Polly 8 API, free binaries, no procurement conversation.
     *   **Cons**: young project, small maintainer pool, **not affiliated with or endorsed by App vNext**, and future major versions may diverge from Polly.
+    *   **Migrating** (per the official [migration guide](https://github.com/BrighterCommand/Fences/blob/main/docs/migration-from-polly.md)):
+        1.  Swap packages: `Polly.Core` → `Paramore.Fences.Core`, `Polly.Extensions` → `Paramore.Fences.Extensions`, `Polly.RateLimiting` → `Paramore.Fences.RateLimiting`, `Polly.Testing` → `Paramore.Fences.Testing`, `Polly` → `Paramore.Fences`.
+        2.  Find-and-replace `Polly` with `Paramore.Fences` in `using` directives — namespaces map one-to-one (`Polly.Retry` → `Paramore.Fences.Retry`).
+        3.  The only renamed type is `PollyServiceCollectionExtensions` → `ResilienceServiceCollectionExtensions` (only matters if you reference it by name).
+        4.  Update **telemetry**: meter/`ActivitySource` names change from `Polly` to `Paramore.Fences` and metrics from `resilience.polly.*` to `resilience.fences.*` — dashboards and alerts won't be fixed by a source find-and-replace.
+        5.  Update anything pinning assembly identity (`InternalsVisibleTo`, binding redirects): Fences is strong-named with a different key.
+    *   Fences and Polly can be installed **side by side** for a gradual migration. Note that `Microsoft.Extensions.Http.Resilience` still exposes Polly types, so Polly stays in your graph if you use it.
     *   Rolling your own fork is equally legitimate — BSD-3-Clause permits redistribution and modification, and a self-built binary carries only the BSD terms — but then you own maintenance, security patching, and CI.
 
 4.  **Hand-rolled resilience**:
@@ -70,7 +77,7 @@ Polly's source stays open under BSD-3-Clause, but packages released from 16 Nove
 *   GitHub: [App-vNext/Polly](https://github.com/App-vNext/Polly)
 *   GitHub Sponsors: [App-vNext](https://github.com/sponsors/App-vNext)
 *   Open Source Maintenance Fee: [Home](https://opensourcemaintenancefee.org/) · [For Consumers](https://opensourcemaintenancefee.org/consumers/) · [FAQ](https://opensourcemaintenancefee.org/consumers/faq/)
-*   Fork: [BrighterCommand/Fences](https://github.com/BrighterCommand/Fences) · [Forking Polly (App-vNext/Polly#3202)](https://github.com/App-vNext/Polly/discussions/3202)
+*   Fork: [BrighterCommand/Fences](https://github.com/BrighterCommand/Fences) · [Migration from Polly](https://github.com/BrighterCommand/Fences/blob/main/docs/migration-from-polly.md) · [Forking Polly (App-vNext/Polly#3202)](https://github.com/App-vNext/Polly/discussions/3202)
 *   Context: [.NET Foundation statement on Open Source Maintenance Fees](https://dotnetfoundation.org/news-events/detail/.net-foundation-statement-on-open-source-maintenance-fees)
 *   Microsoft Docs: [Build resilient HTTP apps](https://learn.microsoft.com/en-us/dotnet/core/resilience/http-resilience)
 *   Similar model: [Verify](/fossed/library/verify) · [NPOI](/fossed/library/npoi) · [WiX Toolset](/fossed/library/wix-toolset)
