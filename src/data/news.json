@@ -327,5 +327,14 @@
       "devlooped"
     ],
     "link": "https://github.com/sponsors/devlooped"
+  },
+  {
+    "date": "2026-10-13",
+    "title": "PDFsharp & MigraDoc 6.5.0 switches from MIT to AGPL or commercial",
+    "summary": "empira released PDFsharp 6.5.0 and 7.0.0 Preview 2 (on NuGet 14 October 2026) under a dual AGPL-3.0 / commercial license, ending the MIT era; 6.2.4 is the last MIT release. The library now refuses to run until a license is chosen in code: PdfSharpLicense.SetAgplLicense() for AGPL projects, or LoadLicense() with a purchased key for closed-source use.",
+    "tag": [
+      "pdfsharp"
+    ],
+    "link": "https://docs.pdfsharp.net/General/History.html#ps-6-5-0"
   }
 ]

@@ -1,0 +1,98 @@
+---
+title: "PDFsharp & MigraDoc"
+date: 2026-10-13
+slug: pdfsharp
+---
+
+**PDFsharp** (by empira Software GmbH) is a long-standing .NET library for **creating, editing and merging PDF** documents, first released in 2005. **MigraDoc** sits on top of it and adds document-level layout — paragraphs, tables, sections, automatic text flow and pagination. Both ship as NuGet packages (`PDFsharp`, `PDFsharp-MigraDoc`, plus `-gdi` / `-wpf` variants for Windows) and for nearly two decades they were the go-to **MIT** answer for PDF generation in .NET — including on this site, as the permissive alternative to [QuestPDF](/fossed/library/questpdf).
+
+That changed with **PDFsharp 6.5.0**, announced on **13 October 2026** and published on NuGet on **14 October 2026**, together with **7.0.0 Preview 2**.
+
+## What Changed
+
+PDFsharp and MigraDoc moved from **MIT** to a **dual license: AGPL-3.0 or commercial**. The NuGet license expression for 6.5.0 is `AGPL-3.0-only`, and the packages now set `requireLicenseAcceptance`. The repository's `LICENSE` file states:
+
+> "PDFsharp and MigraDoc ("the Software") are dual-licensed. The Software is offered under the AGPL license. A commercial license that allows use of PDFsharp and MigraDoc in closed-source projects is also available."
+>
+> \- empira Software ([Source](https://github.com/empira/PDFsharp/blob/master/LICENSE))
+
+The change applies to both release lines:
+
+| Version | Published on NuGet | License |
+| --- | --- | --- |
+| 6.2.4 | 6 January 2026 | **MIT** (last MIT release) |
+| 7.0.0 Preview 1 | 24 March 2026 | MIT |
+| **6.5.0** | **14 October 2026** | **AGPL-3.0 or commercial** |
+| 7.0.0 Preview 2 | 14 October 2026 | AGPL-3.0 or commercial |
+
+### A license must be selected in code
+
+Unlike most changes tracked on this site, the new terms are **enforced at runtime**. From 6.5.0 the library ships a `PdfSharpLicense` class and refuses to work until a license has been chosen. The error message embedded in the library reads:
+
+> "No license has been chosen yet. Use PdfSharpLicense to select the AGPL license (SetAgplLicense()) or load a commercial license (LoadLicense())."
+
+```csharp
+// Open-source projects licensed under AGPL
+PdfSharpLicense.SetAgplLicense();
+
+// Everyone else: load the commercial license key you bought
+PdfSharpLicense.LoadLicense(base64LicenseKey);
+```
+
+So a plain package upgrade from 6.2.x to 6.5.0 **breaks at runtime** (for example, PDF export tests throwing `PdfSharpLicenseException`) until one of the two calls is added. The commercial key is checked locally and is only valid "for the current release line" of PDFsharp.
+
+## Why It Matters
+
+The AGPL is a strong copyleft license. Its network clause means that if you modify AGPL code and let users interact with it over a network, you must offer them the corresponding source. As the library itself puts it:
+
+> "AGPL comes with the restriction that your project has to be open-source and licensed with an AGPL license as well. If your project is closed-source or not AGPL licensed, you have to buy and load a commercial license."
+
+For the typical consumer — a closed-source web app, internal tool or SaaS that generates invoices or reports — the free option is therefore **not usable**, and 6.5.0 is in practice a **commercial upgrade**. Pricing is published on the vendor's [pricing page](https://pdfsharp.com/Pricing).
+
+## What This Means For You
+
+*   **Your project is AGPL-licensed open source:** upgrade and call `PdfSharpLicense.SetAgplLicense()` at startup.
+*   **Your project is closed source, internal, SaaS, or under MIT/Apache/BSD:** you need a commercial license to use 6.5.0 or later, or you stay on / move away from the MIT line.
+*   **You are on 6.2.x or older:** those versions remain **MIT** permanently. Pin your version (e.g. `[6.2.4]`) so that automated updates (Dependabot, Renovate, floating versions) do not pull in 6.5.0.
+*   **You maintain a library that depends on PDFsharp:** upgrading your dependency to 6.5.0 forces the AGPL-or-commercial choice on all of *your* consumers too. Check your dependency tree, including transitive references.
+
+## Alternatives
+
+1.  **Pin [PDFsharp 6.2.4](https://www.nuget.org/packages/PDFsharp/6.2.4)** (MIT):
+    *   **Pros**: zero code change, permanently MIT, supports .NET 8/9/10 and .NET Framework.
+    *   **Cons**: empira does not plan further updates for the 6.2 line, so no new fixes or security patches.
+
+2.  **Fork the MIT source**:
+    *   The 6.2.x and 7.0.0 Preview 1 sources were published under MIT and can be forked and maintained independently.
+    *   **Pros**: keep the API, keep MIT.
+    *   **Cons**: you (or the community) now own PDF parsing, fonts and security fixes.
+
+3.  **[QuestPDF](/fossed/library/questpdf)**:
+    *   Community MIT for individuals, OSS and companies under **USD $1M** annual revenue; paid tiers from **$1,999/year** above that.
+    *   **Pros**: modern fluent layout engine, much higher-level than MigraDoc, no license key.
+    *   **Cons**: also not unconditionally free; different API, so a rewrite of document code.
+
+4.  **HTML → PDF via a headless browser** — [PuppeteerSharp](https://github.com/hardkoded/puppeteer-sharp) (**MIT**) or [Playwright for .NET](https://github.com/microsoft/playwright-dotnet) (**MIT**):
+    *   **Pros**: free, reuses HTML/CSS templates.
+    *   **Cons**: ships Chromium with your deployment, slower per document, fiddly page-break control.
+
+5.  **[PdfPig](https://github.com/UglyToad/PdfPig)** (**Apache-2.0**):
+    *   **Pros**: permissive; strong at reading and extracting text from PDFs, with basic document creation.
+    *   **Cons**: not a replacement for MigraDoc-style layout.
+
+6.  **[iText 7 for .NET](https://github.com/itext/itext-dotnet)** or commercial suites ([IronPDF](https://ironpdf.com/), [Aspose.PDF](https://products.aspose.com/pdf/net/), [Syncfusion PDF](https://www.syncfusion.com/document-processing/pdf-framework/net)):
+    *   iText uses the same AGPL-or-commercial model as PDFsharp now does. If you are paying anyway, compare features and prices across these.
+
+## Conclusion
+
+PDFsharp & MigraDoc went from the **"MIT answer"** for .NET PDF generation to **AGPL-or-commercial** in a single minor version bump (6.2.4 → 6.5.0), with a **runtime license check** that breaks unmodified upgrades. Everything up to **6.2.4** stays MIT forever, so pinning is the zero-effort option. For new closed-source work, the realistic choices are now buying a PDFsharp license, QuestPDF (free under $1M revenue), or HTML-to-PDF rendering.
+
+## Links and References
+
+*   GitHub Issue: [PdfSharp & MigraDoc (dariusz-wozniak/fossed#17)](https://github.com/dariusz-wozniak/fossed/issues/17)
+*   PDFsharp Docs: [History — PDFsharp 6.5.0](https://docs.pdfsharp.net/General/History.html#ps-6-5-0) · [License](https://docs.pdfsharp.net/General/License/License.html) · [License FAQ](https://docs.pdfsharp.net/General/License/License-FAQ.html) · [Loading a license](https://docs.pdfsharp.net/General/License/License-loading.html)
+*   PDFsharp: [Pricing](https://pdfsharp.com/Pricing) · [pdfsharp.com](https://www.pdfsharp.com/)
+*   GitHub: [empira/PDFsharp](https://github.com/empira/PDFsharp) · [LICENSE](https://github.com/empira/PDFsharp/blob/master/LICENSE)
+*   NuGet: [PDFsharp](https://www.nuget.org/packages/PDFsharp/) · [PDFsharp-MigraDoc](https://www.nuget.org/packages/PDFsharp-MigraDoc/) · [PDFsharp-MigraDoc 6.2.4 (last MIT)](https://www.nuget.org/packages/PDFsharp-MigraDoc/6.2.4)
+*   Related: [QuestPDF](/fossed/library/questpdf) — previously listed PDFsharp as its MIT alternative
+*   Alternative: [PuppeteerSharp](https://github.com/hardkoded/puppeteer-sharp) · [Playwright for .NET](https://github.com/microsoft/playwright-dotnet) · [PdfPig](https://github.com/UglyToad/PdfPig)

@@ -78,5 +78,10 @@
     "name": "Devlooped Packages",
     "slug": "devlooped",
     "description": "GitInfo, ThisAssembly and ~30 more packages"
+  },
+  {
+    "name": "PDFsharp & MigraDoc",
+    "slug": "pdfsharp",
+    "description": "PDF creation, editing and document layout"
   }
 ]

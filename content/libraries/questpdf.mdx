@@ -57,10 +57,10 @@ Both paid tiers are effectively **perpetual with renewable support**: you keep t
     *   **Pros**: zero code change, no eligibility questions.
     *   **Cons**: three years of layout-engine, font and performance work missed; no security fixes; SkiaSharp and .NET target updates stop.
 
-2.  **[PDFsharp / MigraDoc](https://www.pdfsharp.net/)** (empira Software):
-    *   **MIT**, no revenue threshold, no tiers, no asterisks. PDFsharp handles low-level PDF creation, editing and merging; MigraDoc adds automatic text flow and document-level layout.
-    *   **Pros**: genuinely permissive, mature, .NET 8/9/10 and .NET Framework support.
-    *   **Cons**: the API is considerably lower-level and more verbose than QuestPDF's fluent layout engine; MigraDoc's layout model is dated by comparison.
+2.  **[PDFsharp / MigraDoc](/fossed/library/pdfsharp)** (empira Software), **pinned to 6.2.4**:
+    *   **MIT** up to and including **6.2.4**. From **6.5.0** (October 2026) PDFsharp is **AGPL-3.0 or commercial**, with a runtime license check — see the [PDFsharp page](/fossed/library/pdfsharp). PDFsharp handles low-level PDF creation, editing and merging; MigraDoc adds automatic text flow and document-level layout.
+    *   **Pros**: 6.2.4 is permanently MIT, mature, .NET 8/9/10 and .NET Framework support.
+    *   **Cons**: the 6.2 line no longer gets updates; the API is considerably lower-level and more verbose than QuestPDF's fluent layout engine; MigraDoc's layout model is dated by comparison.
 
 3.  **HTML → PDF via a headless browser** — [PuppeteerSharp](https://github.com/hardkoded/puppeteer-sharp) (**MIT**) or [Playwright for .NET](https://github.com/microsoft/playwright-dotnet) (**MIT**):
     *   Render an HTML/CSS template with Chromium and print to PDF.
@@ -77,7 +77,7 @@ Both paid tiers are effectively **perpetual with renewable support**: you keep t
 
 ## Conclusion
 
-QuestPDF is not a "went commercial" story so much as a **means-tested one**: the library is unchanged, the terms are clear, there is no key and no phone-home, and old releases stay MIT forever. Free for individuals, OSS, non-profits, academia, and any company under **$1M** annual revenue — **from $1,999/year** above that, and for publicly traded companies and government agencies regardless of size. If you need an unconditionally permissive PDF library, **PDFsharp/MigraDoc** is the MIT answer, at the cost of a much lower-level API.
+QuestPDF is not a "went commercial" story so much as a **means-tested one**: the library is unchanged, the terms are clear, there is no key and no phone-home, and old releases stay MIT forever. Free for individuals, OSS, non-profits, academia, and any company under **$1M** annual revenue — **from $1,999/year** above that, and for publicly traded companies and government agencies regardless of size. PDFsharp/MigraDoc used to be the MIT answer, but since **6.5.0** it is AGPL-or-commercial too; only the frozen **6.2.4** release remains MIT, at the cost of a much lower-level API.
 
 ## Links and References
 
@@ -85,6 +85,6 @@ QuestPDF is not a "went commercial" story so much as a **means-tested one**: the
 *   QuestPDF: [License Selection Guide](https://www.questpdf.com/license/guide.html) · [Community License](https://www.questpdf.com/license/community.html) · [Pricing](https://www.questpdf.com/pricing.html) · [License configuration](https://www.questpdf.com/license/configuration.html)
 *   GitHub: [QuestPDF/QuestPDF](https://github.com/QuestPDF/QuestPDF)
 *   Blog: [Quest for a permissively licensed PDF library in C#](https://duerrenberger.dev/blog/2025/11/04/quest-for-permissively-licensed-pdf-library-in-csharp/)
-*   Alternative: [PDFsharp & MigraDoc](https://www.pdfsharp.net/)
+*   Alternative: [PDFsharp & MigraDoc](/fossed/library/pdfsharp) (MIT up to 6.2.4, AGPL or commercial from 6.5.0)
 *   Alternative: [PuppeteerSharp](https://github.com/hardkoded/puppeteer-sharp) · [Playwright for .NET](https://github.com/microsoft/playwright-dotnet)
 *   Similar model (revenue-threshold free tier): [MassTransit](/fossed/library/masstransit)

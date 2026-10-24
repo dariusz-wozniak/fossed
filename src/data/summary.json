@@ -215,7 +215,7 @@
     "pricing": "Free under $1M revenue; Professional from $1,999/yr, Enterprise from $4,999/yr",
     "lastFreeVersion": "2023.3 (last MIT-only release)",
     "alternatives": [
-      "PDFsharp / MigraDoc",
+      "PDFsharp / MigraDoc 6.2.4 (last MIT)",
       "PuppeteerSharp / Playwright (HTML to PDF)",
       "iText 7 (AGPL or commercial)",
       "Pin a pre-2023.4 release"
@@ -256,5 +256,22 @@
     ],
     "websiteUrl": "https://www.devlooped.com/",
     "websiteText": "devlooped.com"
+  },
+  {
+    "framework": "PDFsharp & MigraDoc",
+    "slug": "pdfsharp",
+    "oldLicense": "MIT",
+    "newLicense": "AGPL-3.0 or Commercial",
+    "pricing": "Free under AGPL (your project must be AGPL too); commercial license for closed-source use",
+    "lastFreeVersion": "6.2.4 (last MIT release)",
+    "alternatives": [
+      "Pin PDFsharp 6.2.4",
+      "QuestPDF (free under $1M revenue)",
+      "PuppeteerSharp / Playwright (HTML to PDF)",
+      "PdfPig",
+      "Fork the MIT source"
+    ],
+    "websiteUrl": "https://www.pdfsharp.com/",
+    "websiteText": "pdfsharp.com"
   }
 ]
